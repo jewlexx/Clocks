@@ -1,0 +1,22 @@
+body {
+  background-color: #ff7961;
+  font-family: "Courier New", Courier, monospace;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 7%;
+  font-size: 5vmax;
+}
+
+.time {
+  font-size: 10vmax;
+}
+
+footer {
+  position: fixed;
+  text-align: center;
+  bottom: 2%;
+  margin-left: 10%;
+  width: 80%;
+}
