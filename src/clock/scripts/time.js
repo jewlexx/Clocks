@@ -30,4 +30,4 @@ async function setTime() {
   $(".time").text(timeVar);
 }
 setTime();
-window.setInterval(setTime, 1000);
+window.setInterval(setTime, 16.66666666);
