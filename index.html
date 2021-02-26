@@ -1,21 +1,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./src/index/stylesheets/index.css" />
-    <script src="./modules/jquery.js"></script>
-    <script src="./src/index/javascripts/params.js" async></script>
     <title>Clocks</title>
+    <script src="./modules/jquery.js"></script>
+    <link rel="stylesheet" href="./src/clock/styles/main.css" />
+    <link
+      id="clock-style"
+      rel="stylesheet"
+      href="./src/basic-clock/index.css"
+    />
+    <script src="./src/clock/scripts/params.js" async></script>
+    <script src="./src/clock/scripts/time.js" async></script>
   </head>
   <body>
-    <iframe
-      src="./src/clock/clock.html"
-      id="main-frame"
-      frameborder="0"
-      class="main-frame"
-      allowtransparency="true"
-      >Get off internet explorer...</iframe
-    >
+    <div><p class="time">Loading time...</p></div>
   </body>
 </html>

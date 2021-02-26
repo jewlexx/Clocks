@@ -3,12 +3,12 @@ const urlParams = new URLSearchParams(queryString);
 
 if (urlParams.has("clock")) {
   document
-    .getElementById("main-frame")
+    .getElementById("clock-style")
     .setAttribute(
-      "src",
+      "href",
       document
-        .getElementById("main-frame")
-        .getAttribute("src")
+        .getElementById("clock-style")
+        .getAttribute("href")
         .replace("basic", urlParams.get("clock"))
     );
   console.log("Set the clock to " + urlParams.get("clock"));
