@@ -1,9 +1,13 @@
 // TODO Add 12/24 hour time toggle
-async function setTime() {
+async function setTime(is24) {
   const date = new Date();
 
   // #region Hour
-  let hour = date.getHours().toString();
+  let hour = 13;
+
+  if (!is24 && hour > 12) {
+    hour = hour - 12;
+  }
 
   if (hour.length == 1) {
     hour = "0" + hour;
@@ -30,5 +34,3 @@ async function setTime() {
   console.log(`Set the time to ${timeVar}`);
   $("#time").text(timeVar);
 }
-setTime();
-window.setInterval(setTime, 16.66666666);
