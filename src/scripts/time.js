@@ -27,7 +27,7 @@ async function setTime() {
 
   const timeVar = `${hour}:${minute}:${second}`;
   console.log(`Set the time to ${timeVar}`);
-  $(".time").text(timeVar);
+  $("#time").text(timeVar);
 }
 setTime();
 window.setInterval(setTime, 16.66666666);
