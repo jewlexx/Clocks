@@ -1,3 +1,4 @@
+// TODO Add 12/24 hour time toggle
 async function setTime() {
   const date = new Date();
 
