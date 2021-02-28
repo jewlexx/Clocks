@@ -15,3 +15,6 @@ if (urlParams.has("clock")) {
     );
   console.log("Set the clock to " + urlParams.get("clock"));
 }
+
+if (urlParams.has("24hour")) {
+}
