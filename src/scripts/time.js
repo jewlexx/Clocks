@@ -1,4 +1,6 @@
 // TODO Add 12/24 hour time toggle
+// TODO Fix the clocks
+//  Cuz like the clocks aren't actually scaling into the frame right now soooo gotta fix that
 async function setTime() {
   const date = new Date();
 
