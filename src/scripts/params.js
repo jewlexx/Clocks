@@ -16,5 +16,9 @@ if (urlParams.has("clock")) {
   console.log("Set the clock to " + urlParams.get("clock"));
 }
 
-if (urlParams.has("24hour")) {
+if (urlParams.has("24hour") && urlParams.get("24hour") == "true") {
+  document
+    .getElementById("12or24")
+    .setAttribute("src", "./src/scripts/24time.js");
+  console.log("Set 24 hour to " + urlParams.get("24hour"));
 }
