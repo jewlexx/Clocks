@@ -1,7 +1,4 @@
-// TODO Add 12/24 hour time toggle
-// TODO Fix the clocks
-//  Cuz like the clocks aren't actually scaling into the frame right now soooo gotta fix that
-async function setTime() {
+async function getTime() {
   const date = new Date();
 
   // #region Hour
@@ -28,9 +25,5 @@ async function setTime() {
   }
   // #endregion second
 
-  const timeVar = `${hour}:${minute}:${second}`;
-  console.log(`Set the time to ${timeVar}`);
-  $("#time").text(timeVar);
+  return `${hour}:${minute}:${second}`;
 }
-setTime();
-window.setInterval(setTime, 16.66666666);
