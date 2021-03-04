@@ -21,7 +21,7 @@ pipeline {
 
     stage('Annddd push') {
       steps {
-        bat 'git push'
+        bat 'git push --set-upstream origin public'
       }
     }
 
