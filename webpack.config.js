@@ -1,5 +1,5 @@
 const path = require("path");
-const dev = false;
+const dev = true;
 
 function devMode() {
   if (dev) {
@@ -10,12 +10,12 @@ function devMode() {
 }
 
 module.exports = {
-  entry: "./src/scripts/index.js",
+  entry: path.resolve(__dirname, "src/scripts/index.js"),
   watch: dev,
   mode: devMode(),
   output: {
-    filename: "main.js",
-    path: path.resolve(__dirname, "dist"),
+    filename: "index.js",
+    path: path.resolve(__dirname, "src/scripts/bundled"),
 
     publicPath: "/",
     publicPath: "/Clocks/",
