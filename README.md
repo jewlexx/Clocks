@@ -3,6 +3,8 @@ A various collection of html clocks designed to be embeddable anywhere (a list o
 
 ## Coming soon:
 - [ ] A list of clocks
-- [ ] 12/24 hour time toggle
+- [X] 12/24 hour time toggle
 - [ ] More time options like disabling seconds
 - [ ] Full time format customization
+- [ ] Style customization
+- [ ] Complete refactor with index page and url generation
