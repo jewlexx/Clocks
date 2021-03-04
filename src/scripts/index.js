@@ -15,45 +15,34 @@ if (urlParams.has("clock")) {
   console.log("Set the clock to " + urlParams.get("clock"));
 }
 
+/**
+ *
+ * @param {string} time
+ */
+function thenTime(time) {
+  console.log(`Set the time to ${time}`);
+  $("#time").text(time);
+}
+
+/**
+ *
+ * @param {string} error
+ */
+function errorTime(error) {
+  console.error("Failed to set time \n" + error);
+}
+
 function time24() {
-  getTime24()
-    .then((time) => {
-      console.log(`Set the time to ${time}`);
-      $("#time").text(time);
-    })
-    .catch((error) => {
-      console.error("Failed to set time \n" + error);
-    });
+  getTime24().then(thenTime).catch(errorTime);
   window.setInterval(() => {
-    getTime24()
-      .then((time) => {
-        console.log(`Set the time to ${time}`);
-        $("#time").text(time);
-      })
-      .catch((error) => {
-        console.error("Failed to set time \n" + error);
-      });
+    getTime24().then(thenTime).catch(errorTime);
   }, 1000);
 }
 
 function time12() {
-  getTime12()
-    .then((time) => {
-      console.log(`Set the time to ${time}`);
-      $("#time").text(time);
-    })
-    .catch((error) => {
-      console.error("Failed to set time \n" + error);
-    });
+  getTime12().then(thenTime).catch(errorTime);
   window.setInterval(() => {
-    getTime12()
-      .then((time) => {
-        console.log(`Set the time to ${time}`);
-        $("#time").text(time);
-      })
-      .catch((error) => {
-        console.error("Failed to set time \n" + error);
-      });
+    getTime12().then(thenTime).catch(errorTime);
   }, 1000);
 }
 

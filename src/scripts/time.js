@@ -36,10 +36,6 @@ async function getTime24() {
   // #region Hour
   let hour = 13;
 
-  if (!is24 && hour > 12) {
-    hour = hour - 12;
-  }
-
   if (hour.length == 1) {
     hour = "0" + hour;
   }
