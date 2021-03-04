@@ -6,18 +6,17 @@ const urlParams = new URLSearchParams(queryString);
 import dayjs from "dayjs";
 import $ from "jquery";
 
+function setClock(clock) {
+  $("body").removeClass();
+  $("body").addClass(`${clock}-clock`);
+  console.log("Set the clock to " + clock);
+}
+
 //#region Params
 if (urlParams.has("clock")) {
-  document
-    .getElementById("clock-style")
-    .setAttribute(
-      "href",
-      document
-        .getElementById("clock-style")
-        .getAttribute("href")
-        .replace("basic", urlParams.get("clock"))
-    );
-  console.log("Set the clock to " + urlParams.get("clock"));
+  setClock(urlParams.get("clock"));
+} else {
+  setClock("basic");
 }
 
 let format = "h:mm:ss A";
