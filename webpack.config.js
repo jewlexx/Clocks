@@ -1,5 +1,5 @@
 const path = require("path");
-const dev = true;
+const dev = false;
 
 function devMode() {
   if (dev) {
