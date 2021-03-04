@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Setup env') {
       steps {
-        bat 'npm ci'
+        bat 'npm i'
       }
     }
 
