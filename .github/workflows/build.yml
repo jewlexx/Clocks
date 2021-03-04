@@ -1,26 +1,19 @@
 name: "Build"
 on: ["push"]
 jobs:
-  build:
+  buildncommit:
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@master"
       - name: "Webpack Build"
         run: npm run build
 
-  commit:
-    runs-on: "ubuntu-latest"
-    steps:
-      - uses: EndBug/add-and-commit@v7 # You can change this to use a specific version
+      - uses: EndBug/add-and-commit@v7
         with:
           author_name: jamesinaxx
 
           message: "Built and committed the build"
 
-          # The arguments for the `git rm` command (see the paragraph below for more info)
-          # Default: ''
           remove: "./dist/"
 
-          # Whether to use the --signoff option on `git commit` (only `true` and `false` are accepted)
-          # Default: false
           signoff: true
