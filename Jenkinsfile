@@ -15,7 +15,7 @@ pipeline {
 
     stage('Commit') {
       steps {
-        bat 'git add . && git commit -m \'Built and stuff\''
+        bat 'git add . && git commit -m "Built and stuff"'
       }
     }
 
