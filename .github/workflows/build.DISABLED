@@ -1,0 +1,15 @@
+name: "Build"
+on: ["push"]
+jobs:
+  buildncommit:
+    runs-on: "ubuntu-latest"
+    steps:
+      - uses: "actions/checkout@master"
+      - name: "Webpack Build"
+        run: cd ../../ && npm run build
+      - uses: EndBug/add-and-commit@v7
+        with:
+          author_name: jamesinaxx
+          message: "Built and committed the build"
+          remove: "./dist/"
+          signoff: true

@@ -1,0 +1,29 @@
+{
+  "name": "clocks",
+  "version": "1.0.0",
+  "description": "A various collection of html clocks designed to be embeddable anywhere (a list of available clocks is coming soon but for now just look through the code)",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "dayjs": "^1.10.4",
+    "jquery": "^3.6.0",
+    "webpack": "^5.24.3",
+    "webpack-cli": "^4.5.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "build": "npx webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jamesinaxx/Clocks.git"
+  },
+  "keywords": [],
+  "author": "jamesinaxx",
+  "bugs": {
+    "url": "https://github.com/jamesinaxx/Clocks/issues"
+  },
+  "homepage": "https://github.com/jamesinaxx/Clocks#readme"
+}
