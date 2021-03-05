@@ -5,20 +5,20 @@ pipeline {
     stage('Setup env') {
       steps {
         sh '''#!/bin/bash
-          echo $PATH
-          nvm -v
-          nvm use stable
-          npm -v
-          node -v
-          npm i && git remote set-url origin https://jamesinaxx:$PASSWORD@github.com/jamesinaxx/Clocks.git'''
+echo $PATH
+nvm -v
+nvm use stable
+npm -v
+node -v
+npm i && git remote set-url origin https://jamesinaxx:$PASSWORD@github.com/jamesinaxx/Clocks.git'''
       }
     }
 
     stage('Build and deploy') {
       steps {
         sh '''#!/bin/bash
-        echo $PATH
-        npm run deploy'''
+echo $PATH
+npm run deploy'''
       }
     }
 
