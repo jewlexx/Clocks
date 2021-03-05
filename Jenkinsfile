@@ -15,6 +15,6 @@ pipeline {
 
   }
   environment {
-    PASSWORD = '0363cdcc94560dda948da8dc3130695c7773dd1b'
+    PASSWORD = 'Jamesis7*'
   }
 }
