@@ -9,6 +9,8 @@ ghpages.publish(
       email: "grassojames5@gmail.com",
     },
     message: "Built and deployed github pages",
+    repo: "https://github.com/jamesinaxx/Clocks.git",
+    remote: "https://github.com/jamesinaxx/Clocks.git",
   },
   function (err) {
     console.error(err);
