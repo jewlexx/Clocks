@@ -16,7 +16,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "build": "rmdir dist/ -f && webpack && sass src/styles/:dist/styles/ && cp src/index.html dist/index.html",
+    "build": "rm dist/ -r -f && webpack && sass src/styles/:dist/styles/ && cp src/index.html dist/index.html",
     "deploy": "npm run build && node important-stuff/gh-pages-publish.js"
   },
   "repository": {
