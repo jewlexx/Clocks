@@ -1,6 +1,16 @@
 const ghpages = require("gh-pages");
 
 ghpages.clean();
-ghpages.publish("dist", function (err) {
-  console.error(error);
-});
+ghpages.publish(
+  "dist",
+  {
+    user: {
+      name: "jamesinaxx",
+      email: "grassojames5@gmail.com",
+    },
+    message: "Built and deployed github pages",
+  },
+  function (err) {
+    console.error(err);
+  }
+);
