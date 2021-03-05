@@ -9,7 +9,7 @@ pipeline {
 
     stage('Build and deploy') {
       steps {
-        bat 'npm run deploy'
+        sh 'npm run deploy'
       }
     }
 
