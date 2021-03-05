@@ -10,7 +10,7 @@ pipeline {
 echo $PATH
 npm -v
 node -v
-npm i && git remote set-url origin https://jamesinaxx:$PASSWORD@github.com/jamesinaxx/Clocks.git'''
+npm i'''
       }
     }
 
