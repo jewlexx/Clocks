@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Setup env') {
       steps {
-        bat 'npm i && git remote set-url origin https://github.com/jamesinaxx/Clocks.git'
+        bat 'npm i && git remote set-url origin https://jamesinaxx:$PASSWORD@github.com/jamesinaxx/Clocks.git'
       }
     }
 
