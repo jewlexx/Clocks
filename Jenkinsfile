@@ -4,6 +4,7 @@ pipeline {
     stage('Setup env') {
       steps {
         sh '''#!/bin/bash
+echo $PATH
 npm i && git remote set-url origin https://jamesinaxx:$PASSWORD@github.com/jamesinaxx/Clocks.git'''
       }
     }
@@ -11,6 +12,7 @@ npm i && git remote set-url origin https://jamesinaxx:$PASSWORD@github.com/james
     stage('Build and deploy') {
       steps {
         sh '''#!/bin/bash
+echo $PATH
 npm run deploy'''
       }
     }
