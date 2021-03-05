@@ -1,4 +1,5 @@
 const ghpages = require("gh-pages");
+require("dotenv").config();
 
 ghpages.clean();
 ghpages.publish(
@@ -9,7 +10,7 @@ ghpages.publish(
       email: "grassojames5@gmail.com",
     },
     message: "Built and deployed github pages",
-    repo: "https://jamesinaxx@github.com/jamesinaxx/Clocks.git",
+    repo: `https://jamesinaxx:${process.env.PASSWORD}@github.com/jamesinaxx/Clocks.git`,
     remote: "origin",
   },
   function (err) {
