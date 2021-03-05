@@ -17,7 +17,7 @@
   "devDependencies": {},
   "scripts": {
     "build": "rm dist/ -r -f && webpack && sass src/styles/:dist/styles/ && cp src/index.html dist/index.html",
-    "build:batch": "(if exist rmdir dist /s /Q) && webpack && sass src/styles/:dist/styles/ && cp src/index.html dist/index.html",
+    "build:batch": "(if exist rmdir dist /s /Q) && webpack && sass src/styles/:dist/styles/ && copy src\\index.html dist\\index.html",
     "deploy": "npm run build && node important-stuff/gh-pages-publish.js",
     "deploy:batch": "npm run build:batch && node important-stuff/gh-pages-publish.js"
   },
