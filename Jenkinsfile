@@ -23,7 +23,4 @@ npm run deploy'''
     }
 
   }
-  environment {
-    PASSWORD = '3d8392ef9164ecb615a227b47b386913ad137ea1'
-  }
 }
