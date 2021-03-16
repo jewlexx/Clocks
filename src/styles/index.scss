@@ -1,90 +1,90 @@
-$font-family: "Courier New", Courier, monospace;
+$font-family: 'Courier New', Courier, monospace;
 
 html,
 body {
-  height: 100%;
-  padding: none;
-  margin: none;
-  overflow: hidden;
+    height: 100%;
+    padding: none;
+    margin: none;
+    overflow: hidden;
 }
 
 body {
-  font-family: $font-family;
-  background-color: #fff;
+    font-family: $font-family;
+    background-color: #fff;
 }
 
 #root {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  border: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  z-index: 999999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    z-index: 999999;
 }
 
 .time-body {
-  font-family: $font-family;
-  background-color: #ff7961;
+    font-family: $font-family;
+    background-color: #ff7961;
 }
 
 .time-div {
-  width: 100%;
-  height: 100%;
-  font-size: 16px;
-  font-size: calc(10vw + 10vh);
-  text-align: center;
-  p {
-    vertical-align: middle;
-  }
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    font-size: calc(10vw + 10vh);
+    text-align: center;
+    p {
+        vertical-align: middle;
+    }
 }
 // Clocks
 .basic-clock {
-  font-family: $font-family;
-  background-color: #ff7961;
+    font-family: $font-family;
+    background-color: #ff7961;
 }
 
 .black-clock {
-  font-family: $font-family;
-  background-color: black;
-  color: white;
+    font-family: $font-family;
+    background-color: black;
+    color: white;
 }
 
 .pride-clock {
-  font-family: $font-family;
-  background: linear-gradient(
-    180deg,
-    #fe0000 16.66%,
-    #fd8c00 16.66%,
-    33.32%,
-    #ffe500 33.32%,
-    49.98%,
-    #119f0b 49.98%,
-    66.64%,
-    #0644b3 66.64%,
-    83.3%,
-    #c22edc 83.3%
-  );
+    font-family: $font-family;
+    background: linear-gradient(
+        180deg,
+        #fe0000 16.66%,
+        #fd8c00 16.66%,
+        33.32%,
+        #ffe500 33.32%,
+        49.98%,
+        #119f0b 49.98%,
+        66.64%,
+        #0644b3 66.64%,
+        83.3%,
+        #c22edc 83.3%
+    );
 }
 
 .white-clock {
-  font-family: $font-family;
-  background-color: white;
-  color: black;
+    font-family: $font-family;
+    background-color: white;
+    color: black;
 }
 
 .transparent-clock {
-  font-family: $font-family;
-  background: none transparent;
+    font-family: $font-family;
+    background: none transparent;
 }
 
 .transparent-white-clock {
-  font-family: $font-family;
-  background: none transparent;
-  color: white;
+    font-family: $font-family;
+    background: none transparent;
+    color: white;
 }
