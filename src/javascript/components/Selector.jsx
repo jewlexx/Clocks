@@ -2,7 +2,7 @@ import React from 'react';
 const clockList = ['basic', 'pride', 'black', 'white'];
 
 function SelectClock(props) {
-    document.getElementById('root').classList = 'dark-mode';
+    // document.getElementById('root').classList = 'dark-mode';
     return (
         <div className="SelectClock">
             {clockList.map((item, index) => (

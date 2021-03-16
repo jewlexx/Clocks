@@ -7,9 +7,9 @@ import './styles/index.scss';
 
 const params = new UrlParameters();
 
-const timeFormat = params.format;
-
-export { timeFormat };
+export const timeFormat = params.format;
+export const color = params.color;
+export const clock = params.clock;
 
 console.debug(window.location.href);
 

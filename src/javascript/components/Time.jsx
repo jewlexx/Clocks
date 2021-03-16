@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { timeFormat } from '../..';
+import { timeFormat, color, clock } from '../..';
 
 const formatTime = () => {
     if (timeFormat !== undefined) {
@@ -24,7 +24,9 @@ class Time extends React.Component {
         document.getElementsByTagName('body')[0].classList = 'time-body';
         return (
             <div className="time-div">
-                <p className="time">{this.state.time}</p>
+                <p className="time" style={{ color: color }}>
+                    {this.state.time}
+                </p>
             </div>
         );
     }

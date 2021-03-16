@@ -8,12 +8,15 @@ function setClock(clock) {
 
 class UrlParameters {
     constructor() {
+        this.color = '#000';
         this.clockEnabled = true;
         this.format = 'h:mm:ss A';
-        if (urlParams.has('clock')) {
-            setClock(urlParams.get('clock'));
-        } else {
-            this.clockEnabled = false;
+
+        if (urlParams.has('color')) {
+            let colorParam = urlParams.get('color');
+            this.color = !colorParam.includes('#')
+                ? '#' + colorParam.slice()
+                : colorParam.slice();
         }
 
         if (urlParams.has('24hour') && urlParams.get('24hour') === 'true') {
@@ -22,6 +25,16 @@ class UrlParameters {
 
         if (urlParams.has('seconds') && urlParams.get('seconds') === 'false') {
             this.format = this.format.slice().replace(':ss', '');
+        }
+
+        if (urlParams.has('clock')) {
+            this.clock = urlParams.get('clock');
+            setClock(urlParams.get('clock'));
+            if (urlParams.get('clock') === 'black') {
+                this.color = '#FFF';
+            }
+        } else {
+            this.clockEnabled = false;
         }
     }
 }
