@@ -14,13 +14,15 @@ function ClockSelect(props) {
                             for (
                                 let i = 0;
                                 i <
-                                document.getElementsByTagName('input').length;
+                                document.getElementsByClassName(
+                                    'checkbox-clock'
+                                ).length;
                                 i++
                             ) {
                                 if (index !== i) {
-                                    document.getElementsByTagName('input')[
-                                        i
-                                    ].checked = false;
+                                    document.getElementsByClassName(
+                                        'checkbox-clock'
+                                    )[i].checked = false;
                                 }
                             }
                         }}

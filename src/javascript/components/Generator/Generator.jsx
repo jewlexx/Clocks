@@ -22,8 +22,9 @@ class Generator extends React.Component {
                             .slice()
                             .filter(
                                 (_item, i) =>
-                                    document.getElementsByTagName('input')[i]
-                                        .checked
+                                    document.getElementsByClassName(
+                                        'checkbox-clock'
+                                    )[i].checked
                             );
                         console.log(tickedClocks.length);
                         if (
