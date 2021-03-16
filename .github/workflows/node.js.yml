@@ -19,10 +19,13 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
+      env:
+        PASSWORD: ${{ secrets.PA_TOKEN }}
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
+      - run: git remote set-url origin https://jamesinaxx:$PASSWORD@github.com/jamesinaxx/Clocks.git
       - run: NODE_DEBUG=gh-pages npm run deploy --if-present
