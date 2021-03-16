@@ -2,8 +2,6 @@ import React from 'react';
 import dayjs from 'dayjs';
 import { timeFormat } from '../..';
 
-console.debug(timeFormat === undefined ? 'No time format' : timeFormat);
-
 const formatTime = () => {
     if (timeFormat !== undefined) {
         return dayjs().format(timeFormat);
@@ -20,6 +18,9 @@ class Time extends React.Component {
     }
 
     render() {
+        console.debug(
+            timeFormat === undefined ? 'No time format specified' : timeFormat
+        );
         document.getElementsByTagName('body')[0].classList = 'time-body';
         return (
             <div className="time-div">

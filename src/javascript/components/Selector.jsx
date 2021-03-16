@@ -5,12 +5,13 @@ class SelectClock extends React.Component {
     render() {
         return (
             <div className="SelectClock">
-                <button>
-                    Selector coming soon... For now checkout the{' '}
-                    <a href="https://github.com/jamesinaxx/Clocks/blob/public/README.md">
-                        README
-                    </a>
-                    for instructions
+                {clockList.map((item) => (
+                    <button key={clockList.indexOf(item)} className="btn-clock">
+                        {item.substring(0, 1).toUpperCase() + item.slice(1)}
+                    </button>
+                ))}
+                <button className="btn-clock" style={{ cursor: 'progress' }}>
+                    More coming soon
                 </button>
             </div>
         );

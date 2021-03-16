@@ -28,6 +28,19 @@ body {
     z-index: 999999;
 }
 
+.SelectClock {
+    margin-left: 50px;
+    margin-top: 50px;
+    .btn-clock {
+        padding: 5px;
+        margin: 5px;
+        border: none;
+    }
+    .btn-clock:hover {
+        cursor: pointer;
+    }
+}
+
 .time-body {
     font-family: $font-family;
     background-color: #ff7961;
