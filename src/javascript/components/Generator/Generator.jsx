@@ -14,18 +14,12 @@ class Generator extends React.Component {
         return (
             <form className="ClockGenerator">
                 <ClockSelect clockList={clockList} />
-                <ColorInput
-                    onChange={() => {
-                        const value = document.getElementById(
-                            'clock-color-input'
-                        ).value;
-                        console.log(value);
-                    }}
-                />
+                <ColorInput />
 
                 <button
                     className="btn-clock"
                     onClick={() => {
+                        const urlParams = [];
                         let finalUrl = window.location.href;
                         const tickedClocks = props.clockList
                             .slice()
@@ -42,7 +36,17 @@ class Generator extends React.Component {
                                 tickedClocks.length > 1
                             )
                         ) {
-                            finalUrl += '?clock=' + tickedClocks[0];
+                            urlParams.push('clock=' + tickedClocks[0]);
+                        }
+                        if (
+                            document.getElementById('clock-color-input').value
+                        ) {
+                            urlParams.push(
+                                'color=#' +
+                                    document
+                                        .getElementById('clock-color-input')
+                                        .value.replace('#', '')
+                            );
                         }
                         navigator.clipboard.writeText(finalUrl);
                         alert('Saved the url to clipboard!\n' + finalUrl);
