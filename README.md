@@ -8,8 +8,6 @@ A various collection of html clocks designed to be embeddable anywhere (a list o
 * Pride clock (currently only gay pride but more pride flags are coming soon)
 * Black clock
 * White clock
-* Transparent clock
-* Transparent White clock (turns text colour white)
 
 **Note: I know this is janky, there is a much better solution coming soon.**
 
