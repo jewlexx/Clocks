@@ -19,4 +19,10 @@ class SelectClock extends React.Component {
     }
 }
 
-export { SelectClock };
+class Selector extends React.Component {
+    render() {
+        return <SelectClock />;
+    }
+}
+
+export { Selector as ClockSelector };
