@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Time } from './javascript/components/Clock';
-import { Generator } from './javascript/components/Selector/Generator';
+import { Generator } from './javascript/components/Generator/Generator';
 import { UrlParameters } from './javascript/imports/params';
 import './styles/index.scss';
 
