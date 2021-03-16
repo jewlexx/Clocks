@@ -38,7 +38,7 @@
   "scripts": {
     "build": "webpack --config building/webpack.config.js --mode development",
     "build:watch": "webpack --config building/webpack.config.js --mode development -w",
-    "deploy": "webpack --mode production --config building/webpack.config.js && NODE_DEBUG=gh-pages node building/gh-pages-publish.js"
+    "deploy": "webpack --mode production --config building/webpack.config.js && node building/gh-pages-publish.js"
   },
   "repository": {
     "type": "git",

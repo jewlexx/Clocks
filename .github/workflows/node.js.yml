@@ -25,4 +25,4 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
-      - run: npm run deploy --if-present
+      - run: NODE_DEBUG=gh-pages npm run deploy --if-present
