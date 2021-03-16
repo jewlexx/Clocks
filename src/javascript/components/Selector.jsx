@@ -1,30 +1,41 @@
 import React from 'react';
 const clockList = ['basic', 'pride', 'black', 'white'];
 
-function SelectClock() {
+function SelectClock(props) {
     document.getElementById('root').classList = 'dark-mode';
     return (
         <div className="SelectClock">
-            {clockList.map((item) => (
-                <label className="lbl-clock">
-                    {item.substring(0, 1).toUpperCase() + item.slice(1)}{' '}
-                    <input type="checkbox"></input>
+            {clockList.map((item, index) => (
+                <label className="lbl-clock" key={index}>
+                    {item.substring(0, 1).toUpperCase() + item.slice(1)}
+                    <input
+                        type="checkbox"
+                        className="checkbox-clock"
+                        id={'numberInArray' + index}
+                        onClick={() => props.onClick(index)}
+                    ></input>{' '}
+                    <br></br>
                 </label>
             ))}
-            <button className="lbl-clock" style={{ cursor: 'progress' }}>
-                More coming soon
-            </button>
         </div>
     );
 }
 
 class Selector extends React.Component {
-    handleClick(i) {
-        window.open(window.location.href + '?clock=' + i, '_blank');
+    handleClickCheck(clickedIndex) {
+        for (
+            let i = 0;
+            i < document.getElementsByTagName('input').length;
+            i++
+        ) {
+            if (clickedIndex !== i) {
+                document.getElementsByTagName('input')[i].checked = false;
+            }
+        }
     }
 
     render() {
-        return <SelectClock />;
+        return <SelectClock onClick={this.handleClickCheck} />;
     }
 }
 
