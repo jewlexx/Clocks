@@ -4,15 +4,24 @@ import { ColorInput } from './lib/ColorInput';
 // TODO Find a better, or automatic way to generate an array of available clocks
 const clockList = ['basic', 'pride', 'black', 'white'];
 
+let clockColor = null;
+
 // TODO Fix generate button placement
 
 // TODO Finish colour input and add to generation
 class Generator extends React.Component {
     render() {
         return (
-            <div className="ClockGenerator">
+            <form className="ClockGenerator">
                 <ClockSelect clockList={clockList} />
-                <ColorInput />
+                <ColorInput
+                    onChange={() => {
+                        const value = document.getElementById(
+                            'clock-color-input'
+                        ).value;
+                        console.log(value);
+                    }}
+                />
 
                 <button
                     className="btn-clock"
@@ -41,7 +50,7 @@ class Generator extends React.Component {
                 >
                     Generate
                 </button>
-            </div>
+            </form>
         );
     }
 }

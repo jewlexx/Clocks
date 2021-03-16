@@ -1,15 +1,19 @@
 import React from 'react';
 
-class ColorInput extends React.Component {
-    render() {
-        return (
-            <div>
-                <label className="color-input">
-                    Color: <input type="" text="#"></input>{' '}
-                </label>
-            </div>
-        );
-    }
+function ColorInput(props) {
+    return (
+        <div>
+            <label className="color-input">
+                Color:{' '}
+                <input
+                    onChange={props.onChange}
+                    type="text"
+                    name="color-text-input"
+                    id="clock-color-input"
+                ></input>{' '}
+            </label>
+        </div>
+    );
 }
 
 export { ColorInput };
