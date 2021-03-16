@@ -11,12 +11,16 @@ function SelectClock(props) {
                     <input
                         type="checkbox"
                         className="checkbox-clock"
-                        id={'numberInArray' + index}
-                        onClick={() => props.onClick(index)}
-                    ></input>{' '}
-                    <br></br>
+                        onClick={() => props.onClickCheckbox(index)}
+                    ></input>
                 </label>
             ))}
+            <button
+                className="btn-clock"
+                onClick={() => props.onClickGenerate()}
+            >
+                Generate
+            </button>
         </div>
     );
 }
@@ -34,8 +38,26 @@ class Selector extends React.Component {
         }
     }
 
+    handleButtonClick() {
+        navigator.clipboard.writeText(
+            window.location.href +
+                '?clock=' +
+                clockList
+                    .filter(
+                        (_item, i) =>
+                            document.getElementsByTagName('input')[i].checked
+                    )
+                    .join('')
+        );
+    }
+
     render() {
-        return <SelectClock onClick={this.handleClickCheck} />;
+        return (
+            <SelectClock
+                onClickCheckbox={this.handleClickCheck}
+                onClickGenerate={this.handleButtonClick}
+            />
+        );
     }
 }
 

@@ -62,6 +62,22 @@ body {
             margin: 0.75%;
         }
     }
+    .btn-clock {
+        background-color: $blurple;
+        border-radius: 5px;
+        float: right;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-weight: bolder;
+        padding: 5px;
+        margin: 5px;
+        border: none;
+        cursor: pointer;
+    }
 }
 
 .time-div {
