@@ -48,6 +48,7 @@ class Generator extends React.Component {
                                         .value.replace('#', '')
                             );
                         }
+                        finalUrl = finalUrl + '?' + urlParams.join('&');
                         navigator.clipboard.writeText(finalUrl);
                         alert('Saved the url to clipboard!\n' + finalUrl);
                     }}
