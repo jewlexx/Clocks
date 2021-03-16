@@ -1,4 +1,7 @@
 $font-family: 'Courier New', Courier, monospace;
+$blurple-dark: #23272a;
+$dark-blurple: #4e5d94;
+$blurple: #7289da;
 
 html,
 body {
@@ -11,6 +14,10 @@ body {
 body {
     font-family: $font-family;
     background-color: #fff;
+}
+
+.dark-mode {
+    background-color: $blurple-dark;
 }
 
 #root {
@@ -32,12 +39,19 @@ body {
     margin-left: 50px;
     margin-top: 50px;
     .btn-clock {
+        transition: background-color 0.25s ease;
+        -moz-transition: background-color 0.25s ease;
+        -ms-transition: background-color 0.25s ease;
+        -o-transition: background-color 0.25s ease;
+        -webkit-transition: background-color 0.25s ease;
+        background-color: $blurple;
         padding: 5px;
         margin: 5px;
         border: none;
-    }
-    .btn-clock:hover {
         cursor: pointer;
+        &:hover {
+            background-color: $dark-blurple;
+        }
     }
 }
 

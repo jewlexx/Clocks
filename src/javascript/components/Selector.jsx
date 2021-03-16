@@ -3,6 +3,7 @@ const clockList = ['basic', 'pride', 'black', 'white', 'transparent'];
 
 class SelectClock extends React.Component {
     render() {
+        document.getElementById('root').classList = 'dark-mode';
         return (
             <div className="SelectClock">
                 {clockList.map((item) => (
