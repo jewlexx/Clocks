@@ -4,8 +4,6 @@ import { ColorInput } from './lib/ColorInput';
 // TODO Find a better, or automatic way to generate an array of available clocks
 const clockList = ['basic', 'pride', 'black', 'white'];
 
-let clockColor = null;
-
 // TODO Fix generate button placement
 
 // TODO Finish colour input and add to generation
