@@ -1,6 +1,3 @@
-// TODO Fix the clocks
-//  Cuz like the clocks aren't actually scaling into the frame right now so gotta fix that
-
 import React from "react";
 import ReactDOM from "react-dom";
 import { Time } from "./javascripts/components/Time";
