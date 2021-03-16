@@ -1,10 +1,9 @@
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-import $ from "jquery";
 
 function setClock(clock) {
-  $("#root").addClass(`${clock}-clock`);
-  console.log("Set the clock to " + clock);
+  document.getElementById("root").classList = `${clock}-clock`;
+  console.debug("Successfully set the clock to " + clock);
 }
 
 class UrlParameters {
