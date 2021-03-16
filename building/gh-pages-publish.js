@@ -20,6 +20,7 @@ publish(
       console.error(
         "Failed to publish to Github pages... and here's why \n" + err
       );
+      process.exit(1);
     }
   }
 );
