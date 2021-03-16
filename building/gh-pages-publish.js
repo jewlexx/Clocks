@@ -1,8 +1,8 @@
-const ghpages = require("gh-pages");
+const { clean, publish } = require("gh-pages");
 require("dotenv").config();
 
-ghpages.clean();
-ghpages.publish(
+clean();
+publish(
   "dist",
   {
     user: {
@@ -14,6 +14,12 @@ ghpages.publish(
     remote: "origin",
   },
   function (err) {
-    console.error(err);
+    if (err === undefined) {
+      console.log("Successfully published to Github pages!");
+    } else {
+      console.error(
+        "Failed to publish to Github pages... and here's why \n" + err
+      );
+    }
   }
 );
