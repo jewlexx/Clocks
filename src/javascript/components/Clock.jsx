@@ -8,7 +8,7 @@ const formatTime = () => {
     }
 };
 
-class Time extends React.Component {
+class Clock extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
