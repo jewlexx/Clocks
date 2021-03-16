@@ -1,6 +1,5 @@
 // TODO Fix the clocks
 //  Cuz like the clocks aren't actually scaling into the frame right now so gotta fix that
-// TODO Get react working
 
 import React from "react";
 import ReactDOM from "react-dom";
