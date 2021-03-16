@@ -1,6 +1,6 @@
 import React from 'react';
 import dayjs from 'dayjs';
-import { timeFormat, color, clock } from '../..';
+import { timeFormat, color } from '../..';
 
 const formatTime = () => {
     if (timeFormat !== undefined) {

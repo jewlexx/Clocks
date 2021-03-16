@@ -1,20 +1,17 @@
 import React from 'react';
 const clockList = ['basic', 'pride', 'black', 'white'];
 
-function SelectClock(props) {
-    // document.getElementById('root').classList = 'dark-mode';
+function SelectClock() {
+    document.getElementById('root').classList = 'dark-mode';
     return (
         <div className="SelectClock">
-            {clockList.map((item, index) => (
-                <button
-                    key={index}
-                    className="btn-clock"
-                    onClick={() => props.onClick(clockList[index])}
-                >
-                    {item.substring(0, 1).toUpperCase() + item.slice(1)}
-                </button>
+            {clockList.map((item) => (
+                <label className="lbl-clock">
+                    {item.substring(0, 1).toUpperCase() + item.slice(1)}{' '}
+                    <input type="checkbox"></input>
+                </label>
             ))}
-            <button className="btn-clock" style={{ cursor: 'progress' }}>
+            <button className="lbl-clock" style={{ cursor: 'progress' }}>
                 More coming soon
             </button>
         </div>
@@ -27,7 +24,7 @@ class Selector extends React.Component {
     }
 
     render() {
-        return <SelectClock onClick={this.handleClick} />;
+        return <SelectClock />;
     }
 }
 

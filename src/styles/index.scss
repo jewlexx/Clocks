@@ -38,20 +38,12 @@ body {
 .SelectClock {
     margin-left: 50px;
     margin-top: 50px;
-    .btn-clock {
-        transition: background-color 0.25s ease;
-        -moz-transition: background-color 0.25s ease;
-        -ms-transition: background-color 0.25s ease;
-        -o-transition: background-color 0.25s ease;
-        -webkit-transition: background-color 0.25s ease;
+    .lbl-clock {
         background-color: $blurple;
         padding: 5px;
         margin: 5px;
         border: none;
         cursor: pointer;
-        &:hover {
-            background-color: $dark-blurple;
-        }
     }
 }
 
