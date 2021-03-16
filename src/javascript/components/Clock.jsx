@@ -32,4 +32,4 @@ class Clock extends React.Component {
     }
 }
 
-export { Time };
+export { Clock };
