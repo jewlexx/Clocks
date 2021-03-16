@@ -1,8 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Time } from "./javascripts/components/Time";
-import { SelectClock } from "./javascripts/components/Selector";
-import { UrlParameters } from "./javascripts/imports/params";
+import { Time } from "./javascript/components/Time";
+import { SelectClock } from "./javascript/components/Selector";
+import { UrlParameters } from "./javascript/imports/params";
 import "./styles/index.scss";
 
 const params = new UrlParameters();
