@@ -27,29 +27,6 @@ function ClockSelect(props) {
                     ></input>
                 </label>
             ))}
-            <button
-                className="btn-clock"
-                onClick={() => {
-                    let finalUrl = window.location.href;
-                    const tickedClocks = props.clockList
-                        .slice()
-                        .filter(
-                            (_item, i) =>
-                                document.getElementsByTagName('input')[i]
-                                    .checked
-                        );
-                    console.log(tickedClocks.length);
-                    if (
-                        !(tickedClocks.length === 0 || tickedClocks.length > 1)
-                    ) {
-                        finalUrl += '?clock=' + tickedClocks[0];
-                    }
-                    navigator.clipboard.writeText(finalUrl);
-                    alert('Saved the url to clipboard!\n' + finalUrl);
-                }}
-            >
-                Generate
-            </button>
         </div>
     );
 }

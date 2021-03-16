@@ -46,7 +46,7 @@ body {
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
     -o-border-radius: 5px;
-    .lbl-clock {
+    label {
         -webkit-touch-callout: none;
         -webkit-user-select: none;
         -khtml-user-select: none;
@@ -62,7 +62,7 @@ body {
             margin: 0.75%;
         }
     }
-    .btn-clock {
+    button {
         background-color: $blurple;
         border-radius: 5px;
         float: right;
