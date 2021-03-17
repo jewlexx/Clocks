@@ -24,7 +24,6 @@
         "html-loader": "^2.1.2",
         "html-minimizer-webpack-plugin": "^2.1.0",
         "html-webpack-plugin": ">=5.3.1",
-        "path-browserify": "^1.0.1",
         "prop-types": ">=15.6.2",
         "react": "^17.0.1",
         "react-dom": ">=17.0.1",
