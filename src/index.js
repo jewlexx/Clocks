@@ -5,7 +5,7 @@ import { Generator } from './javascript/components/Generator/Generator';
 import { UrlParameters } from './javascript/imports/params';
 import './styles/index.scss';
 
-// TODO Find a better, or automatic way to generate an array of available clocks
+// TODO Find a better, or automatic way to generate an array of available clocks (use fs to read the dir?)
 const clockList = ['basic', 'pride', 'black', 'white'];
 
 // TODO Add cookies to remember your input so if you reload on accident it doesn't clear
