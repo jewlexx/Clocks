@@ -1,20 +1,13 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { Time } from "./javascripts/components/Time";
-import { SelectClock } from "./javascripts/components/Selector";
-import { UrlParameters } from "./javascripts/imports/params";
-import "./styles/index.scss";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Clock } from './javascript/components/Clock.jsx';
+import { Generator } from './javascript/components/Generator/Generator.jsx';
+import './styles/index.scss';
 
-const params = new UrlParameters();
+// TODO Add cookies to remember your input so if you reload on accident it doesn't clear
 
-const timeFormat = params.format;
-
-export { timeFormat };
-
-console.debug(window.location.href);
-
-if (params.clockEnabled) {
-  ReactDOM.render(<Time />, document.getElementById("root"));
+if (window.location.href.includes('?')) {
+    ReactDOM.render(<Clock />, document.getElementById('root'));
 } else {
-  ReactDOM.render(<SelectClock />, document.getElementById("root"));
+    ReactDOM.render(<Generator />, document.getElementById('root'));
 }

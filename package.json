@@ -1,53 +1,59 @@
 {
-  "name": "clocks",
-  "version": "1.0.0",
-  "description": "A various collection of html clocks designed to be embeddable anywhere (a list of available clocks is coming soon but for now just look through the code)",
-  "main": "index.js",
-  "directories": {
-    "test": "tests"
-  },
-  "dependencies": {
-    "@babel/core": ">=7.0.0",
-    "@babel/plugin-proposal-class-properties": ">=7.0.0",
-    "@babel/plugin-syntax-dynamic-import": ">=7.0.0",
-    "@babel/preset-env": ">=7.0.0",
-    "@babel/preset-react": ">=7.0.0",
-    "@babel/preset-typescript": "^7.13.0",
-    "babel-loader": ">=8.0.1",
-    "babel-polyfill": ">=6.26.0",
-    "clean-webpack-plugin": ">=3.0.0",
-    "css-loader": ">=5.1.2",
-    "dayjs": ">=1.10.4",
-    "dotenv": ">=8.2.0",
-    "gh-pages": ">=3.1.0",
-    "html-loader": "^2.1.2",
-    "html-minimizer-webpack-plugin": "^2.1.0",
-    "html-webpack-plugin": ">=5.3.1",
-    "jquery": ">=3.6.0",
-    "prop-types": ">=15.6.2",
-    "react": "^17.0.1",
-    "react-dom": ">=17.0.1",
-    "react-router-dom": "^5.2.0",
-    "sass": ">=1.32.8",
-    "sass-loader": ">=11.0.1",
-    "style-loader": ">=2.0.0",
-    "typescript": "^4.2.3",
-    "webpack": ">=5.25.1",
-    "webpack-cli": ">=4.5.0"
-  },
-  "scripts": {
-    "build": "webpack --config building/webpack.config.js --mode development",
-    "build:watch": "webpack --config building/webpack.config.js --mode development -w",
-    "deploy": "webpack --mode production --config building/webpack.config.js && node building/gh-pages-publish.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jamesinaxx/Clocks.git"
-  },
-  "keywords": [],
-  "author": "jamesinaxx",
-  "bugs": {
-    "url": "https://github.com/jamesinaxx/Clocks/issues"
-  },
-  "homepage": "https://github.com/jamesinaxx/Clocks#readme"
+    "name": "clocks",
+    "version": "1.0.0",
+    "description": "A various collection of html clocks designed to be embeddable anywhere (a list of available clocks is coming soon but for now just look through the code)",
+    "main": "index.js",
+    "directories": {
+        "test": "tests"
+    },
+    "dependencies": {
+        "@babel/core": ">=7.0.0",
+        "@babel/plugin-proposal-class-properties": ">=7.0.0",
+        "@babel/plugin-syntax-dynamic-import": ">=7.0.0",
+        "@babel/preset-env": ">=7.0.0",
+        "@babel/preset-react": ">=7.0.0",
+        "@babel/preset-typescript": "^7.13.0",
+        "app-root-path": ">=3.0.0",
+        "babel-loader": ">=8.0.1",
+        "babel-polyfill": ">=6.26.0",
+        "clean-webpack-plugin": ">=3.0.0",
+        "css-loader": ">=5.1.2",
+        "dayjs": ">=1.10.4",
+        "dotenv": ">=8.2.0",
+        "gh-pages": ">=3.1.0",
+        "html-loader": "^2.1.2",
+        "html-minimizer-webpack-plugin": "^2.1.0",
+        "html-webpack-plugin": ">=5.3.1",
+        "prop-types": ">=15.6.2",
+        "react": "^17.0.1",
+        "react-dom": ">=17.0.1",
+        "react-router-dom": "^5.2.0",
+        "sass": ">=1.32.8",
+        "sass-loader": ">=11.0.1",
+        "style-loader": ">=2.0.0",
+        "webpack": ">=5.25.1",
+        "webpack-cli": ">=4.5.0"
+    },
+    "prettier": {
+        "trailingComma": "es5",
+        "tabWidth": 4,
+        "semi": true,
+        "singleQuote": true
+    },
+    "scripts": {
+        "build": "webpack --config building/webpack.config.js --mode development",
+        "build:watch": "webpack --config building/webpack.config.js --mode development -w",
+        "build:prod": "webpack --config building/webpack.config.js --mode production",
+        "deploy": "webpack --mode production --config building/webpack.config.js && node building/gh-pages-publish.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jamesinaxx/Clocks.git"
+    },
+    "keywords": [],
+    "author": "jamesinaxx",
+    "bugs": {
+        "url": "https://github.com/jamesinaxx/Clocks/issues"
+    },
+    "homepage": "https://github.com/jamesinaxx/Clocks#readme"
 }

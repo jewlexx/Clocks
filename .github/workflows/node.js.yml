@@ -4,31 +4,31 @@
 name: Node.js Build Run
 
 on:
-  push:
-    branches: [public]
+    push:
+        branches: [public]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+    build:
+        runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [15.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        strategy:
+            matrix:
+                node-version: [15.x]
+                # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - shell: bash
-        env:
-          PASSWORD: ${{ secrets.PA_TOKEN }}
-        run: |
-          git remote set-url origin https://jamesinaxx:$PASSWORD@github.com/jamesinaxx/Clocks.git
+        steps:
+            - uses: actions/checkout@v2
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v1
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - run: npm ci
+            - shell: bash
+              env:
+                  PASSWORD: ${{ secrets.PA_TOKEN }}
+              run: |
+                  git remote set-url origin https://jamesinaxx:$PASSWORD@github.com/jamesinaxx/Clocks.git
 
-      - shell: bash
-        run: |
-          NODE_DEBUG=gh-pages npm run deploy --if-present
+            - shell: bash
+              run: |
+                  NODE_DEBUG=gh-pages npm run deploy --if-present
