@@ -13,8 +13,7 @@ const formatTime = () => {
 const getColor = () => {
     let colorParam = urlParams.get('clock') !== 'black' ? '#000' : '#FFF';
     if (urlParams.has('color')) {
-        console.log(urlParams.get('color'));
-        colorParam = urlParams.get('color');
+        colorParam = '#' + urlParams.get('color');
     }
     return colorParam;
 };
