@@ -16,7 +16,8 @@ class Generator extends React.Component {
 
                 <button
                     className="btn-clock"
-                    onClick={() => {
+                    onClick={(e) => {
+                        e.preventDefault();
                         const urlParams = [];
                         let finalUrl = window.location.href;
                         const tickedClocks = clockList
