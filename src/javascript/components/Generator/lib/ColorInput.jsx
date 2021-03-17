@@ -25,7 +25,7 @@ class ColorInput extends React.Component {
         return (
             <div>
                 <label className="color-input">
-                    Color:{' #'}
+                    Color(HEX):{' #'}
                     <input
                         type="text"
                         id="clock-color-input"
