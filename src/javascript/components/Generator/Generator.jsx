@@ -1,7 +1,7 @@
 import React from 'react';
-import { ClockSelect } from './lib/ClockSelect';
-import { ColorInput } from './lib/ColorInput';
-import { clockList } from '../../../index';
+import { ClockSelect } from './lib/ClockSelect.jsx';
+import { ColorInput } from './lib/ColorInput.jsx';
+import { clockList } from '../../../index.js';
 
 // TODO Fix generate button placement
 class Generator extends React.Component {

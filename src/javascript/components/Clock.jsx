@@ -2,7 +2,7 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 import React from 'react';
 import dayjs from 'dayjs';
-import { timeFormat } from '../..';
+import { timeFormat } from '../../index.js';
 
 const formatTime = () => {
     if (timeFormat !== undefined) {

@@ -41,6 +41,11 @@ const config = {
     optimization: {
         minimize: true,
     },
+    resolve: {
+        fallback: {
+            fs: false,
+        },
+    },
     output: {
         clean: true,
         filename: 'index.js',

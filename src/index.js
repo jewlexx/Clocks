@@ -1,8 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Clock } from './javascript/components/Clock';
-import { Generator } from './javascript/components/Generator/Generator';
-import { UrlParameters } from './javascript/imports/params';
+import { Clock } from './javascript/components/Clock.jsx';
+import { Generator } from './javascript/components/Generator/Generator.jsx';
+import { UrlParameters } from './javascript/imports/params.js';
 import './styles/index.scss';
 
 // TODO Find a better, or automatic way to generate an array of available clocks (use fs to read the dir?)
