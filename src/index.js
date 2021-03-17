@@ -6,7 +6,7 @@ import { UrlParameters } from './javascript/imports/params.js';
 import './styles/index.scss';
 
 // TODO Find a better, or automatic way to generate an array of available clocks (use fs to read the dir?)
-const clockList = ['basic', 'pride', 'black', 'white'];
+const clockList = ['basic', 'pride', 'white', 'black'];
 
 // TODO Add cookies to remember your input so if you reload on accident it doesn't clear
 
