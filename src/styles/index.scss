@@ -1,3 +1,4 @@
+$clock-font-family: 'Courier New', Courier, monospace;
 $font-family: 'Courier New', Courier, monospace;
 $blurple-dark: #23272a;
 $dark-blurple: #4e5d94;
@@ -97,18 +98,18 @@ body {
 }
 // Clocks
 .basic-clock {
-    font-family: $font-family;
+    font-family: $clock-font-family;
     background-color: #ff7961;
 }
 
 .black-clock {
-    font-family: $font-family;
+    font-family: $clock-font-family;
     background-color: black;
     color: white;
 }
 
 .pride-clock {
-    font-family: $font-family;
+    font-family: $clock-font-family;
     background: linear-gradient(
         180deg,
         #fe0000 16.66%,
@@ -125,6 +126,6 @@ body {
 }
 
 .white-clock {
-    font-family: $font-family;
+    font-family: $clock-font-family;
     background-color: white;
 }
