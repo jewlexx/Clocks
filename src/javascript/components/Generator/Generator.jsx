@@ -5,8 +5,6 @@ import { ColorInput } from './lib/ColorInput';
 const clockList = ['basic', 'pride', 'black', 'white'];
 
 // TODO Fix generate button placement
-
-// TODO Finish colour input and add to generation
 class Generator extends React.Component {
     render() {
         return (
