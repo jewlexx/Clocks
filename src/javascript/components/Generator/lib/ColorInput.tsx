@@ -10,7 +10,10 @@ class ColorInput extends React.Component {
     }
 
     handleChangeFG(event) {
-        if (this.state.valueFG.length >= 8 && event.target.value.length > 8) {
+        if (
+            this.state['valueFG'].length >= 8 &&
+            event.target.value.length > 8
+        ) {
             return;
         }
         this.setState({ valueFG: event.target.value });
@@ -28,7 +31,7 @@ class ColorInput extends React.Component {
                     <input
                         type="text"
                         id="clock-color-input"
-                        value={this.state.valueFG}
+                        value={this.state['valueFG']}
                         onChange={this.handleChangeFG}
                     ></input>{' '}
                     <br></br>
@@ -38,7 +41,7 @@ class ColorInput extends React.Component {
                     <input
                         type="text"
                         id="background-color-input"
-                        value={this.state.valueBG}
+                        value={this.state['valueBG']}
                         onChange={this.handleChangeBG}
                     ></input>
                 </label>
