@@ -18,21 +18,12 @@ class UrlParameters {
             this.clockEnabled = true;
         }
 
+        // TODO Make pride toggle disable bg color input and remove other options
+
         if (urlParams.has('seconds') && urlParams.get('seconds') === 'false') {
             this.format = this.format.slice().replace(':ss', '');
             this.clockEnabled = true;
         }
-        /*
-        if (urlParams.has('clock')) {
-            this.clock = urlParams.get('clock');
-            setClock(urlParams.get('clock'));
-            if (urlParams.get('clock') === 'black') {
-                this.color = '#FFF';
-            }
-        } else {
-            this.clockEnabled = false;
-        }
-        */
 
         if (urlParams.has('background-color')) {
             this.bgColor = '#' + urlParams.get('background-color');

@@ -5,9 +5,6 @@ import { Generator } from './javascript/components/Generator/Generator.jsx';
 import { UrlParameters } from './javascript/imports/params.js';
 import './styles/index.scss';
 
-// TODO Find a better, or automatic way to generate an array of available clocks (use fs to read the dir?)
-const clockList = ['basic', 'pride', 'white', 'black'];
-
 // TODO Add cookies to remember your input so if you reload on accident it doesn't clear
 
 const params = new UrlParameters();
@@ -22,7 +19,6 @@ if (params.clockEnabled) {
     document.getElementsByTagName('body')[0].style.backgroundColor = bgColor;
 } else {
     ReactDOM.render(<Generator />, document.getElementById('root'));
-    document.getElementById('basic-clock-checkbox').checked = true;
 }
 
-export { clockList, timeFormat, color, clock, bgColor };
+export { timeFormat, color, clock, bgColor };

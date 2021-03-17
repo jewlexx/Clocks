@@ -22,7 +22,7 @@ class ColorInput extends React.Component {
 
     render() {
         return (
-            <div>
+            <div id="color-inputs">
                 <label className="color-input">
                     Time Color:{' #'}
                     <input

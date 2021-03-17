@@ -41,7 +41,7 @@ body {
     z-index: 999999;
 }
 
-.ClockGenerator {
+#ClockGenerator {
     font-size: larger;
     margin: 50px;
     padding: 1%;
@@ -113,4 +113,12 @@ body {
     p {
         vertical-align: middle;
     }
+}
+
+#color-inputs {
+    hidden: false;
+}
+
+#hidden-color-inputs {
+    hidden: true;
 }

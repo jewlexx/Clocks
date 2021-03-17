@@ -1,14 +1,13 @@
 import React from 'react';
 import { ClockSelect } from './lib/ClockSelect.jsx';
 import { ColorInput } from './lib/ColorInput.jsx';
-import { clockList } from '../../../index.js';
 
 // TODO Fix generate button placement
 class Generator extends React.Component {
     render() {
         return (
-            <form className="ClockGenerator">
-                <ClockSelect clockList={clockList} />
+            <form id="ClockGenerator">
+                <ClockSelect />
                 <ColorInput />
 
                 <button

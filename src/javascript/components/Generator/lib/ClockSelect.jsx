@@ -1,37 +1,52 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
-function ClockSelect(props) {
-    document.getElementById('root').classList = 'dark-mode';
-    return (
-        <div>
-            {props.clockList.map((item, index) => (
-                <label className="lbl-clock" key={index}>
-                    {item.substring(0, 1).toUpperCase() + item.slice(1)}
+class ClockSelect extends React.Component {
+    handleChange() {
+        // I CAN'T HANDLE CHANGE
+        const elem = document.getElementById('color-inputs');
+        const cus = document.getElementById('custom-clock-checkbox');
+        const b = document.getElementById('pride-clock-checkbox').checked;
+        elem.hidden = b;
+        cus.checked = !b;
+    }
+
+    render() {
+        document.getElementById('root').classList = 'dark-mode';
+        return (
+            <div>
+                <label className="lbl-clock" key="1">
+                    {'Custom'}
                     <input
                         type="checkbox"
                         className="checkbox-clock"
-                        id={props.clockList[index] + '-clock-checkbox'}
+                        id="custom-clock-checkbox"
                         onClick={() => {
-                            for (
-                                let i = 0;
-                                i <
-                                document.getElementsByClassName(
-                                    'checkbox-clock'
-                                ).length;
-                                i++
-                            ) {
-                                if (index !== i) {
-                                    document.getElementsByClassName(
-                                        'checkbox-clock'
-                                    )[i].checked = false;
-                                }
-                            }
+                            document.getElementById(
+                                'pride-clock-checkbox'
+                            ).checked = false;
+                            this.handleChange();
+                        }}
+                        defaultChecked
+                    ></input>
+                </label>
+                <label className="lbl-clock" key="2">
+                    {'Pride'}
+                    <input
+                        type="checkbox"
+                        className="checkbox-clock"
+                        id="pride-clock-checkbox"
+                        onClick={() => {
+                            document.getElementById(
+                                'custom-clock-checkbox'
+                            ).checked = false;
+                            this.handleChange();
                         }}
                     ></input>
                 </label>
-            ))}
-        </div>
-    );
+            </div>
+        );
+    }
 }
 
 export { ClockSelect };
