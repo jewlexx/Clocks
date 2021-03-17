@@ -3,35 +3,44 @@ import React from 'react';
 class ColorInput extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { value: '' };
+        this.state = { valueBG: '', valueFG: '' };
 
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChangeFG = this.handleChangeFG.bind(this);
+        this.handleChangeBG = this.handleChangeBG.bind(this);
     }
 
-    handleChange(event) {
-        if (this.state.value.length >= 8 && event.target.value.length > 8) {
+    handleChangeFG(event) {
+        if (this.state.valueFG.length >= 8 && event.target.value.length > 8) {
             return;
         }
-        this.setState({ value: event.target.value });
+        this.setState({ valueFG: event.target.value });
     }
 
-    handleSubmit(event) {
-        alert('A name was submitted: ' + this.state.value);
-        event.preventDefault();
+    handleChangeBG(event) {
+        this.setState({ valueBG: event.target.value });
     }
 
     render() {
         return (
             <div>
                 <label className="color-input">
-                    Color:{' #'}
+                    Time Color:{' #'}
                     <input
                         type="text"
                         id="clock-color-input"
-                        value={this.state.value}
-                        onChange={this.handleChange}
+                        value={this.state.valueFG}
+                        onChange={this.handleChangeFG}
                     ></input>{' '}
+                    <br></br>
+                </label>
+                <label>
+                    Background Color:{' #'}
+                    <input
+                        type="text"
+                        id="background-color-input"
+                        value={this.state.valueBG}
+                        onChange={this.handleChangeBG}
+                    ></input>
                 </label>
             </div>
         );

@@ -42,6 +42,7 @@ body {
 }
 
 .ClockGenerator {
+    font-size: larger;
     margin: 50px;
     padding: 1%;
     border-radius: 5px;
@@ -61,7 +62,7 @@ body {
         user-select: none;
         font-weight: bolder;
         padding: 5px;
-        margin: 5px;
+        margin: 10px;
         border: none;
         cursor: pointer;
         .checkbox-clock {
@@ -69,8 +70,10 @@ body {
         }
         input {
             border: none;
+            padding: 5px;
+            margin-top: 10px;
             margin-left: 2px;
-            background-color: $blurple;
+            background-color: #999;
             border-radius: 5px;
             -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
