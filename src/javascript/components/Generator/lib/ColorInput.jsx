@@ -10,7 +10,7 @@ class ColorInput extends React.Component {
     }
 
     handleChange(event) {
-        if (this.state.value.length >= 6 && event.target.value.length > 6) {
+        if (this.state.value.length >= 8 && event.target.value.length > 8) {
             return;
         }
         this.setState({ value: event.target.value });
