@@ -52,7 +52,7 @@ class Generator extends React.Component {
                         alert('Saved the url to clipboard!\n' + finalUrl);
                     }}
                 >
-                    Generate
+                    Generate URL
                 </button>
             </form>
         );
