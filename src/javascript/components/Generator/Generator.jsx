@@ -1,8 +1,7 @@
 import React from 'react';
 import { ClockSelect } from './lib/ClockSelect';
 import { ColorInput } from './lib/ColorInput';
-// TODO Find a better, or automatic way to generate an array of available clocks
-const clockList = ['basic', 'pride', 'black', 'white'];
+import { clockList } from '../../../index';
 
 // TODO Fix generate button placement
 class Generator extends React.Component {

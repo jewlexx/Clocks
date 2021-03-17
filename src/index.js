@@ -5,13 +5,16 @@ import { Generator } from './javascript/components/Generator/Generator';
 import { UrlParameters } from './javascript/imports/params';
 import './styles/index.scss';
 
+// TODO Find a better, or automatic way to generate an array of available clocks
+const clockList = ['basic', 'pride', 'black', 'white'];
+
 // TODO Add cookies to remember your input so if you reload on accident it doesn't clear
 
 const params = new UrlParameters();
 
-export const timeFormat = params.format;
-export const color = params.color;
-export const clock = params.clock;
+const timeFormat = params.format;
+const color = params.color;
+const clock = params.clock;
 
 console.debug(window.location.href);
 
@@ -22,3 +25,5 @@ if (params.clockEnabled) {
 }
 
 document.getElementById('basic-clock-checkbox').checked = true;
+
+export { clockList, timeFormat, color, clock };
