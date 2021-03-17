@@ -10,6 +10,7 @@ function ClockSelect(props) {
                     <input
                         type="checkbox"
                         className="checkbox-clock"
+                        id={props.clockList[index] + '-clock-checkbox'}
                         onClick={() => {
                             for (
                                 let i = 0;

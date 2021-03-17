@@ -18,3 +18,5 @@ if (params.clockEnabled) {
 } else {
     ReactDOM.render(<Generator />, document.getElementById('root'));
 }
+
+document.getElementById('basic-clock-checkbox').checked = true;
