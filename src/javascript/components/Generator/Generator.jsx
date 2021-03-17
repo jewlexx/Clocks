@@ -19,7 +19,7 @@ class Generator extends React.Component {
                     onClick={() => {
                         const urlParams = [];
                         let finalUrl = window.location.href;
-                        const tickedClocks = props.clockList
+                        const tickedClocks = clockList
                             .slice()
                             .filter(
                                 (_item, i) =>
