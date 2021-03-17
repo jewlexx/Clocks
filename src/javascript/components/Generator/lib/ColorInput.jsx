@@ -33,7 +33,7 @@ class ColorInput extends React.Component {
                     ></input>{' '}
                     <br></br>
                 </label>
-                <label>
+                <label id="background-color-input-label">
                     Background Color:{' #'}
                     <input
                         type="text"

@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 class ClockSelect extends React.Component {
     handleChange() {
         // I CAN'T HANDLE CHANGE
-        const elem = document.getElementById('color-inputs');
+        const elem = document.getElementById('background-color-input-label');
         const cus = document.getElementById('custom-clock-checkbox');
         const b = document.getElementById('pride-clock-checkbox').checked;
         elem.hidden = b;
