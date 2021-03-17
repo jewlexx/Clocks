@@ -1,3 +1,8 @@
+@import './clock-styles/basic-clock.scss';
+@import './clock-styles/black-clock.scss';
+@import './clock-styles//pride-clock.scss';
+@import './clock-styles/white-clock.scss';
+
 $clock-font-family: 'Courier New', Courier, monospace;
 $font-family: Arial, Helvetica, sans-serif;
 $blurple-dark: #23272a;
@@ -105,37 +110,4 @@ body {
     p {
         vertical-align: middle;
     }
-}
-// Clocks
-.basic-clock {
-    font-family: $clock-font-family;
-    background-color: #ff7961;
-}
-
-.black-clock {
-    font-family: $clock-font-family;
-    background-color: black;
-    color: white;
-}
-
-.pride-clock {
-    font-family: $clock-font-family;
-    background: linear-gradient(
-        180deg,
-        #fe0000 16.66%,
-        #fd8c00 16.66%,
-        33.32%,
-        #ffe500 33.32%,
-        49.98%,
-        #119f0b 49.98%,
-        66.64%,
-        #0644b3 66.64%,
-        83.3%,
-        #c22edc 83.3%
-    );
-}
-
-.white-clock {
-    font-family: $clock-font-family;
-    background-color: white;
 }
