@@ -16,7 +16,6 @@ const clock = params.clock;
 
 if (params.clockEnabled) {
     ReactDOM.render(<Clock />, document.getElementById('root'));
-    document.getElementsByTagName('body')[0].style.backgroundColor = bgColor;
 } else {
     ReactDOM.render(<Generator />, document.getElementById('root'));
 }

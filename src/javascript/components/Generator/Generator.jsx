@@ -16,34 +16,34 @@ class Generator extends React.Component {
                         e.preventDefault();
                         const urlParams = [];
                         let finalUrl = window.location.href;
-                        const tickedClocks = clockList
-                            .slice()
-                            .filter(
-                                (_item, i) =>
-                                    document.getElementsByClassName(
-                                        'checkbox-clock'
-                                    )[i].checked
-                            );
-                        console.log(tickedClocks.length);
-                        if (
-                            !(
-                                tickedClocks.length === 0 ||
-                                tickedClocks.length > 1
-                            )
-                        ) {
-                            urlParams.push('clock=' + tickedClocks[0]);
+
+                        // Var definitions
+                        const prideClockCheck = document.getElementById(
+                            'pride-clock-checkbox'
+                        );
+                        const bgColorIn = document.getElementById(
+                            'background-color-input'
+                        );
+                        const colorIn = document.getElementById(
+                            'clock-color-input'
+                        );
+
+                        // Checks some stuff and pushes to the array
+                        if (prideClockCheck.checked) {
+                            urlParams.push('bgcolor=**pride**');
+                        } else if (bgColorIn.value) {
+                            urlParams.push('color=' + bgColorIn.value);
                         }
-                        if (
-                            document.getElementById('clock-color-input').value
-                        ) {
-                            urlParams.push(
-                                'color=' +
-                                    document
-                                        .getElementById('clock-color-input')
-                                        .value.replace('#', '')
-                            );
+
+                        if (colorIn.value) {
+                            urlParams.push('color=' + colorIn.value);
                         }
-                        finalUrl = finalUrl + '?' + urlParams.join('&');
+
+                        finalUrl +=
+                            urlParams.length > 0
+                                ? '?' + urlParams.join('&')
+                                : '';
+
                         navigator.clipboard.writeText(finalUrl);
                         alert('Saved the url to clipboard!\n' + finalUrl);
                         window.open(finalUrl, '_blank');
