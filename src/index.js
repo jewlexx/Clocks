@@ -16,8 +16,6 @@ const timeFormat = params.format;
 const color = params.color;
 const clock = params.clock;
 
-console.debug(window.location.href);
-
 if (params.clockEnabled) {
     ReactDOM.render(<Clock />, document.getElementById('root'));
 } else {

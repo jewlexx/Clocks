@@ -47,6 +47,7 @@ class Generator extends React.Component {
                         finalUrl = finalUrl + '?' + urlParams.join('&');
                         navigator.clipboard.writeText(finalUrl);
                         alert('Saved the url to clipboard!\n' + finalUrl);
+                        window.open(finalUrl, '_blank');
                     }}
                 >
                     Generate URL
