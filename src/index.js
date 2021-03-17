@@ -14,14 +14,15 @@ const params = new UrlParameters();
 
 const timeFormat = params.format;
 const color = params.color;
+const bgColor = params.bgColor;
 const clock = params.clock;
 
 if (params.clockEnabled) {
     ReactDOM.render(<Clock />, document.getElementById('root'));
+    document.getElementsByTagName('body')[0].style.backgroundColor = bgColor;
 } else {
     ReactDOM.render(<Generator />, document.getElementById('root'));
+    document.getElementById('basic-clock-checkbox').checked = true;
 }
 
-document.getElementById('basic-clock-checkbox').checked = true;
-
-export { clockList, timeFormat, color, clock };
+export { clockList, timeFormat, color, clock, bgColor };
