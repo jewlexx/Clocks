@@ -95,6 +95,11 @@ body {
         }
     }
     button {
+        transition: background-color 0.25s ease;
+        -webkit-transition: background-color 0.25s ease;
+        -moz-transition: background-color 0.25s ease;
+        -ms-transition: background-color 0.25s ease;
+        -o-transition: background-color 0.25s ease;
         background-color: $blurple;
         position: absolute;
         right: 5%;
@@ -115,6 +120,14 @@ body {
         -moz-border-radius: 5px;
         -ms-border-radius: 5px;
         -o-border-radius: 5px;
+        &:hover {
+            transition: background-color 0.25s ease;
+            -webkit-transition: background-color 0.25s ease;
+            -moz-transition: background-color 0.25s ease;
+            -ms-transition: background-color 0.25s ease;
+            -o-transition: background-color 0.25s ease;
+            background-color: $dark-blurple;
+        }
     }
 }
 
