@@ -12,13 +12,6 @@ class UrlParameters {
         this.clockEnabled = true;
         this.format = 'h:mm:ss A';
 
-        if (urlParams.has('color')) {
-            let colorParam = urlParams.get('color');
-            this.color = !colorParam.includes('#')
-                ? '#' + colorParam.slice()
-                : colorParam.slice();
-        }
-
         if (urlParams.has('24hour') && urlParams.get('24hour') === 'true') {
             this.format = 'HH:mm:ss';
         }

@@ -1,11 +1,22 @@
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
 import React from 'react';
 import dayjs from 'dayjs';
-import { timeFormat, color } from '../..';
+import { timeFormat } from '../..';
 
 const formatTime = () => {
     if (timeFormat !== undefined) {
         return dayjs().format(timeFormat);
     }
+};
+
+const getColor = () => {
+    let colorParam = urlParams.get('clock') !== 'black' ? '#000' : '#FFF';
+    if (urlParams.has('color')) {
+        console.log(urlParams.get('color'));
+        colorParam = urlParams.get('color');
+    }
+    return colorParam;
 };
 
 class Clock extends React.Component {
@@ -24,7 +35,7 @@ class Clock extends React.Component {
         document.getElementsByTagName('body')[0].classList = 'time-body';
         return (
             <div className="time-div">
-                <p className="time" style={{ color: color }}>
+                <p className="time" style={{ color: getColor() }}>
                     {this.state.time}
                 </p>
             </div>

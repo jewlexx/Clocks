@@ -41,7 +41,7 @@ class Generator extends React.Component {
                             document.getElementById('clock-color-input').value
                         ) {
                             urlParams.push(
-                                'color=#' +
+                                'color=' +
                                     document
                                         .getElementById('clock-color-input')
                                         .value.replace('#', '')
