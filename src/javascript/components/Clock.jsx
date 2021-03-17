@@ -3,14 +3,14 @@ const urlParams = new URLSearchParams(queryString);
 import React from 'react';
 import dayjs from 'dayjs';
 
-let timeFormat = 'HH:mm:ss';
+let timeFormat = 'h:mm:ss A';
 
 if (urlParams.has('24hour') && urlParams.get('24hour') === 'true') {
     timeFormat = 'HH:mm:ss';
 }
 
 if (urlParams.has('seconds') && urlParams.get('seconds') === 'false') {
-    timeFormat = this.format.slice().replace(':ss', '');
+    timeFormat = timeFormat.slice().replace(':ss', '');
 }
 
 const getColor = () => {
