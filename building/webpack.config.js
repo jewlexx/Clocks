@@ -41,12 +41,6 @@ const config = {
     optimization: {
         minimize: true,
     },
-    resolve: {
-        fallback: {
-            fs: false,
-            path: require.resolve('path-browserify'),
-        },
-    },
     output: {
         clean: true,
         filename: 'index.js',
