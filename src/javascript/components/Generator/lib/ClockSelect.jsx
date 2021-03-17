@@ -11,7 +11,6 @@ class ClockSelect extends React.Component {
     }
 
     render() {
-        document.getElementById('root').classList = 'dark-mode';
         return (
             <div>
                 <label className="lbl-clock" key="1">

@@ -39,10 +39,6 @@ body {
     );
 }
 
-.dark-mode {
-    background-color: $blurple-dark;
-}
-
 #root {
     position: fixed;
     top: 0;
@@ -65,7 +61,7 @@ body {
     border-radius: 5px;
     border-width: 5px;
     border-color: black;
-    background-color: #fff;
+    background-color: rgb(243, 243, 243);
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -86,11 +82,11 @@ body {
             margin: 0.75%;
         }
         input {
-            border: none;
+            border-style: dashed;
             padding: 5px;
             margin-top: 10px;
             margin-left: 2px;
-            background-color: #999;
+            background-color: rgb(235, 235, 235);
             border-radius: 5px;
             -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
