@@ -5,6 +5,8 @@ import { Generator } from './javascript/components/Generator/Generator';
 import { UrlParameters } from './javascript/imports/params';
 import './styles/index.scss';
 
+// TODO Add cookies to remember your input so if you reload on accident it doesn't clear
+
 const params = new UrlParameters();
 
 export const timeFormat = params.format;
