@@ -1,4 +1,4 @@
-body {
+#ClockGenerator {
     background: #5f6171;
 
     &::after,
@@ -10,8 +10,8 @@ body {
         position: absolute;
         left: -491px;
         right: 0;
-        top: calc(50% + 140px);
-        // transform: translateY(-50%);
+        top: calc(50% - 140px);
+        transform: translateY(-50%);
         margin: auto;
     }
 

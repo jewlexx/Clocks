@@ -11,6 +11,8 @@ if (window.location.href.includes('?')) {
         React.createElement(Clock),
         document.getElementById('root')
     );
+    const background = document.getElementById('bg');
+    background.parentElement.removeChild(background);
 } else {
     ReactDOM.render(
         React.createElement(Generator),
