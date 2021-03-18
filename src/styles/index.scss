@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
-@import './circles/animation.scss';
-@import './circles/bg.scss';
+@import './bg/bg.scss';
 @import './clock.scss';
 
 $font-family: 'Exo', sans-serif;
@@ -53,12 +52,13 @@ body {
 }
 
 #ClockGenerator {
+    position: absolute;
+    height: 50vh;
+    margin: 5vw;
+    width: 90vw;
     font-size: larger;
-    margin: 50px;
     padding: 1%;
     border-radius: 5px;
-    border-width: 5px;
-    border-color: black;
     color: white;
     background-color: #23272a;
     label {

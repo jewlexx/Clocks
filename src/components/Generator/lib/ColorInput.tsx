@@ -27,17 +27,17 @@ class ColorInput extends React.Component {
         return (
             <div id="color-inputs">
                 <label className="color-input">
-                    Time Color:{' #'}
+                    Time Color{' #'}
                     <input
                         type="text"
                         id="clock-color-input"
                         value={this.state['valueFG']}
                         onChange={this.handleChangeFG}
                     ></input>{' '}
-                    <br></br>
                 </label>
+                <br></br>
                 <label id="background-color-input-label">
-                    Background Color:{' #'}
+                    Background Color{' #'}
                     <input
                         type="text"
                         id="background-color-input"
