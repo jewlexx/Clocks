@@ -3,7 +3,7 @@ import React from 'react';
 function GenButton() {
     return (
         <button
-            className="btn-clock"
+            className="gen-button"
             onClick={(e) => {
                 e.preventDefault();
                 const urlParams = [];

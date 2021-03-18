@@ -50,9 +50,11 @@ class Clock extends React.Component {
         console.debug(
             timeFormat === undefined ? 'No time format specified' : timeFormat
         );
+
+        document.getElementsByTagName('body')[0].style.backgroundColor = '#FFF';
         document.getElementsByTagName('body')[0].classList.value = 'time-body';
         return (
-            <div className="time-div">
+            <div className="time-div clock">
                 <p className="time" style={{ color: getColor() }}>
                     {this.state['time']}
                 </p>
