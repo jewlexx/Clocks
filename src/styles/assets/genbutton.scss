@@ -27,20 +27,19 @@ body {
 
 .gen-button {
     position: absolute;
+    transition: transform 0.3333s ease;
+    top: 50%;
+    transform: translateY(-50%);
     background: linear-gradient(
         45deg,
         var(--primary) 0%,
         var(--secondary) 100%
     );
-    top: 25%;
     animation: morph 8s ease-in-out infinite;
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
     height: 7vw;
-    transition: all 1s ease-in-out;
     width: 7vw;
     z-index: 5;
-    transition: all 0.3333s ease;
-    transition-property: background-color, transform, border;
     box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
     right: 5%;
     border-radius: 5px;
@@ -48,7 +47,9 @@ body {
     padding: 15px;
     border: none;
     cursor: pointer;
+    transform-origin: center;
     &:hover {
-        transform: scale(1.25);
+        transform-origin: center;
+        transform: scale(1.125) translateY(-45%);
     }
 }
