@@ -33,12 +33,12 @@ class Clock extends React.Component {
         );
 
         if (queryString !== '') {
-            document.getElementById('root').classList = 'clock';
+            document.getElementById('root').classList.value = 'clock';
         }
 
         if (urlParams.has('bgcolor')) {
             if (urlParams.get('bgcolor') === '**pride**') {
-                document.getElementById('root').classList = 'pride-clock';
+                document.getElementById('root').classList.value = 'pride-clock';
             } else {
                 document.getElementById('root').style.backgroundColor =
                     '#' + urlParams.get('bgcolor');
@@ -50,11 +50,11 @@ class Clock extends React.Component {
         console.debug(
             timeFormat === undefined ? 'No time format specified' : timeFormat
         );
-        document.getElementsByTagName('body')[0].classList = 'time-body';
+        document.getElementsByTagName('body')[0].classList.value = 'time-body';
         return (
             <div className="time-div">
                 <p className="time" style={{ color: getColor() }}>
-                    {this.state.time}
+                    {this.state['time']}
                 </p>
             </div>
         );

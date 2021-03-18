@@ -1,8 +1,8 @@
 import React from 'react';
-import { ClockSelect } from './lib/ClockSelect.jsx';
-import { ColorInput } from './lib/ColorInput.jsx';
-import { TimeFormat } from './lib/TimeFormat.jsx';
-import { GenButton } from './lib/GenButton.jsx';
+import { ClockSelect } from './lib/ClockSelect';
+import { ColorInput } from './lib/ColorInput';
+import { TimeFormat } from './lib/TimeFormat';
+import { GenButton } from './lib/GenButton';
 
 // TODO Fix generate button placement
 class Generator extends React.Component {
