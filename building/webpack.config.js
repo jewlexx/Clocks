@@ -47,8 +47,15 @@ const config = {
         path: path.resolve(__dirname, '../', 'dist'),
     },
     devServer: {
-        contentBase: '../dist',
-        port: '5500',
+        contentBase: path.resolve(__dirname, '..', 'dist'),
+        compress: true,
+        port: 5500,
+        open: {
+            app: 'Google Chrome',
+        },
+        overlay: true,
+        clientLogLevel: 'debug',
+        hot: true,
     },
     plugins: [
         new CleanWebpackPlugin({ verbose: true }),

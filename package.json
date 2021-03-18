@@ -7,7 +7,7 @@
         "test": "tests"
     },
     "scripts": {
-        "start": "webpack serve --open --config building/webpack.config.js",
+        "start": "webpack serve --config building/webpack.config.js",
         "build": "webpack --config building/webpack.config.js --mode development",
         "build:watch": "webpack --config building/webpack.config.js --mode development -w",
         "build:prod": "webpack --config building/webpack.config.js --mode production",
