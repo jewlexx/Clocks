@@ -12,21 +12,29 @@ function GenButton() {
                 // Var definitions
                 const prideClockCheck = document.getElementById(
                     'pride-clock-checkbox'
-                );
+                ) as HTMLInputElement;
+
                 const bgColorIn = document.getElementById(
                     'background-color-input'
-                );
-                const colorIn = document.getElementById('clock-color-input');
+                ) as HTMLInputElement;
 
-                const time24 = document.getElementById('24-hour-time-check');
+                const colorIn = document.getElementById(
+                    'clock-color-input'
+                ) as HTMLInputElement;
 
-                const seconds = document.getElementById('seconds-check');
+                const time24 = document.getElementById(
+                    '24-hour-time-check'
+                ) as HTMLInputElement;
+
+                const seconds = document.getElementById(
+                    'seconds-check'
+                ) as HTMLInputElement;
 
                 // Checks to see if any of the options are not the defaults and then if they aren't push them to the array
                 if (prideClockCheck.checked) {
                     urlParams.push('bgcolor=**pride**');
                 } else if (bgColorIn.value) {
-                    urlParams.push('bgcolor=' + bgColorIn.value);
+                    urlParams.push('bgcolor=' + bgColorIn.nodeValue);
                 }
 
                 if (colorIn.value) {
