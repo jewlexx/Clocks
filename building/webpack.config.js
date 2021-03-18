@@ -48,6 +48,7 @@ const config = {
     },
     devServer: {
         contentBase: '../dist',
+        port: '5500',
     },
     plugins: [
         new CleanWebpackPlugin({ verbose: true }),
