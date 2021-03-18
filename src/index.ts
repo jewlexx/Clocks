@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Clock } from './javascript/components/Clock';
-import { Generator } from './javascript/components/Generator/Generator';
+import { Clock } from './components/Clock';
+import { Generator } from './components/Generator/Generator';
 import './styles/index.scss';
 
 // TODO Add cookies to remember your input so if you reload on accident it doesn't clear
