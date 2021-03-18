@@ -3,6 +3,8 @@ $font-family: Arial, Helvetica, sans-serif;
 $blurple-dark: #23272a;
 $dark-blurple: #4e5d94;
 $blurple: #7289da;
+$accent-color: rgb(243, 243, 243);
+$accent-color-dark: rgb(235, 235, 235);
 
 body {
     font-family: $font-family;
@@ -49,7 +51,7 @@ body {
     border-radius: 5px;
     border-width: 5px;
     border-color: black;
-    background-color: rgb(243, 243, 243);
+    background-color: $accent-color;
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -61,7 +63,6 @@ body {
         -moz-user-select: none;
         -ms-user-select: none;
         user-select: none;
-        font-weight: bolder;
         padding: 5px;
         margin: 10px;
         border: none;
@@ -74,7 +75,7 @@ body {
             padding: 5px;
             margin-top: 10px;
             margin-left: 2px;
-            background-color: rgb(235, 235, 235);
+            background-color: $accent-color-dark;
             border-radius: 5px;
             -webkit-border-radius: 5px;
             -moz-border-radius: 5px;
@@ -83,38 +84,21 @@ body {
         }
     }
     button {
-        transition: background-color 0.25s ease;
-        -webkit-transition: background-color 0.25s ease;
-        -moz-transition: background-color 0.25s ease;
-        -ms-transition: background-color 0.25s ease;
-        -o-transition: background-color 0.25s ease;
+        transition: all 0.3333s ease;
+        transition-property: background-color, transform, border;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
         background-color: $blurple;
         position: absolute;
         right: 5%;
         border-radius: 5px;
-        // float: right;
-        // vertical-align: middle;
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
         user-select: none;
-        font-weight: bolder;
         padding: 15px;
         border: none;
         cursor: pointer;
-        -webkit-border-radius: 5px;
-        -moz-border-radius: 5px;
-        -ms-border-radius: 5px;
-        -o-border-radius: 5px;
         &:hover {
-            transition: background-color 0.25s ease;
-            -webkit-transition: background-color 0.25s ease;
-            -moz-transition: background-color 0.25s ease;
-            -ms-transition: background-color 0.25s ease;
-            -o-transition: background-color 0.25s ease;
-            background-color: $dark-blurple;
+            background-color: $accent-color;
+            border: 2px solid $blurple;
+            transform: scale(1.25);
         }
     }
 }
