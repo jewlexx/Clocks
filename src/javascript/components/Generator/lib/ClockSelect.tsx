@@ -4,10 +4,14 @@ class ClockSelect extends React.Component {
     handleChange() {
         // I CAN'T HANDLE CHANGE
         const elem = document.getElementById('background-color-input-label');
-        const cus = document.getElementById('custom-clock-checkbox');
-        const b = document.querySelectorAll('input[id="pride-clock-checkbox"]');
+        const cus = document.getElementById(
+            'custom-clock-checkbox'
+        ) as HTMLInputElement;
+        const b = (document.getElementById(
+            'pride-clock-checkbox'
+        ) as HTMLInputElement).checked;
         elem.hidden = b;
-        cus[0].checked = !b;
+        cus.checked = !b;
     }
 
     render() {
@@ -20,9 +24,9 @@ class ClockSelect extends React.Component {
                         className="checkbox-clock"
                         id="custom-clock-checkbox"
                         onClick={() => {
-                            document.getElementById(
+                            (document.getElementById(
                                 'pride-clock-checkbox'
-                            ).checked = false;
+                            ) as HTMLInputElement).checked = false;
                             this.handleChange();
                         }}
                         defaultChecked
@@ -35,9 +39,9 @@ class ClockSelect extends React.Component {
                         className="checkbox-clock"
                         id="pride-clock-checkbox"
                         onClick={() => {
-                            document.getElementById(
+                            (document.getElementById(
                                 'custom-clock-checkbox'
-                            ).checked = false;
+                            ) as HTMLInputElement).checked = false;
                             this.handleChange();
                         }}
                     ></input>
