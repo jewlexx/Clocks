@@ -9,7 +9,7 @@ class Generator extends React.Component {
     render() {
         return (
             <div id="ClockGenerator">
-                <GenButton />
+                <GenButton /*Generation button*/ />
                 <ClockSelect /*Choose between fully custom or a pre-defined
                 background for the Pride clock*/
                 />
