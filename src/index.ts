@@ -7,7 +7,13 @@ import './styles/index.scss';
 // TODO Add cookies to remember your input so if you reload on accident it doesn't clear
 
 if (window.location.href.includes('?')) {
-    ReactDOM.render(<Clock />, document.getElementById('root'));
+    ReactDOM.render(
+        React.createElement(Clock),
+        document.getElementById('root')
+    );
 } else {
-    ReactDOM.render(<Generator />, document.getElementById('root'));
+    ReactDOM.render(
+        React.createElement(Generator),
+        document.getElementById('root')
+    );
 }
