@@ -51,7 +51,7 @@ const config = {
         compress: true,
         port: 5500,
         open: {
-            app: 'Google Chrome',
+            app: 'chrome',
         },
         overlay: true,
         clientLogLevel: 'debug',
