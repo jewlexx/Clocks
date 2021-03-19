@@ -22,12 +22,8 @@ function GenButton() {
                     'clock-color-input'
                 ) as HTMLInputElement;
 
-                const time24 = document.getElementById(
-                    '24-hour-time-check'
-                ) as HTMLInputElement;
-
-                const seconds = document.getElementById(
-                    'seconds-check'
+                const timeFormat = document.getElementById(
+                    'timeFormatInput'
                 ) as HTMLInputElement;
 
                 // Checks to see if any of the options are not the defaults and then if they aren't push them to the array
@@ -41,16 +37,16 @@ function GenButton() {
                     urlParams.push('color=' + colorIn.value);
                 }
 
-                if (!seconds.checked) {
-                    urlParams.push('seconds=false');
-                }
-
-                if (time24.checked) {
-                    urlParams.push('24hour=true');
-                }
+                urlParams.push(
+                    'format=' +
+                        (timeFormat.value ? timeFormat.value : 'h:mm:ss A')
+                );
 
                 // Adds all the items from the array to the url
-                finalUrl += urlParams.length > 0 ? urlParams.join('&') : '';
+                finalUrl +=
+                    urlParams.length > 0
+                        ? urlParams.join('&').split(' ').join('%20')
+                        : '';
 
                 // Saves the url to clipboard
                 navigator.clipboard.writeText(finalUrl);
