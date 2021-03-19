@@ -5,12 +5,8 @@ import dayjs from 'dayjs';
 
 let timeFormat = 'h:mm:ss A';
 
-if (urlParams.has('24hour') && urlParams.get('24hour') === 'true') {
-    timeFormat = 'HH:mm:ss';
-}
-
-if (urlParams.has('seconds') && urlParams.get('seconds') === 'false') {
-    timeFormat = timeFormat.slice().replace(':ss', '');
+if (urlParams.has('format') && urlParams.get('format')) {
+    timeFormat = urlParams.get('format');
 }
 
 const getColor = () => {
