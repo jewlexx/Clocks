@@ -9,6 +9,6 @@ Generate clock urls by going to [the generator](https://jamesinaxx.github.io/Clo
 * [X] A list of clocks
 * [X] 12/24 hour time toggle
 * [X] More time options like disabling seconds
-* [ ] Full time format customization
+* [X] Full time format customization
 * [X] Style customization
 * [X] Complete refactor with index page and url generation
