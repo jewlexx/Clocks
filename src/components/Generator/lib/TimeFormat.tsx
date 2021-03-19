@@ -1,20 +1,20 @@
 import React from 'react';
 
 class TimeFormat extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { valueBG: '', valueFG: '' };
+
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {}
+
     render() {
         return (
             <div>
                 <label>
-                    24 Hour Time{' '}
-                    <input type="checkbox" id="24-hour-time-check"></input>
-                </label>
-                <label>
-                    Show seconds{' '}
-                    <input
-                        type="checkbox"
-                        id="seconds-check"
-                        defaultChecked
-                    ></input>
+                    Time Format <input type="text" id="timeFormatInput"></input>
                 </label>
             </div>
         );
