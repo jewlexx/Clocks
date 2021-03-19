@@ -22,6 +22,11 @@ body {
     background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
 }
 
+.link {
+    color: #4e54c8;
+    text-decoration: none;
+}
+
 .time-div {
     width: 100%;
     height: 100%;
@@ -42,12 +47,14 @@ body {
     border-radius: 5px;
     color: white;
     background-color: #23272a;
+    .lbl-clock {
+        cursor: pointer;
+    }
     label {
         user-select: none;
         padding: 5px;
         margin: 10px;
         border: none;
-        cursor: pointer;
         .checkbox-clock {
             margin: 0.75%;
         }
