@@ -4,7 +4,6 @@ import { ColorInput } from './lib/ColorInput';
 import { TimeFormat } from './lib/TimeFormat';
 import { GenButton } from './lib/GenButton';
 
-// TODO Fix generate button placement
 class Generator extends React.Component {
     render() {
         return (
