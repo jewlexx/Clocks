@@ -34,10 +34,11 @@ class Generator extends React.Component {
         urlParams.push('format=' + (this.state['timeFormat'] || 'h:mm:ss A'));
 
         // Adds all the items from the array to the url
-        let finalUrl =
-            window.location.href + '?' + urlParams.length
-                ? urlParams.join('&').split(' ').join('%20')
-                : '';
+        let finalUrl = window.location.href + '?';
+
+        finalUrl += urlParams.length
+            ? urlParams.join('&').split(' ').join('%20')
+            : '';
 
         // Saves the url to clipboard
         navigator.clipboard.writeText(finalUrl);
