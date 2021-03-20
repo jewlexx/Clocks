@@ -1,15 +1,9 @@
 import React from 'react';
 
-class TimeFormat extends React.Component {
+class TimeFormat extends React.Component<any, any> {
+    handleChange: any;
     constructor(props) {
         super(props);
-        this.state = { value: 'h:mm:ss A' };
-
-        this.handleChange = this.handleChange.bind(this);
-    }
-
-    handleChange(event) {
-        this.setState({ value: event.target.value });
     }
 
     render() {
@@ -20,8 +14,8 @@ class TimeFormat extends React.Component {
                     <input
                         type="text"
                         id="timeFormatInput"
-                        defaultValue={this.state['value']}
-                        onChange={this.handleChange}
+                        value={this.props['state']['timeFormat']}
+                        onChange={this.props['onChange']}
                     ></input>
                     <a
                         href="https://day.js.org/docs/en/display/format"
