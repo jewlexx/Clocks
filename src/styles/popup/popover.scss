@@ -1,0 +1,12 @@
+#text-limit-reached-popover {
+    background-color: #0078d4;
+    color: white;
+    border: 1px solid black;
+    position: fixed;
+    bottom: 10px;
+    right: 20px;
+    width: 200px;
+    height: 100px;
+    padding: 10px;
+    --webkit-border-radius: 4px;
+}

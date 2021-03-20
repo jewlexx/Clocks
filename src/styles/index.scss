@@ -2,6 +2,7 @@
 @import './assets/genbutton.scss';
 @import './assets/clock.scss';
 @import './bg/bg.scss';
+@import './popup/popover.scss';
 
 $font-family: 'Exo', sans-serif;
 $blurple-dark: #23272a;
@@ -11,6 +12,7 @@ $accent-color: rgb(243, 243, 243);
 $accent-color-dark: rgb(235, 235, 235);
 
 html * {
+    user-select: none;
     box-sizing: border-box;
     overflow: hidden;
 }
@@ -51,7 +53,6 @@ body {
         cursor: pointer;
     }
     label {
-        user-select: none;
         padding: 5px;
         margin: 10px;
         border: none;
@@ -59,6 +60,7 @@ body {
             margin: 0.75%;
         }
         input {
+            user-select: all;
             padding: 5px;
             margin-top: 10px;
             margin-left: 2px;

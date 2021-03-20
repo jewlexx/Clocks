@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent, ChangeEventHandler } from 'react';
 import { ClockSelect } from './lib/ClockSelect';
 import { ColorInput } from './lib/ColorInput';
 import { TimeFormat } from './lib/TimeFormat';
@@ -12,24 +12,6 @@ class Generator extends React.Component {
             valueFG: '',
             valueBG: '',
         };
-    }
-
-    handleChangeFG(event) {
-        if (
-            this.state['valueFG'].length >= 8 &&
-            event.target.value.length > 8
-        ) {
-            return;
-        }
-        this.setState({ valueFG: event.target.value });
-    }
-
-    handleChangeBG(event) {
-        this.setState({ valueBG: event.target.value });
-    }
-
-    handleChangeTimeFormat(event) {
-        this.setState({ timeFormat: event.target.value });
     }
 
     handleGenerate(event) {
@@ -72,14 +54,22 @@ class Generator extends React.Component {
                 <ClockSelect />
 
                 <TimeFormat
-                    onChange={(e) => this.handleChangeTimeFormat(e)}
+                    onChange={(e) =>
+                        this.setState({ timeFormat: e.target.value })
+                    }
                     state={this.state}
                 />
 
                 <ColorInput
                     state={this.state}
-                    onChangeBG={(e) => this.handleChangeBG(e)}
-                    onChangeFG={(e) => this.handleChangeFG(e)}
+                    onChangeFG={(e) => {
+                        if (!(e.target.value.length > 8))
+                            this.setState({ valueFG: e.target.value });
+                    }}
+                    onChangeBG={(e) => {
+                        if (!(e.target.value.length > 8))
+                            this.setState({ valueBG: e.target.value });
+                    }}
                 />
             </div>
         );

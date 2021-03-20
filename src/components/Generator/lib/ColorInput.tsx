@@ -13,7 +13,7 @@ class ColorInput extends React.Component<any, any> {
                     Time Color{' #'}
                     <input
                         type="text"
-                        id="clock-color-input"
+                        id="fg-color-input"
                         value={this.props['state']['valueFG']}
                         onChange={this.props['onChangeFG']}
                     ></input>{' '}
@@ -23,7 +23,7 @@ class ColorInput extends React.Component<any, any> {
                     Background Color{' #'}
                     <input
                         type="text"
-                        id="background-color-input"
+                        id="bg-color-input"
                         value={this.props['state']['valueBG']}
                         onChange={this.props['onChangeBG']}
                     ></input>
