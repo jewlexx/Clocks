@@ -1,15 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Exo:400,700');
-@import './assets/genbutton.scss';
-@import './assets/clock.scss';
-@import './bg/bg.scss';
-@import './popup/popover.scss';
-
-$font-family: 'Exo', sans-serif;
-$blurple-dark: #23272a;
-$dark-blurple: #4e5d94;
-$blurple: #7289da;
-$accent-color: rgb(243, 243, 243);
-$accent-color-dark: rgb(235, 235, 235);
+@import './imports/imports';
 
 html * {
     user-select: none;

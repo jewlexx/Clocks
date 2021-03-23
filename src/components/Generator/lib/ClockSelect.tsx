@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import React from 'react';
 
 class ClockSelect extends React.Component<any, any> {
@@ -7,15 +8,16 @@ class ClockSelect extends React.Component<any, any> {
 
     handleChange(caller) {
         // I CAN'T HANDLE CHANGE
-        const inputElems = document.getElementsByClassName('checkbox-clock');
+        const inputElems = $('.checkbox-clock').toArray();
 
         for (let i = 0; i < inputElems.length; i++) {
             const elem = inputElems[i] as HTMLInputElement;
             elem.checked = elem.id.split('-')[0] === caller;
         }
 
-        const elem = document.getElementById('background-color-input-label');
-        elem.hidden = caller !== 'custom';
+        if (caller !== 'custom')
+            $('#background-color-input-label').hide('fast');
+        else $('#background-color-input-label').show('fast');
     }
 
     render() {

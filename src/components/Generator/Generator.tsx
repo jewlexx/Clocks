@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import React, { ChangeEvent } from 'react';
 import { ClockSelect } from './lib/ClockSelect';
 import { ColorInput } from './lib/ColorInput';
@@ -11,8 +12,8 @@ class Generator extends React.Component {
         super(props);
         this.state = {
             timeFormat: 'h:mm:ss A',
-            valueFG: '',
-            valueBG: '',
+            valueFG: '000',
+            valueBG: 'FFF',
         };
     }
 
@@ -25,14 +26,12 @@ class Generator extends React.Component {
             'custom-clock-checkbox'
         ) as HTMLInputElement;
 
-        const inputElems = Array.from(
-            document.getElementsByClassName('checkbox-clock')
-        );
+        const inputElems = $('.checkbox-clock').toArray();
 
         // Checks to see if any of the options are not the defaults and then if they aren't push them to the array
-        if (customInput.checked) {
+        if (customInput.checked)
             urlParams.push('bgcolor=' + this.state['valueBG'] || 'FFF');
-        } else {
+        else
             urlParams.push(
                 'bgcolor=**' +
                     inputElems
@@ -40,10 +39,9 @@ class Generator extends React.Component {
                         .id.split('-')[0] +
                     '**'
             );
-        }
 
         if (this.state['valueFG'])
-            urlParams.push('color=' + this.state['valueFG'] || 'FFF');
+            urlParams.push('color=' + this.state['valueFG']);
 
         urlParams.push('format=' + (this.state['timeFormat'] || 'h:mm:ss A'));
 
