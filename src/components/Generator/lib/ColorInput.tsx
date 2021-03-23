@@ -16,7 +16,8 @@ class ColorInput extends React.Component<any, any> {
                         id="fg-color-input"
                         value={this.props['state']['valueFG']}
                         onChange={this.props['onChangeFG']}
-                    ></input>{' '}
+                    ></input>
+                    {' (Currently only supports HEX)'}
                 </label>
                 <br></br>
                 <label id="background-color-input-label">
@@ -27,6 +28,7 @@ class ColorInput extends React.Component<any, any> {
                         value={this.props['state']['valueBG']}
                         onChange={this.props['onChangeBG']}
                     ></input>
+                    {' (Currently only supports HEX)'}
                 </label>
             </div>
         );

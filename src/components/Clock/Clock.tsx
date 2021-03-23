@@ -35,6 +35,13 @@ class Clock extends React.Component {
         if (urlParams.has('bgcolor')) {
             if (urlParams.get('bgcolor') === '**pride**') {
                 document.getElementById('root').classList.value = 'pride-clock';
+            } else if (urlParams.get('bgcolor') === '**transparent**') {
+                document.getElementById('root').classList.value =
+                    'transparent-clock';
+                document.getElementsByTagName('body')[0].style.background =
+                    'none';
+                document.getElementsByTagName('body')[0].style.backgroundColor =
+                    'transparent';
             } else {
                 document.getElementById('root').style.backgroundColor =
                     '#' + urlParams.get('bgcolor');
@@ -47,8 +54,8 @@ class Clock extends React.Component {
             timeFormat === undefined ? 'No time format specified' : timeFormat
         );
 
-        document.getElementsByTagName('body')[0].style.backgroundColor = '#FFF';
-        document.getElementsByTagName('body')[0].classList.value = 'time-body';
+        // document.getElementsByTagName('body')[0].style.backgroundColor = '#FFF';
+        document.getElementsByTagName('body')[0].classList.value = 'time-div';
         return (
             <div className="time-div clock">
                 <p className="time" style={{ color: getColor() }}>

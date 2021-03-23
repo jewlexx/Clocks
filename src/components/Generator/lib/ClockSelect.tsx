@@ -1,51 +1,40 @@
 import React from 'react';
 
-class ClockSelect extends React.Component {
-    handleChange() {
+class ClockSelect extends React.Component<any, any> {
+    constructor(props) {
+        super(props);
+    }
+
+    handleChange(caller) {
         // I CAN'T HANDLE CHANGE
+        const inputElems = document.getElementsByClassName('checkbox-clock');
+
+        for (let i = 0; i < inputElems.length; i++) {
+            const elem = inputElems[i] as HTMLInputElement;
+            elem.checked = elem.id.split('-')[0] === caller;
+        }
+
         const elem = document.getElementById('background-color-input-label');
-        const cus = document.getElementById(
-            'custom-clock-checkbox'
-        ) as HTMLInputElement;
-        const b = (document.getElementById(
-            'pride-clock-checkbox'
-        ) as HTMLInputElement).checked;
-        elem.hidden = b;
-        cus.checked = !b;
+        elem.hidden = caller !== 'custom';
     }
 
     render() {
         return (
             <div>
-                <label className="lbl-clock" key="1">
-                    {'Custom'}
-                    <input
-                        type="checkbox"
-                        className="checkbox-clock"
-                        id="custom-clock-checkbox"
-                        onClick={() => {
-                            (document.getElementById(
-                                'pride-clock-checkbox'
-                            ) as HTMLInputElement).checked = false;
-                            this.handleChange();
-                        }}
-                        defaultChecked
-                    ></input>
-                </label>
-                <label className="lbl-clock" key="2">
-                    {'Pride'}
-                    <input
-                        type="checkbox"
-                        className="checkbox-clock"
-                        id="pride-clock-checkbox"
-                        onClick={() => {
-                            (document.getElementById(
-                                'custom-clock-checkbox'
-                            ) as HTMLInputElement).checked = false;
-                            this.handleChange();
-                        }}
-                    ></input>
-                </label>
+                {this.props['clocks'].map((item, index) => (
+                    <label className="lbl-clock" key={index}>
+                        {item.substring(0, 1).toUpperCase() + item.substring(1)}
+                        <input
+                            type="checkbox"
+                            className="checkbox-clock"
+                            id={item + '-clock-checkbox'}
+                            onClick={() => {
+                                this.handleChange(item);
+                            }}
+                            defaultChecked={item === 'custom'}
+                        ></input>
+                    </label>
+                ))}
             </div>
         );
     }

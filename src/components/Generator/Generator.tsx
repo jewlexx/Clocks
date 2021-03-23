@@ -1,8 +1,10 @@
-import React, { ChangeEvent, ChangeEventHandler } from 'react';
+import React, { ChangeEvent } from 'react';
 import { ClockSelect } from './lib/ClockSelect';
 import { ColorInput } from './lib/ColorInput';
 import { TimeFormat } from './lib/TimeFormat';
 import { GenButton } from './lib/GenButton';
+
+const clocks = ['custom', 'pride', 'transparent'];
 
 class Generator extends React.Component {
     constructor(props) {
@@ -14,22 +16,34 @@ class Generator extends React.Component {
         };
     }
 
-    handleGenerate(event) {
+    handleGenerate(event: ChangeEvent) {
         event.preventDefault();
         const urlParams = [];
 
         // Var definitions
-        const prideClockCheck = document.getElementById(
-            'pride-clock-checkbox'
+        const customInput = document.getElementById(
+            'custom-clock-checkbox'
         ) as HTMLInputElement;
 
+        const inputElems = Array.from(
+            document.getElementsByClassName('checkbox-clock')
+        );
+
         // Checks to see if any of the options are not the defaults and then if they aren't push them to the array
-        if (prideClockCheck.checked) urlParams.push('bgcolor=**pride**');
-        else if (this.state['valueBG'])
-            urlParams.push('bgcolor=' + this.state['valueBG']);
+        if (customInput.checked) {
+            urlParams.push('bgcolor=' + this.state['valueBG'] || 'FFF');
+        } else {
+            urlParams.push(
+                'bgcolor=**' +
+                    inputElems
+                        .filter((val) => (val as HTMLInputElement).checked)[0]
+                        .id.split('-')[0] +
+                    '**'
+            );
+        }
 
         if (this.state['valueFG'])
-            urlParams.push('color=' + this.state['valueFG']);
+            urlParams.push('color=' + this.state['valueFG'] || 'FFF');
 
         urlParams.push('format=' + (this.state['timeFormat'] || 'h:mm:ss A'));
 
@@ -52,7 +66,7 @@ class Generator extends React.Component {
             <div id="ClockGenerator">
                 <GenButton onClick={(e) => this.handleGenerate(e)} />
 
-                <ClockSelect />
+                <ClockSelect clocks={clocks} />
 
                 <TimeFormat
                     onChange={(e) =>
