@@ -1,60 +1,55 @@
 {
-    "name": "clocks",
-    "version": "1.0.0",
-    "description": "A various collection of html clocks designed to be embeddable anywhere (a list of available clocks is coming soon but for now just look through the code)",
-    "main": "index.js",
-    "private": true,
-    "directories": {
-        "test": "tests"
-    },
-    "scripts": {
-        "start": "webpack serve",
-        "build": "webpack --mode=production",
-        "deploy": "webpack --mode=production && node publish.js"
-    },
-    "dependencies": {
-        "dayjs": ">=1.10.4",
-        "dotenv": ">=8.2.0",
-        "jquery": "^3.6.0",
-        "react": "^17.0.1",
-        "react-dom": ">=17.0.1"
-    },
-    "devDependencies": {
-        "@babel/core": ">=7.0.0",
-        "@babel/preset-env": ">=7.0.0",
-        "@babel/preset-react": ">=7.0.0",
-        "@babel/preset-typescript": "^7.13.0",
-        "@types/jquery": "^3.5.5",
-        "@types/react": "^17.0.3",
-        "@types/react-dom": "^17.0.2",
-        "@types/webpack-dev-server": "^3.11.5",
-        "babel-loader": ">=8.0.1",
-        "clean-webpack-plugin": ">=3.0.0",
-        "css-loader": ">=5.1.2",
-        "gh-pages": ">=3.1.0",
-        "html-webpack-plugin": ">=5.3.1",
-        "sass": ">=1.32.8",
-        "sass-loader": ">=11.0.1",
-        "style-loader": ">=2.0.0",
-        "typescript": "^4.2.3",
-        "webpack": ">=5.25.1",
-        "webpack-cli": ">=4.5.0",
-        "webpack-dev-server": "^3.11.2"
-    },
-    "prettier": {
-        "trailingComma": "es5",
-        "tabWidth": 4,
-        "semi": true,
-        "singleQuote": true
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/jamesinaxx/Clocks.git"
-    },
-    "keywords": [],
-    "author": "jamesinaxx",
-    "bugs": {
-        "url": "https://github.com/jamesinaxx/Clocks/issues"
-    },
-    "homepage": "https://github.com/jamesinaxx/Clocks#readme"
+	"name": "clocks",
+	"version": "1.0.0",
+	"description": "A various collection of html clocks designed to be embeddable anywhere (a list of available clocks is coming soon but for now just look through the code)",
+	"main": "index.js",
+	"private": true,
+	"directories": {
+		"test": "tests"
+	},
+	"scripts": {
+		"dev": "webpack serve --mode=development",
+		"build": "webpack --mode=production",
+		"deploy": "webpack --mode=production && node publish.js"
+	},
+	"dependencies": {
+		"dayjs": ">=1.10.4",
+		"dotenv": ">=8.2.0",
+		"jquery": "^3.6.0",
+		"react": "^17.0.1",
+		"react-dom": ">=17.0.1",
+		"react-router-dom": "^5.2.0"
+	},
+	"devDependencies": {
+		"@babel/core": ">=7.0.0",
+		"@babel/preset-env": ">=7.0.0",
+		"@babel/preset-react": ">=7.0.0",
+		"@babel/preset-typescript": "^7.13.0",
+		"@types/jquery": "^3.5.5",
+		"@types/react": "^17.0.3",
+		"@types/react-dom": "^17.0.2",
+		"@types/react-router-dom": "^5.1.8",
+		"@types/webpack-dev-server": "^3.11.5",
+		"babel-loader": ">=8.0.1",
+		"clean-webpack-plugin": ">=3.0.0",
+		"css-loader": ">=5.1.2",
+		"gh-pages": ">=3.1.0",
+		"html-webpack-plugin": ">=5.3.1",
+		"sass": ">=1.32.8",
+		"sass-loader": ">=11.0.1",
+		"style-loader": ">=2.0.0",
+		"typescript": "^4.2.3",
+		"webpack": ">=5.25.1",
+		"webpack-cli": ">=4.5.0",
+		"webpack-dev-server": "^3.11.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/jamesinaxx/Clocks.git"
+	},
+	"author": "jamesinaxx",
+	"bugs": {
+		"url": "https://github.com/jamesinaxx/Clocks/issues"
+	},
+	"homepage": "https://github.com/jamesinaxx/Clocks#readme"
 }
