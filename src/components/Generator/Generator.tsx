@@ -1,14 +1,9 @@
 import React from 'react';
-import ClockSelect from './lib/ClockSelect';
-import ColorInput from './lib/ColorInput';
-import TimeFormat from './lib/TimeFormat';
-import styles from '../../styles/modules/generator.module.scss';
-
-interface GeneratorState {
-	timeFormat: string | undefined;
-	bgColor: string | undefined;
-	fgColor: string | undefined;
-}
+import ClockSelect from './ClockSelect';
+import ColorInput from './ColorInput';
+import TimeFormat from './TimeFormat';
+import styles from '@styles/modules/generator.module.scss';
+import type { GeneratorState } from '@typings/Generator';
 
 export default class Generator extends React.Component<any, GeneratorState> {
 	constructor(props: null) {

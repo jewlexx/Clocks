@@ -1,12 +1,5 @@
 import React from 'react';
-
-interface ClockSelectProps {
-	clocks: string[];
-}
-
-interface ClockSelectState {
-	clock: string;
-}
+import type { ClockSelectProps, ClockSelectState } from '@typings/ClockSelect';
 
 export default class ClockSelect extends React.Component<
 	ClockSelectProps,
@@ -18,6 +11,8 @@ export default class ClockSelect extends React.Component<
 		this.state = {
 			clock: 'custom',
 		};
+
+		this.handleChange = this.handleChange.bind(this);
 	}
 
 	handleChange(event: React.ChangeEvent<HTMLSelectElement>) {
@@ -35,11 +30,15 @@ export default class ClockSelect extends React.Component<
 						onChange={this.handleChange}
 						id='clock-selector'
 					>
-						{this.props.clocks.map(item => {
+						{this.props.clocks.map((item, i) => {
 							const itemName =
 								item.substr(0, 1).toUpperCase() +
 								item.substr(1);
-							return <option value={item}>{itemName}</option>;
+							return (
+								<option key={i} value={item}>
+									{itemName}
+								</option>
+							);
 						})}
 					</select>
 				</form>

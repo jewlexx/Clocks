@@ -1,18 +1,22 @@
 {
-    "compilerOptions": {
-        "incremental": true,
-        "target": "es3",
-        "module": "commonjs",
-        "lib": ["DOM", "ESNext"],
-        "allowJs": true,
-        "checkJs": true,
-        "jsx": "react-jsx",
-
-        "strict": true,
-
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "forceConsistentCasingInFileNames": true,
-        "outDir": "dist"
-    }
+	"compilerOptions": {
+		"incremental": true,
+		"target": "es3",
+		"module": "commonjs",
+		"lib": ["DOM", "ESNext"],
+		"allowJs": true,
+		"checkJs": true,
+		"jsx": "react-jsx",
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		"outDir": "dist",
+		"baseUrl": "./src",
+		"paths": {
+			"@typings/*": ["types/*"],
+			"@styles/*": ["styles/*"],
+			"@components/*": ["components/*"]
+		}
+	}
 }

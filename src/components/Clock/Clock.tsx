@@ -1,9 +1,8 @@
-import $ from 'jquery';
+import React from 'react';
 const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
-import React from 'react';
 import dayjs from 'dayjs';
-import styles from '../../styles/modules/clock.module.scss';
+import styles from '@styles/modules/clock.module.scss';
 
 let timeFormat = urlParams.get('format') || 'h:mm:ss A';
 
