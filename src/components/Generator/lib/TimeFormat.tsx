@@ -1,7 +1,8 @@
 import React from 'react';
+import styles from '../../../styles/modules/generator.module.scss';
 
 interface TimeFormatProps {
-	timeFormat: string;
+	timeFormat: string | undefined;
 	onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -17,13 +18,12 @@ export default class TimeFormat extends React.Component<TimeFormatProps> {
 					Time Format{': '}
 					<input
 						type='text'
-						id='timeFormatInput'
 						value={this.props.timeFormat}
 						onChange={this.props.onChange}
 					></input>
 					<a
 						href='https://day.js.org/docs/en/display/format'
-						className='link'
+						className={styles.link}
 					>
 						{' '}
 						For more info click here

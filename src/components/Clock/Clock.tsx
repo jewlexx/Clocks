@@ -3,49 +3,54 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 import React from 'react';
 import dayjs from 'dayjs';
+import styles from '../../styles/modules/clock.module.scss';
 
-let timeFormat = 'h:mm:ss A';
+let timeFormat = urlParams.get('format') || 'h:mm:ss A';
 
-if (urlParams.has('format') && urlParams.get('format')) {
-	timeFormat = urlParams.get('format');
+interface ClockState {
+	time: string;
 }
 
-const getColor = () => {
-	let colorParam = urlParams.get('clock') !== 'black' ? '#000' : '#FFF';
-	if (urlParams.has('color')) {
-		colorParam = '#' + urlParams.get('color');
-	}
-	return colorParam;
-};
-
-class Clock extends React.Component {
-	constructor(props) {
+export default class Clock extends React.Component<any, ClockState> {
+	constructor(props: any) {
 		super(props);
 		this.state = {
 			time: dayjs().format(timeFormat),
 		};
+
+		const docRoot = document.getElementById('root') as HTMLDivElement;
+
 		setInterval(
 			() => this.setState({ time: dayjs().format(timeFormat) }),
 			1000
 		);
 
 		if (queryString !== '') {
-			$('#root').removeClass().addClass('clock');
+			docRoot.classList.add(styles.clock);
 		}
 
-		if (urlParams.has('bgcolor')) {
-			if (urlParams.get('bgcolor').includes('**'))
-				$('#root')
-					.removeClass()
-					.addClass(
-						urlParams.get('bgcolor').replace(/\*\*/g, '') + '-clock'
-					);
-			else
-				$('#root').css(
-					'background-color',
-					'#' + urlParams.get('bgcolor')
+		if (urlParams.has('bgColor')) {
+			if ((urlParams.get('bgColor') as string).includes('**')) {
+				docRoot.classList.add(
+					styles[
+						(urlParams.get('bgColor') as string).replace(
+							/\*\*/g,
+							''
+						) + '-clock'
+					]
 				);
+			} else {
+				docRoot.style.backgroundColor = '#' + urlParams.get('bgColor');
+			}
 		}
+	}
+
+	getColor() {
+		let colorParam = urlParams.get('clock') !== 'black' ? '#000' : '#FFF';
+		if (urlParams.has('color')) {
+			colorParam = '#' + urlParams.get('color');
+		}
+		return colorParam;
 	}
 
 	render() {
@@ -53,15 +58,13 @@ class Clock extends React.Component {
 			timeFormat === undefined ? 'No time format specified' : timeFormat
 		);
 
-		$('body').removeClass().addClass('time-div');
+		document.body.classList.add(styles.timeDiv);
 		return (
-			<div className='time-div clock'>
-				<p className='time' style={{ color: getColor() }}>
-					{this.state['time']}
+			<div className={styles.clock}>
+				<p className={styles.time} style={{ color: this.getColor() }}>
+					{this.state.time}
 				</p>
 			</div>
 		);
 	}
 }
-
-export { Clock };

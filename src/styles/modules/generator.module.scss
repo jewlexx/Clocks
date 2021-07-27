@@ -1,0 +1,55 @@
+@import '../vars/all';
+
+.link {
+	color: #4e54c8;
+	text-decoration: none;
+}
+
+.clockGenerator {
+	position: absolute;
+	margin: 5vw;
+	width: 90vw;
+	font-size: larger;
+	padding: 1%;
+	border-radius: 5px;
+	color: white;
+	background-color: #23272a;
+	.lbl-clock {
+		cursor: pointer;
+	}
+	label {
+		padding: 5px;
+		margin: 10px;
+		border: none;
+		.checkbox-clock {
+			margin: 0.75%;
+		}
+		input {
+			user-select: all;
+			padding: 5px;
+			margin-top: 10px;
+			margin-left: 2px;
+			background-color: $accent-color-dark;
+			border-radius: 5px;
+		}
+	}
+}
+
+.genButton {
+	position: absolute;
+	transition: transform 100ms ease-in-out;
+	top: 50%;
+	transform: translateY(-50%);
+	background: pink;
+	height: 7vw;
+	width: 7vw;
+	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
+	right: 5%;
+	border-radius: 5px;
+	user-select: none;
+	padding: 15px;
+	border: none;
+	&:hover {
+		transform: scale(1.125) translateY(-45%);
+	}
+}

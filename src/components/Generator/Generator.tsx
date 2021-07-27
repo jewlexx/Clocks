@@ -1,16 +1,16 @@
 import React from 'react';
-import $ from 'jquery';
 import ClockSelect from './lib/ClockSelect';
 import ColorInput from './lib/ColorInput';
 import TimeFormat from './lib/TimeFormat';
+import styles from '../../styles/modules/generator.module.scss';
 
 interface GeneratorState {
-	timeFormat: string;
-	bgColor: string;
-	fgColor: string;
+	timeFormat: string | undefined;
+	bgColor: string | undefined;
+	fgColor: string | undefined;
 }
 
-class Generator extends React.Component<any, GeneratorState> {
+export default class Generator extends React.Component<any, GeneratorState> {
 	constructor(props: null) {
 		super(props);
 		this.state = {
@@ -24,40 +24,42 @@ class Generator extends React.Component<any, GeneratorState> {
 
 	handleGenerate(event: React.MouseEvent<HTMLButtonElement>) {
 		event.preventDefault();
-		const urlParams = [];
+		const clockUrl = new URL(window.location.href);
+		clockUrl.pathname = '/clock/';
 
 		// Var definitions
 		const clockSelect = document.getElementById(
 			'clock-selector'
 		) as HTMLSelectElement;
 
-		// Checks to see if any of the options are not the defaults and then if they aren't push them to the array
-		if (clockSelect.value === 'custom') {
-			urlParams.push('bgcolor=' + this.state.bgColor || 'FFF');
-		} else {
-			urlParams.push('bgcolor=**' + clockSelect.value + '**');
-		}
+		clockUrl.searchParams.append(
+			'bgColor',
+			clockSelect.value === 'custom'
+				? this.state.bgColor || 'fff'
+				: `**${clockSelect.value}**`
+		);
 
-		if (this.state.fgColor) urlParams.push('color=' + this.state.fgColor);
+		clockUrl.searchParams.append('color', this.state.fgColor || '000');
 
-		urlParams.push('format=' + (this.state.timeFormat || 'h:mm:ss A'));
-
-		// Adds all the items from the array to the url
-		let finalUrl = window.location.href + 'clock' + '?';
-
-		finalUrl += urlParams.join('&').split(' ').join('%20');
+		clockUrl.searchParams.append(
+			'format',
+			this.state.timeFormat || 'h:mm:ss A'
+		);
 
 		// Saves the url to clipboard
-		navigator.clipboard.writeText(finalUrl);
+		navigator.clipboard.writeText(clockUrl.href);
 
 		// Opens this url in a new tab
-		window.open(finalUrl, '_blank');
+		window.open(clockUrl.href, '_blank');
 	}
 
 	render() {
 		return (
-			<div id='ClockGenerator'>
-				<button className='gen-button' onClick={this.handleGenerate}>
+			<div className={styles.clockGenerator}>
+				<button
+					className={styles.genButton}
+					onClick={this.handleGenerate}
+				>
 					Generate URL
 				</button>
 
@@ -86,5 +88,3 @@ class Generator extends React.Component<any, GeneratorState> {
 		);
 	}
 }
-
-export { Generator };
