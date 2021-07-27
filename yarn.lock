@@ -1013,6 +1013,11 @@
     "@types/qs" "*"
     "@types/serve-static" "*"
 
+"@types/gh-pages@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@types/gh-pages/-/gh-pages-3.2.0.tgz#3f3c1ffe298fb390197c51348df0bcad3132715b"
+  integrity sha512-8N1e1SNedKoYQzQqkMS6OJCIFyuqxEZc2/upyT1ay7WVImUpCJTPKaaBmNzXR/fjbJKacG4lPPrNH+j4tG1g7A==
+
 "@types/glob@^7.1.1":
   version "7.1.4"
   resolved "https://registry.yarnpkg.com/@types/glob/-/glob-7.1.4.tgz#ea59e21d2ee5c517914cb4bc8e4153b99e566672"
