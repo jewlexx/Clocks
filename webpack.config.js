@@ -50,9 +50,7 @@ const config = {
         contentBase: path.resolve(__dirname, '..', 'dist'),
         compress: true,
         port: 5500,
-        open: {
-            app: 'chrome',
-        },
+        open: true,
         overlay: true,
         clientLogLevel: 'debug',
         hot: true,
@@ -65,6 +63,7 @@ const config = {
                 '..',
                 'src/template/html-temp.html'
             ),
+            minify: true,
         }),
     ],
 };
