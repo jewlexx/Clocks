@@ -7,7 +7,7 @@ const path = require('path');
  * @type {Configuration}
  */
 const config = {
-    entry: [path.resolve(__dirname, '../', 'src/index.ts')],
+    entry: [path.resolve(__dirname, 'src/index.ts')],
     stats: {
         errorDetails: true,
     },
@@ -44,12 +44,12 @@ const config = {
     output: {
         clean: true,
         filename: 'index.js',
-        path: path.resolve(__dirname, '../', 'dist'),
+        path: path.resolve(__dirname, 'dist'),
     },
     devServer: {
-        contentBase: path.resolve(__dirname, '..', 'dist'),
+        contentBase: path.resolve(__dirname, 'dist'),
         compress: true,
-        port: 5500,
+        port: 3000,
         open: true,
         overlay: true,
         clientLogLevel: 'debug',
@@ -58,11 +58,7 @@ const config = {
     plugins: [
         new CleanWebpackPlugin({ verbose: true }),
         new HtmlWebpackPlugin({
-            template: path.resolve(
-                __dirname,
-                '..',
-                'src/template/html-temp.html'
-            ),
+            template: path.resolve(__dirname, 'src/template/html-temp.html'),
             minify: true,
         }),
     ],

@@ -9,7 +9,7 @@
     },
     "scripts": {
         "start": "webpack serve",
-        "build:prod": "webpack --mode=production",
+        "build": "webpack --mode=production",
         "deploy": "webpack --mode=production && node publish.js"
     },
     "dependencies": {
