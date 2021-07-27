@@ -22,7 +22,7 @@ jobs:
               uses: actions/setup-node@v1
               with:
                   node-version: ${{ matrix.node-version }}
-            - run: yarn
+            - run: yarn install --frozen-lockfile
             - shell: bash
               env:
                   PASSWORD: ${{ secrets.PA_TOKEN }}
