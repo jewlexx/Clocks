@@ -37,6 +37,11 @@ const config = {
 	},
 	resolve: {
 		extensions: ['.js', '.jsx', '.ts', '.tsx'],
+		alias: {
+			'@typings': path.resolve(__dirname, './src/typings'),
+			'@styles': path.resolve(__dirname, './src/styles'),
+			'@components': path.resolve(__dirname, './src/components'),
+		},
 	},
 	optimization: {
 		minimize: true,
