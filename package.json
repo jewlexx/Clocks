@@ -9,8 +9,8 @@
 	},
 	"scripts": {
 		"dev": "next dev",
-		"build": "webpack --mode=production",
-		"deploy": "webpack --mode=production && node publish.js"
+		"build": "next build",
+		"start": "next start"
 	},
 	"dependencies": {
 		"dayjs": ">=1.10.4",
