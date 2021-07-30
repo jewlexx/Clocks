@@ -1,22 +1,43 @@
 {
-	"compilerOptions": {
-		"incremental": true,
-		"target": "es3",
-		"module": "commonjs",
-		"lib": ["DOM", "ESNext"],
-		"allowJs": true,
-		"checkJs": true,
-		"jsx": "react-jsx",
-		"strict": true,
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-		"forceConsistentCasingInFileNames": true,
-		"outDir": "dist",
-		"baseUrl": "./src",
-		"paths": {
-			"@typings/*": ["types/*"],
-			"@styles/*": ["styles/*"],
-			"@components/*": ["components/*"]
-		}
-	}
+  "compilerOptions": {
+    "incremental": true,
+    "target": "es3",
+    "module": "commonjs",
+    "lib": [
+      "DOM",
+      "ESNext"
+    ],
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "preserve",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "dist",
+    "baseUrl": "./src",
+    "paths": {
+      "@typings/*": [
+        "types/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ]
+    },
+    "noEmit": true,
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

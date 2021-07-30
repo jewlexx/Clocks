@@ -8,7 +8,7 @@
 		"test": "tests"
 	},
 	"scripts": {
-		"dev": "webpack serve --mode=development",
+		"dev": "next dev",
 		"build": "webpack --mode=production",
 		"deploy": "webpack --mode=production && node publish.js"
 	},
@@ -16,6 +16,7 @@
 		"dayjs": ">=1.10.4",
 		"dotenv": ">=8.2.0",
 		"jquery": "^3.6.0",
+		"next": "^11.0.1",
 		"react": "^17.0.1",
 		"react-dom": ">=17.0.1",
 		"react-router-dom": "^5.2.0"
