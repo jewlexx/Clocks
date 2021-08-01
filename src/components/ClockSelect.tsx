@@ -29,6 +29,7 @@ export default class ClockSelect extends Component<
 						value={this.state.clock}
 						onChange={this.handleChange}
 						id='clock-selector'
+						title='Select your clock'
 					>
 						{this.props.clocks.map((item, i) => {
 							const itemName =
