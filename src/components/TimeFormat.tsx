@@ -13,6 +13,8 @@ export default function TimeFormat({
         <input type='text' value={timeFormat} onChange={onChange}></input>
         <a
           href='https://day.js.org/docs/en/display/format'
+          target='_blank'
+          rel='noreferrer'
           className={styles.link}
         >
           {' '}

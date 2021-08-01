@@ -47,7 +47,7 @@ export default class Generator extends Component<null, GeneratorState> {
     navigator.clipboard.writeText(clockUrl.href);
 
     // Opens this url in a new tab
-    window.open(clockUrl.href, '_blank');
+    window.open(clockUrl.href);
   }
 
   render(): JSX.Element {
