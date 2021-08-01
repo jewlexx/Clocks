@@ -56,14 +56,14 @@ export default class Clock extends Component<null, ClockState> {
 
   render(): JSX.Element {
     return (
-      <div className={styles.clock}>
+      <main className={styles.clock}>
         <Head>
           <title>Clock - Embed this URL</title>
         </Head>
         <p className={styles.time} style={{ color: this.state.color }}>
           {this.state.time}
         </p>
-      </div>
+      </main>
     );
   }
 }

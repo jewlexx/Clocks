@@ -52,7 +52,7 @@ export default class Generator extends Component<null, GeneratorState> {
 
   render(): JSX.Element {
     return (
-      <div className={styles.clockGenerator}>
+      <main className={styles.clockGenerator}>
         <Head>
           <title>Clock Generator</title>
         </Head>
@@ -79,7 +79,7 @@ export default class Generator extends Component<null, GeneratorState> {
               this.setState({ bgColor: e.target.value });
           }}
         />
-      </div>
+      </main>
     );
   }
 }
