@@ -21,6 +21,7 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
           name='keywords'
           content='clock, embed, api, easy, simple, iframe'
         />
+        <meta name='theme-color' content='#4e54c8' />
 
         <link rel='manifest' href='/manifest.json' />
         <link
