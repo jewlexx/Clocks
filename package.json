@@ -1,7 +1,7 @@
 {
 	"name": "clocks",
 	"version": "1.0.0",
-	"description": "A various collection of html clocks designed to be embeddable anywhere (a list of available clocks is coming soon but for now just look through the code)",
+	"description": "A various collection of html clocks designed to be embeddable anywhere",
 	"main": "index.js",
 	"private": true,
 	"scripts": {
