@@ -1,3 +1,4 @@
+import React from 'react';
 import type { ColorInputProps } from '@typings/ColorInput';
 
 export default function ColorInput({

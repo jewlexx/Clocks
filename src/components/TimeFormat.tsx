@@ -1,3 +1,4 @@
+import React from 'react';
 import styles from '@styles/modules/generator.module.scss';
 import type { TimeFormatProps } from '@typings/TimeFormat';
 
