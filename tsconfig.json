@@ -3,10 +3,7 @@
     "incremental": true,
     "target": "es3",
     "module": "commonjs",
-    "lib": [
-      "DOM",
-      "ESNext"
-    ],
+    "lib": ["DOM", "ESNext"],
     "allowJs": true,
     "checkJs": true,
     "jsx": "preserve",
@@ -17,27 +14,15 @@
     "outDir": "dist",
     "baseUrl": "./src",
     "paths": {
-      "@typings/*": [
-        "types/*"
-      ],
-      "@styles/*": [
-        "styles/*"
-      ],
-      "@components/*": [
-        "components/*"
-      ]
+      "@typings/*": ["types/*"],
+      "@styles/*": ["styles/*"],
+      "@components/*": ["components/*"]
     },
     "noEmit": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
