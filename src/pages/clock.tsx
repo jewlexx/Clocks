@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Head from 'next/head';
 import dayjs from 'dayjs';
 import styles from '@styles/modules/clock.module.scss';
 import type { ClockState } from '@typings/Clock';
@@ -58,6 +59,9 @@ export default class Clock extends Component<any, ClockState> {
 	render() {
 		return (
 			<div className={styles.clock}>
+				<Head>
+					<title>Clock - Embed this URL</title>
+				</Head>
 				<p className={styles.time} style={{ color: this.state.color }}>
 					{this.state.time}
 				</p>

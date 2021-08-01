@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import Head from 'next/head';
 import ClockSelect from '@components/ClockSelect';
 import ColorInput from '@components/ColorInput';
 import TimeFormat from '@components/TimeFormat';
@@ -51,6 +52,9 @@ export default class Generator extends Component<any, GeneratorState> {
 	render() {
 		return (
 			<div className={styles.clockGenerator}>
+				<Head>
+					<title>Clock Generator</title>
+				</Head>
 				<button
 					className={styles.genButton}
 					onClick={this.handleGenerate}
