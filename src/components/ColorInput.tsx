@@ -1,11 +1,4 @@
-import React from 'react';
-
-interface ColorInputProps {
-	valueBG: string | undefined;
-	valueFG: string | undefined;
-	onChangeFG: (e: React.ChangeEvent<HTMLInputElement>) => void;
-	onChangeBG: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+import type { ColorInputProps } from '@typings/ColorInput';
 
 export default function ColorInput({
 	valueBG,

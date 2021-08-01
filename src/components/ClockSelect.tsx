@@ -1,7 +1,7 @@
-import React from 'react';
+import { Component } from 'react';
 import type { ClockSelectProps, ClockSelectState } from '@typings/ClockSelect';
 
-export default class ClockSelect extends React.Component<
+export default class ClockSelect extends Component<
 	ClockSelectProps,
 	ClockSelectState
 > {
