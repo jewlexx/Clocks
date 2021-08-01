@@ -1,6 +1,6 @@
 export interface ClockSelectProps {
-	clocks: string[];
+  clocks: string[];
 }
 export interface ClockSelectState {
-	clock: string;
+  clock: string;
 }

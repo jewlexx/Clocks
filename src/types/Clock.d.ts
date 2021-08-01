@@ -1,4 +1,4 @@
 export interface ClockState {
-	time: string;
-	color: string;
+  time: string;
+  color: string;
 }
