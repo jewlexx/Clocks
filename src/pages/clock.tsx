@@ -22,7 +22,7 @@ export default class Clock extends Component<null, ClockState> {
 
     this.setState({ time: dayjs().format(timeFormat) });
 
-    const docRoot = document.getElementById('root') as HTMLDivElement;
+    const docRoot = document.getElementById('__next') as HTMLDivElement;
 
     setInterval(
       () => this.setState({ time: dayjs().format(timeFormat) }),
