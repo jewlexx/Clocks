@@ -96,71 +96,78 @@ export default function Generator(): JSX.Element {
   }
 
   return (
-    <Paper className={styles.clockGenerator} variant='elevation'>
-      <main>
-        <Head>
-          <title>Clock Generator</title>
-        </Head>
-        <FormGroup>
-          <Select
-            value={config.clock}
-            onChange={handleChangeClock}
-            variant='filled'
-            title='Select your clock'
-          >
-            {clocks.map((item, i) => {
-              const itemName = item.substr(0, 1).toUpperCase() + item.substr(1);
-              return (
-                <MenuItem key={i} value={item}>
-                  {itemName + ' Clock'}
-                </MenuItem>
-              );
-            })}
-          </Select>
+    <div id='root'>
+      <Paper className={styles.clockGenerator} variant='elevation'>
+        <main>
+          <Head>
+            <title>Clock Generator</title>
+          </Head>
+          <FormGroup>
+            <Select
+              value={config.clock}
+              onChange={handleChangeClock}
+              variant='filled'
+              title='Select your clock'
+            >
+              {clocks.map((item, i) => {
+                const itemName =
+                  item.substr(0, 1).toUpperCase() + item.substr(1);
+                return (
+                  <MenuItem key={i} value={item}>
+                    {itemName + ' Clock'}
+                  </MenuItem>
+                );
+              })}
+            </Select>
 
-          <InputLabel>
-            Time Color: #
-            <Input
-              type='text'
-              value={config.fgColor}
-              onChange={e => handleColorChange(e, 'fg')}
-            />
-          </InputLabel>
-          {config.clock === 'custom' && (
-            <InputLabel id='background-color-picker'>
-              Background Color: #
+            <InputLabel>
+              Time Color: #
               <Input
                 type='text'
-                value={config.bgColor}
-                onChange={e => handleColorChange(e, 'bg')}
+                value={config.fgColor}
+                onChange={e => handleColorChange(e, 'fg')}
               />
             </InputLabel>
-          )}
-          <InputLabel>
-            Time Format:{' '}
-            <Input
-              type='text'
-              value={config.timeFormat}
-              onChange={handleFormatChange}
-            />{' '}
-            <a
-              href='https://day.js.org/docs/en/display/format'
-              target='_blank'
-              rel='noreferrer'
-              className={styles.link}
-            >
-              For more info click here
-            </a>
-          </InputLabel>
+            {config.clock === 'custom' && (
+              <InputLabel id='background-color-picker'>
+                Background Color: #
+                <Input
+                  type='text'
+                  value={config.bgColor}
+                  onChange={e => handleColorChange(e, 'bg')}
+                />
+              </InputLabel>
+            )}
+            <InputLabel>
+              Time Format:{' '}
+              <Input
+                type='text'
+                value={config.timeFormat}
+                onChange={handleFormatChange}
+              />{' '}
+              <a
+                href='https://day.js.org/docs/en/display/format'
+                target='_blank'
+                rel='noreferrer'
+                className={styles.link}
+              >
+                For more info click here
+              </a>
+            </InputLabel>
 
-          <Button onClick={handleGenerate} variant='contained' color='primary'>
-            Generate URL
-          </Button>
-          <Button variant='contained' color='secondary'>
-            Save Config
-          </Button>
-        </FormGroup>
-      </main>
-    </Paper>
+            <Button
+              onClick={handleGenerate}
+              variant='contained'
+              color='primary'
+            >
+              Generate URL
+            </Button>
+            <Button variant='contained' color='secondary'>
+              Save Config
+            </Button>
+          </FormGroup>
+        </main>
+      </Paper>
+    </div>
   );
 }
