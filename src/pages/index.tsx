@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styles from '@styles/modules/generator.module.scss';
@@ -13,9 +13,21 @@ import {
   MenuItem,
 } from '@material-ui/core';
 
+declare global {
+  interface Window {
+    timer: number;
+  }
+}
+
 export default function Generator(): JSX.Element {
   const clocks = ['custom', 'pride', 'transparent'];
   const router = useRouter();
+
+  useEffect(() => {
+    if ('timer' in window) {
+      window.clearInterval(window.timer);
+    }
+  }, []);
 
   const [config, setConfig] = useState<GeneratorConfig>({
     clock: 'custom',
