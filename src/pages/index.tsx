@@ -114,7 +114,7 @@ export default class Generator extends Component<null, GeneratorState> {
                   item.substr(0, 1).toUpperCase() + item.substr(1);
                 return (
                   <MenuItem key={i} value={item}>
-                    {itemName}
+                    {itemName + ' Clock'}
                   </MenuItem>
                 );
               })}
