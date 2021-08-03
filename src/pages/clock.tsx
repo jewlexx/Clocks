@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import dayjs from 'dayjs';
 import styles from '@styles/modules/clock.module.scss';
@@ -20,13 +19,11 @@ export default function Clock(): JSX.Element {
     const docRoot = document.getElementById('__next') as HTMLDivElement;
 
     if (queryString !== '' || urlParams.get('clock') === 'default') {
-      return docRoot.classList.add(styles.clock);
+      docRoot.classList.add(styles.clock);
     }
 
     if (urlParams.get('clock') !== 'custom') {
-      docRoot.classList.add(
-        styles[(urlParams.get('bgColor') as string) + '-clock']
-      );
+      docRoot.classList.add(styles[urlParams.get('clock') + '-clock']);
     } else {
       docRoot.style.backgroundColor = '#' + urlParams.get('bgColor');
     }
@@ -50,7 +47,7 @@ export default function Clock(): JSX.Element {
       newTimeConfig.time = dayjs().format(timeFormat);
       setConfig(newTimeConfig);
     }, 1000);
-  });
+  }, []);
 
   return (
     <main className={styles.clock}>

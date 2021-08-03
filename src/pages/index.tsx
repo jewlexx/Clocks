@@ -38,7 +38,9 @@ export default class Generator extends Component<null, GeneratorState> {
     clockUrl.pathname = '/clock/';
 
     for (const key in this.state.config) {
-      clockUrl.searchParams.append(key, this.state.config[key]);
+      // This is needed to make typescript SHUT UP :)
+      const configKey = key as 'clock' | 'timeFormat' | 'bgColor' | 'fgColor';
+      clockUrl.searchParams.append(key, this.state.config[configKey]);
     }
 
     // Saves the url to clipboard
