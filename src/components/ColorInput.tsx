@@ -24,7 +24,7 @@ export default function ColorInput({
   return (
     <>
       <InputLabel>
-        Time Color{': #'}
+        Time Color: #
         <Input
           type='text'
           value={valueFG}
@@ -32,7 +32,7 @@ export default function ColorInput({
         />
       </InputLabel>
       <InputLabel id='background-color-picker'>
-        Background Color{': #'}
+        Background Color: #
         <Input
           type='text'
           value={valueBG}
@@ -40,7 +40,7 @@ export default function ColorInput({
         />
       </InputLabel>
       <InputLabel>
-        Time Format{': '}
+        Time Format:{' '}
         <Input type='text' value={timeFormat} onChange={onChangeFormat}></Input>
         <a
           href='https://day.js.org/docs/en/display/format'
