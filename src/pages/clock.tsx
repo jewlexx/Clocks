@@ -4,6 +4,12 @@ import dayjs from 'dayjs';
 import styles from '@styles/modules/clock.module.scss';
 import type { ClockState } from '@typings/Clock';
 
+declare global {
+  interface Window {
+    timer: number;
+  }
+}
+
 export default function Clock(): JSX.Element {
   const [config, setConfig] = useState<ClockState>({
     time: '00:00:00',
@@ -42,7 +48,7 @@ export default function Clock(): JSX.Element {
 
     setConfig(newConfig);
 
-    setInterval(() => {
+    window.timer = window.setInterval(() => {
       const newTimeConfig: ClockState = { ...config };
       newTimeConfig.time = dayjs().format(timeFormat);
       setConfig(newTimeConfig);

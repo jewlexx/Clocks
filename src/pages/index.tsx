@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import styles from '@styles/modules/generator.module.scss';
-import type { ClockType, GeneratorState } from '@typings/Generator';
+import type { ClockType, GeneratorConfig } from '@typings/Generator';
 import {
   Paper,
   Button,
@@ -12,149 +13,151 @@ import {
   MenuItem,
 } from '@material-ui/core';
 
-export default class Generator extends Component<null, GeneratorState> {
-  clocks = ['custom', 'pride', 'transparent'];
-
-  constructor(props: null) {
-    super(props);
-    this.state = {
-      config: {
-        clock: 'custom',
-        timeFormat: 'h:mm:ss A',
-        bgColor: 'FFF',
-        fgColor: '000',
-      },
-    };
-
-    this.handleGenerate = this.handleGenerate.bind(this);
-    this.handleColorChange = this.handleColorChange.bind(this);
-    this.handleFormatChange = this.handleFormatChange.bind(this);
-    this.handleChangeClock = this.handleChangeClock.bind(this);
+declare global {
+  interface Window {
+    timer: number;
   }
+}
 
-  async handleGenerate(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
+export default function Generator(): JSX.Element {
+  const clocks = ['custom', 'pride', 'transparent'];
+  const router = useRouter();
+
+  useEffect(() => {
+    const docRoot = document.getElementById('__next');
+    if ('timer' in window) {
+      window.clearInterval(window.timer);
+    }
+
+    if (docRoot !== null) docRoot.className = '';
+    document.body.className = '';
+  }, []);
+
+  const [config, setConfig] = useState<GeneratorConfig>({
+    clock: 'custom',
+    timeFormat: 'h:mm:ss A',
+    bgColor: 'FFF',
+    fgColor: '000',
+  });
+
+  async function handleGenerate(
+    e: React.MouseEvent<HTMLButtonElement>
+  ): Promise<void> {
     e.preventDefault();
     const clockUrl = new URL(window.location.href);
     clockUrl.pathname = '/clock/';
 
-    for (const key in this.state.config) {
+    for (const key in config) {
       // This is needed to make typescript SHUT UP :)
       const configKey = key as 'clock' | 'timeFormat' | 'bgColor' | 'fgColor';
-      clockUrl.searchParams.append(key, this.state.config[configKey]);
+      clockUrl.searchParams.append(key, config[configKey]);
     }
 
     // Saves the url to clipboard
     navigator.clipboard.writeText(clockUrl.href);
 
     // Opens this url in a new tab
-    window.open(clockUrl.href, '_self');
+    router.push(clockUrl.href);
   }
 
-  async handleColorChange(
+  async function handleColorChange(
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     ground: 'bg' | 'fg'
   ): Promise<void> {
     if (!(e.target.value.length > 8)) {
-      const config = { ...this.state.config };
-      config[ground === 'bg' ? 'bgColor' : 'fgColor'] = e.target.value;
-      this.setState({ config });
+      const oldConfig = { ...config };
+      oldConfig[ground === 'bg' ? 'bgColor' : 'fgColor'] = e.target.value;
+      setConfig(oldConfig);
     }
   }
 
-  async handleFormatChange(
+  async function handleFormatChange(
     e: React.ChangeEvent<HTMLInputElement>
   ): Promise<void> {
-    const config = { ...this.state.config };
-    config.timeFormat = e.target.value;
+    const oldConfig = { ...config };
+    oldConfig.timeFormat = e.target.value;
 
-    this.setState({ config });
+    setConfig(oldConfig);
   }
 
-  async handleChangeClock(
+  async function handleChangeClock(
     e: React.ChangeEvent<{
       name?: string | undefined;
       value: unknown;
     }>
   ): Promise<void> {
-    const config = { ...this.state.config };
+    const oldConfig = { ...config };
 
     console.log(e.target.value);
 
-    config.clock = e.target.value as ClockType;
+    oldConfig.clock = e.target.value as ClockType;
 
-    this.setState({ config });
+    setConfig(oldConfig);
   }
 
-  render(): JSX.Element {
-    return (
-      <Paper className={styles.clockGenerator} variant='elevation'>
-        <main>
-          <Head>
-            <title>Clock Generator</title>
-          </Head>
-          <FormGroup>
-            <Select
-              value={this.state.config.clock}
-              onChange={this.handleChangeClock}
-              variant='filled'
-              title='Select your clock'
-            >
-              {this.clocks.map((item, i) => {
-                const itemName =
-                  item.substr(0, 1).toUpperCase() + item.substr(1);
-                return (
-                  <MenuItem key={i} value={item}>
-                    {itemName + ' Clock'}
-                  </MenuItem>
-                );
-              })}
-            </Select>
+  return (
+    <Paper className={styles.clockGenerator} variant='elevation'>
+      <main>
+        <Head>
+          <title>Clock Generator</title>
+        </Head>
+        <FormGroup>
+          <Select
+            value={config.clock}
+            onChange={handleChangeClock}
+            variant='filled'
+            title='Select your clock'
+          >
+            {clocks.map((item, i) => {
+              const itemName = item.substr(0, 1).toUpperCase() + item.substr(1);
+              return (
+                <MenuItem key={i} value={item}>
+                  {itemName + ' Clock'}
+                </MenuItem>
+              );
+            })}
+          </Select>
 
-            <InputLabel>
-              Time Color: #
+          <InputLabel>
+            Time Color: #
+            <Input
+              type='text'
+              value={config.fgColor}
+              onChange={e => handleColorChange(e, 'fg')}
+            />
+          </InputLabel>
+          {config.clock === 'custom' && (
+            <InputLabel id='background-color-picker'>
+              Background Color: #
               <Input
                 type='text'
-                value={this.state.config.fgColor}
-                onChange={e => this.handleColorChange(e, 'fg')}
+                value={config.bgColor}
+                onChange={e => handleColorChange(e, 'bg')}
               />
             </InputLabel>
-            {this.state.config.clock === 'custom' && (
-              <InputLabel id='background-color-picker'>
-                Background Color: #
-                <Input
-                  type='text'
-                  value={this.state.config.bgColor}
-                  onChange={e => this.handleColorChange(e, 'bg')}
-                />
-              </InputLabel>
-            )}
-            <InputLabel>
-              Time Format:{' '}
-              <Input
-                type='text'
-                value={this.state.config.timeFormat}
-                onChange={this.handleFormatChange}
-              />{' '}
-              <a
-                href='https://day.js.org/docs/en/display/format'
-                target='_blank'
-                rel='noreferrer'
-                className={styles.link}
-              >
-                For more info click here
-              </a>
-            </InputLabel>
-
-            <Button
-              onClick={this.handleGenerate}
-              variant='contained'
-              color='primary'
+          )}
+          <InputLabel>
+            Time Format:{' '}
+            <Input
+              type='text'
+              value={config.timeFormat}
+              onChange={handleFormatChange}
+            />{' '}
+            <a
+              href='https://day.js.org/docs/en/display/format'
+              target='_blank'
+              rel='noreferrer'
+              className={styles.link}
             >
-              Generate URL
-            </Button>
-          </FormGroup>
-        </main>
-      </Paper>
-    );
-  }
+              For more info click here
+            </a>
+          </InputLabel>
+
+          <Button onClick={handleGenerate} variant='contained' color='primary'>
+            Generate URL
+          </Button>
+        </FormGroup>
+      </main>
+    </Paper>
+  );
 }
