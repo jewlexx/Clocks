@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
 import styles from '@styles/modules/generator.module.scss';
 import type { ClockType, GeneratorConfig } from '@typings/Generator';
 import {
@@ -14,6 +15,7 @@ import {
 
 export default function Generator(): JSX.Element {
   const clocks = ['custom', 'pride', 'transparent'];
+  const router = useRouter();
 
   const [config, setConfig] = useState<GeneratorConfig>({
     clock: 'custom',
@@ -39,7 +41,7 @@ export default function Generator(): JSX.Element {
     navigator.clipboard.writeText(clockUrl.href);
 
     // Opens this url in a new tab
-    window.open(clockUrl.href, '_self');
+    router.push(clockUrl.href);
   }
 
   async function handleColorChange(
@@ -48,7 +50,7 @@ export default function Generator(): JSX.Element {
   ): Promise<void> {
     if (!(e.target.value.length > 8)) {
       const oldConfig = { ...config };
-      config[ground === 'bg' ? 'bgColor' : 'fgColor'] = e.target.value;
+      oldConfig[ground === 'bg' ? 'bgColor' : 'fgColor'] = e.target.value;
       setConfig(oldConfig);
     }
   }
@@ -57,7 +59,7 @@ export default function Generator(): JSX.Element {
     e: React.ChangeEvent<HTMLInputElement>
   ): Promise<void> {
     const oldConfig = { ...config };
-    config.timeFormat = e.target.value;
+    oldConfig.timeFormat = e.target.value;
 
     setConfig(oldConfig);
   }
@@ -72,7 +74,7 @@ export default function Generator(): JSX.Element {
 
     console.log(e.target.value);
 
-    config.clock = e.target.value as ClockType;
+    oldConfig.clock = e.target.value as ClockType;
 
     setConfig(oldConfig);
   }
