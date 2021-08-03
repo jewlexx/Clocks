@@ -41,7 +41,7 @@ export default function ColorInput({
       </InputLabel>
       <InputLabel>
         Time Format:{' '}
-        <Input type='text' value={timeFormat} onChange={onChangeFormat}></Input>
+        <Input type='text' value={timeFormat} onChange={onChangeFormat} />
         <a
           href='https://day.js.org/docs/en/display/format'
           target='_blank'
