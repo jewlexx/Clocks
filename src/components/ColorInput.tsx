@@ -17,7 +17,7 @@ export default function ColorInput({
         Time Color{': #'}
         <Input type='text' value={valueFG} onChange={onChangeFG} />
       </InputLabel>
-      <InputLabel>
+      <InputLabel id='background-color-picker'>
         Background Color{': #'}
         <Input type='text' value={valueBG} onChange={onChangeBG} />
       </InputLabel>

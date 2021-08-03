@@ -74,6 +74,7 @@ export default class Generator extends Component<null, GeneratorState> {
               onChange={e => this.setState({ timeFormat: e.target.value })}
               timeFormat={this.state.timeFormat}
             />
+
             <Button
               onClick={this.handleGenerate} /* className={styles.genButton} */
               variant='contained'

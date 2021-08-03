@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { Select, MenuItem } from '@material-ui/core';
 import type { ClockSelectProps, ClockSelectState } from '@typings/ClockSelect';
 
@@ -22,6 +22,11 @@ export default class ClockSelect extends Component<
       value: unknown;
     }>
   ): void {
+    const el = document.getElementById('background-color-picker');
+    if (el) {
+      el.hidden = e.target.value !== 'custom';
+    }
+
     this.setState({
       clock: e.target.value as string,
     });
