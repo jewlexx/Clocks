@@ -1,11 +1,20 @@
 import React, { Component } from 'react';
 import Head from 'next/head';
-import ClockSelect from '@components/ClockSelect';
 import styles from '@styles/modules/generator.module.scss';
 import type { ClockType, GeneratorState } from '@typings/Generator';
-import { Paper, Button, FormGroup, InputLabel, Input } from '@material-ui/core';
+import {
+  Paper,
+  Button,
+  FormGroup,
+  InputLabel,
+  Input,
+  Select,
+  MenuItem,
+} from '@material-ui/core';
 
 export default class Generator extends Component<null, GeneratorState> {
+  clocks = ['custom', 'pride', 'transparent'];
+
   constructor(props: null) {
     super(props);
     this.state = {
@@ -94,11 +103,22 @@ export default class Generator extends Component<null, GeneratorState> {
             <title>Clock Generator</title>
           </Head>
           <FormGroup>
-            <ClockSelect
-              clocks={['custom', 'pride', 'transparent']}
+            <Select
               value={this.state.config.clock}
               onChange={this.handleChangeClock}
-            />
+              variant='filled'
+              title='Select your clock'
+            >
+              {this.clocks.map((item, i) => {
+                const itemName =
+                  item.substr(0, 1).toUpperCase() + item.substr(1);
+                return (
+                  <MenuItem key={i} value={item}>
+                    {itemName}
+                  </MenuItem>
+                );
+              })}
+            </Select>
 
             <InputLabel>
               Time Color: #
