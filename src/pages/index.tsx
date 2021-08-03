@@ -1,47 +1,47 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Head from 'next/head';
-import ClockSelect from '@components/ClockSelect';
-import ColorInput from '@components/ColorInput';
-import TimeFormat from '@components/TimeFormat';
 import styles from '@styles/modules/generator.module.scss';
-import type { GeneratorState } from '@typings/Generator';
+import type { ClockType, GeneratorState } from '@typings/Generator';
+import {
+  Paper,
+  Button,
+  FormGroup,
+  InputLabel,
+  Input,
+  Select,
+  MenuItem,
+} from '@material-ui/core';
 
 export default class Generator extends Component<null, GeneratorState> {
+  clocks = ['custom', 'pride', 'transparent'];
+
   constructor(props: null) {
     super(props);
     this.state = {
-      timeFormat: 'h:mm:ss A',
-      fgColor: '000',
-      bgColor: 'FFF',
+      config: {
+        clock: 'custom',
+        timeFormat: 'h:mm:ss A',
+        bgColor: 'FFF',
+        fgColor: '000',
+      },
     };
 
     this.handleGenerate = this.handleGenerate.bind(this);
+    this.handleColorChange = this.handleColorChange.bind(this);
+    this.handleFormatChange = this.handleFormatChange.bind(this);
+    this.handleChangeClock = this.handleChangeClock.bind(this);
   }
 
-  handleGenerate(e: React.MouseEvent<HTMLButtonElement>): void {
+  async handleGenerate(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
     e.preventDefault();
     const clockUrl = new URL(window.location.href);
     clockUrl.pathname = '/clock/';
 
-    // Var definitions
-    const clockSelect = document.getElementById(
-      'clock-selector'
-    ) as HTMLSelectElement;
-
-    clockUrl.searchParams.append(
-      'bgColor',
-      clockSelect.value === 'custom'
-        ? this.state.bgColor || 'fff'
-        : `**${clockSelect.value}**`
-    );
-
-    clockUrl.searchParams.append('color', this.state.fgColor || '000');
-
-    clockUrl.searchParams.append(
-      'format',
-      this.state.timeFormat || 'h:mm:ss A'
-    );
+    for (const key in this.state.config) {
+      // This is needed to make typescript SHUT UP :)
+      const configKey = key as 'clock' | 'timeFormat' | 'bgColor' | 'fgColor';
+      clockUrl.searchParams.append(key, this.state.config[configKey]);
+    }
 
     // Saves the url to clipboard
     navigator.clipboard.writeText(clockUrl.href);
@@ -50,36 +50,111 @@ export default class Generator extends Component<null, GeneratorState> {
     window.open(clockUrl.href, '_self');
   }
 
+  async handleColorChange(
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    ground: 'bg' | 'fg'
+  ): Promise<void> {
+    if (!(e.target.value.length > 8)) {
+      const config = { ...this.state.config };
+      config[ground === 'bg' ? 'bgColor' : 'fgColor'] = e.target.value;
+      this.setState({ config });
+    }
+  }
+
+  async handleFormatChange(
+    e: React.ChangeEvent<HTMLInputElement>
+  ): Promise<void> {
+    const config = { ...this.state.config };
+    config.timeFormat = e.target.value;
+
+    this.setState({ config });
+  }
+
+  async handleChangeClock(
+    e: React.ChangeEvent<{
+      name?: string | undefined;
+      value: unknown;
+    }>
+  ): Promise<void> {
+    const config = { ...this.state.config };
+
+    console.log(e.target.value);
+
+    config.clock = e.target.value as ClockType;
+
+    this.setState({ config });
+  }
+
   render(): JSX.Element {
     return (
-      <main className={styles.clockGenerator}>
-        <Head>
-          <title>Clock Generator</title>
-        </Head>
-        <button className={styles.genButton} onClick={this.handleGenerate}>
-          Generate URL
-        </button>
+      <Paper className={styles.clockGenerator} variant='elevation'>
+        <main>
+          <Head>
+            <title>Clock Generator</title>
+          </Head>
+          <FormGroup>
+            <Select
+              value={this.state.config.clock}
+              onChange={this.handleChangeClock}
+              variant='filled'
+              title='Select your clock'
+            >
+              {this.clocks.map((item, i) => {
+                const itemName =
+                  item.substr(0, 1).toUpperCase() + item.substr(1);
+                return (
+                  <MenuItem key={i} value={item}>
+                    {itemName + ' Clock'}
+                  </MenuItem>
+                );
+              })}
+            </Select>
 
-        <ClockSelect clocks={['custom', 'pride', 'transparent']} />
+            <InputLabel>
+              Time Color: #
+              <Input
+                type='text'
+                value={this.state.config.fgColor}
+                onChange={e => this.handleColorChange(e, 'fg')}
+              />
+            </InputLabel>
+            {this.state.config.clock === 'custom' && (
+              <InputLabel id='background-color-picker'>
+                Background Color: #
+                <Input
+                  type='text'
+                  value={this.state.config.bgColor}
+                  onChange={e => this.handleColorChange(e, 'bg')}
+                />
+              </InputLabel>
+            )}
+            <InputLabel>
+              Time Format:{' '}
+              <Input
+                type='text'
+                value={this.state.config.timeFormat}
+                onChange={this.handleFormatChange}
+              />{' '}
+              <a
+                href='https://day.js.org/docs/en/display/format'
+                target='_blank'
+                rel='noreferrer'
+                className={styles.link}
+              >
+                For more info click here
+              </a>
+            </InputLabel>
 
-        <TimeFormat
-          onChange={e => this.setState({ timeFormat: e.target.value })}
-          timeFormat={this.state.timeFormat}
-        />
-
-        <ColorInput
-          valueFG={this.state.fgColor}
-          valueBG={this.state.bgColor}
-          onChangeFG={e => {
-            if (!(e.target.value.length > 8))
-              this.setState({ fgColor: e.target.value });
-          }}
-          onChangeBG={e => {
-            if (!(e.target.value.length > 8))
-              this.setState({ bgColor: e.target.value });
-          }}
-        />
-      </main>
+            <Button
+              onClick={this.handleGenerate}
+              variant='contained'
+              color='primary'
+            >
+              Generate URL
+            </Button>
+          </FormGroup>
+        </main>
+      </Paper>
     );
   }
 }
