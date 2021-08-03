@@ -1,5 +1,5 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { Component } from 'react';
+import { Select, MenuItem } from '@material-ui/core';
 import type { ClockSelectProps, ClockSelectState } from '@typings/ClockSelect';
 
 export default class ClockSelect extends Component<
@@ -16,33 +16,35 @@ export default class ClockSelect extends Component<
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleChange(e: React.ChangeEvent<HTMLSelectElement>): void {
+  handleChange(
+    e: React.ChangeEvent<{
+      name?: string | undefined;
+      value: unknown;
+    }>
+  ): void {
     this.setState({
-      clock: e.target.value,
+      clock: e.target.value as string,
     });
   }
 
   render(): JSX.Element {
     return (
-      <div>
-        <form>
-          <select
-            value={this.state.clock}
-            onChange={this.handleChange}
-            id='clock-selector'
-            title='Select your clock'
-          >
-            {this.props.clocks.map((item, i) => {
-              const itemName = item.substr(0, 1).toUpperCase() + item.substr(1);
-              return (
-                <option key={i} value={item}>
-                  {itemName}
-                </option>
-              );
-            })}
-          </select>
-        </form>
-      </div>
+      <Select
+        value={this.state.clock}
+        onChange={this.handleChange}
+        variant='filled'
+        id='clock-selector'
+        title='Select your clock'
+      >
+        {this.props.clocks.map((item, i) => {
+          const itemName = item.substr(0, 1).toUpperCase() + item.substr(1);
+          return (
+            <MenuItem key={i} value={item}>
+              {itemName}
+            </MenuItem>
+          );
+        })}
+      </Select>
     );
   }
 }

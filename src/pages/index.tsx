@@ -3,9 +3,9 @@ import { Component } from 'react';
 import Head from 'next/head';
 import ClockSelect from '@components/ClockSelect';
 import ColorInput from '@components/ColorInput';
-import TimeFormat from '@components/TimeFormat';
 import styles from '@styles/modules/generator.module.scss';
 import type { GeneratorState } from '@typings/Generator';
+import { Paper, FormControl, FormGroup } from '@material-ui/core';
 
 export default class Generator extends Component<null, GeneratorState> {
   constructor(props: null) {
@@ -52,34 +52,35 @@ export default class Generator extends Component<null, GeneratorState> {
 
   render(): JSX.Element {
     return (
-      <main className={styles.clockGenerator}>
-        <Head>
-          <title>Clock Generator</title>
-        </Head>
-        <button className={styles.genButton} onClick={this.handleGenerate}>
-          Generate URL
-        </button>
+      <Paper className={styles.clockGenerator} variant='elevation'>
+        <main>
+          <Head>
+            <title>Clock Generator</title>
+          </Head>
+          <FormGroup>
+            {/* <button className={styles.genButton} onClick={this.handleGenerate}>
+              Generate URL
+            </button> */}
 
-        <ClockSelect clocks={['custom', 'pride', 'transparent']} />
+            <ClockSelect clocks={['custom', 'pride', 'transparent']} />
 
-        <TimeFormat
-          onChange={e => this.setState({ timeFormat: e.target.value })}
-          timeFormat={this.state.timeFormat}
-        />
-
-        <ColorInput
-          valueFG={this.state.fgColor}
-          valueBG={this.state.bgColor}
-          onChangeFG={e => {
-            if (!(e.target.value.length > 8))
-              this.setState({ fgColor: e.target.value });
-          }}
-          onChangeBG={e => {
-            if (!(e.target.value.length > 8))
-              this.setState({ bgColor: e.target.value });
-          }}
-        />
-      </main>
+            <ColorInput
+              valueFG={this.state.fgColor}
+              valueBG={this.state.bgColor}
+              onChangeFG={e => {
+                if (!(e.target.value.length > 8))
+                  this.setState({ fgColor: e.target.value });
+              }}
+              onChangeBG={e => {
+                if (!(e.target.value.length > 8))
+                  this.setState({ bgColor: e.target.value });
+              }}
+              onChange={e => this.setState({ timeFormat: e.target.value })}
+              timeFormat={this.state.timeFormat}
+            />
+          </FormGroup>
+        </main>
+      </Paper>
     );
   }
 }
