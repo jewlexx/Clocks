@@ -37,21 +37,9 @@ export default class Generator extends Component<null, GeneratorState> {
     const clockUrl = new URL(window.location.href);
     clockUrl.pathname = '/clock/';
 
-    const currentClock = this.state.config.clock;
-
-    clockUrl.searchParams.append(
-      'bgColor',
-      currentClock === 'custom'
-        ? this.state.config.bgColor || 'fff'
-        : `**${currentClock}**`
-    );
-
-    clockUrl.searchParams.append('color', this.state.config.fgColor || '000');
-
-    clockUrl.searchParams.append(
-      'format',
-      this.state.config.timeFormat || 'h:mm:ss A'
-    );
+    for (const key in this.state.config) {
+      clockUrl.searchParams.append(key, this.state.config[key]);
+    }
 
     // Saves the url to clipboard
     navigator.clipboard.writeText(clockUrl.href);
