@@ -98,18 +98,6 @@ export default function Generator(): JSX.Element {
     setConfig(oldConfig);
   }
 
-  function SaveButton(): JSX.Element {
-    return (
-      <Button
-        color='secondary'
-        variant='contained'
-        className={styles.saveConfig}
-      >
-        Save Config
-      </Button>
-    );
-  }
-
   return (
     <div id='root'>
       <Paper className={styles.clockGenerator} variant='elevation'>
@@ -120,7 +108,13 @@ export default function Generator(): JSX.Element {
           <FormGroup>
             <form className={styles.saveConfig}>
               <Input placeholder='Config Name' color='secondary' type='text' />
-              <SaveButton />
+              <Button
+                color='secondary'
+                variant='contained'
+                className={styles.saveConfig}
+              >
+                Save Config
+              </Button>
             </form>
             <br />
             <Select
