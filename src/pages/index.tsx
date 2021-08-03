@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import Head from 'next/head';
 import ClockSelect from '@components/ClockSelect';
-import ColorInput from '@components/ColorInput';
 import styles from '@styles/modules/generator.module.scss';
 import type { ClockType, GeneratorState } from '@typings/Generator';
-import type { CustomChangeEvent } from '@typings/ColorInput';
-import { Paper, Button, FormGroup } from '@material-ui/core';
+import { Paper, Button, FormGroup, InputLabel, Input } from '@material-ui/core';
 
 export default class Generator extends Component<null, GeneratorState> {
   constructor(props: null) {
@@ -54,11 +52,12 @@ export default class Generator extends Component<null, GeneratorState> {
   }
 
   async handleColorChange(
-    e: CustomChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+    ground: 'bg' | 'fg'
   ): Promise<void> {
     if (!(e.target.value.length > 8)) {
       const config = { ...this.state.config };
-      config[e.ground === 'bg' ? 'bgColor' : 'fgColor'] = e.target.value;
+      config[ground === 'bg' ? 'bgColor' : 'fgColor'] = e.target.value;
       this.setState({ config });
     }
   }
@@ -101,13 +100,40 @@ export default class Generator extends Component<null, GeneratorState> {
               onChange={this.handleChangeClock}
             />
 
-            <ColorInput
-              valueFG={this.state.config.fgColor}
-              valueBG={this.state.config.bgColor}
-              timeFormat={this.state.config.timeFormat}
-              onChangeColor={this.handleColorChange}
-              onChangeFormat={this.handleFormatChange}
-            />
+            <InputLabel>
+              Time Color: #
+              <Input
+                type='text'
+                value={this.state.config.fgColor}
+                onChange={e => this.handleColorChange(e, 'fg')}
+              />
+            </InputLabel>
+            {this.state.config.clock === 'custom' && (
+              <InputLabel id='background-color-picker'>
+                Background Color: #
+                <Input
+                  type='text'
+                  value={this.state.config.bgColor}
+                  onChange={e => this.handleColorChange(e, 'bg')}
+                />
+              </InputLabel>
+            )}
+            <InputLabel>
+              Time Format:{' '}
+              <Input
+                type='text'
+                value={this.state.config.timeFormat}
+                onChange={this.handleFormatChange}
+              />{' '}
+              <a
+                href='https://day.js.org/docs/en/display/format'
+                target='_blank'
+                rel='noreferrer'
+                className={styles.link}
+              >
+                For more info click here
+              </a>
+            </InputLabel>
 
             <Button
               onClick={this.handleGenerate}
