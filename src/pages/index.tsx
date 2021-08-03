@@ -6,6 +6,7 @@ import type { ClockType, GeneratorConfig } from '@typings/Generator';
 import {
   Paper,
   Button,
+  ButtonGroup,
   FormGroup,
   InputLabel,
   Input,
@@ -153,9 +154,18 @@ export default function Generator(): JSX.Element {
             </a>
           </InputLabel>
 
-          <Button onClick={handleGenerate} variant='contained' color='primary'>
-            Generate URL
-          </Button>
+          <ButtonGroup fullWidth>
+            <Button
+              onClick={handleGenerate}
+              variant='contained'
+              color='primary'
+            >
+              Generate URL
+            </Button>
+            <Button variant='contained' color='secondary'>
+              Save Config
+            </Button>
+          </ButtonGroup>
         </FormGroup>
       </main>
     </Paper>
