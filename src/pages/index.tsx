@@ -11,6 +11,9 @@ import {
   Input,
   Select,
   MenuItem,
+  FormControl,
+  TextField,
+  ButtonGroup,
 } from '@material-ui/core';
 
 declare global {
@@ -95,85 +98,93 @@ export default function Generator(): JSX.Element {
     setConfig(oldConfig);
   }
 
-  return (
-    <>
-      <div id='root'>
-        <Button
-          variant='contained'
-          color='secondary'
-          className={styles.saveConfig}
-        >
-          Save Config
-        </Button>
-        <Paper className={styles.clockGenerator} variant='elevation'>
-          <main>
-            <Head>
-              <title>Clock Generator</title>
-            </Head>
-            <FormGroup>
-              <Select
-                value={config.clock}
-                onChange={handleChangeClock}
-                variant='filled'
-                title='Select your clock'
-              >
-                {clocks.map((item, i) => {
-                  const itemName =
-                    item.substr(0, 1).toUpperCase() + item.substr(1);
-                  return (
-                    <MenuItem key={i} value={item}>
-                      {itemName + ' Clock'}
-                    </MenuItem>
-                  );
-                })}
-              </Select>
+  function SaveButton(): JSX.Element {
+    return (
+      <Button
+        color='secondary'
+        variant='contained'
+        className={styles.saveConfig}
+      >
+        Save Config
+      </Button>
+    );
+  }
 
-              <InputLabel>
-                Time Color: #
+  return (
+    <div id='root'>
+      <Paper className={styles.clockGenerator} variant='elevation'>
+        <main>
+          <Head>
+            <title>Clock Generator</title>
+          </Head>
+          <FormGroup>
+            <form className={styles.saveConfig}>
+              <Input placeholder='Config Name' color='secondary' type='text' />
+              <SaveButton />
+            </form>
+            <br />
+            <Select
+              value={config.clock}
+              onChange={handleChangeClock}
+              variant='filled'
+              title='Select your clock'
+            >
+              {clocks.map((item, i) => {
+                const itemName =
+                  item.substr(0, 1).toUpperCase() + item.substr(1);
+                return (
+                  <MenuItem key={i} value={item}>
+                    {itemName + ' Clock'}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+
+            <InputLabel>
+              Time Color: #
+              <Input
+                type='text'
+                value={config.fgColor}
+                onChange={e => handleColorChange(e, 'fg')}
+              />
+            </InputLabel>
+            {config.clock === 'custom' && (
+              <InputLabel id='background-color-picker'>
+                Background Color: #
                 <Input
                   type='text'
-                  value={config.fgColor}
-                  onChange={e => handleColorChange(e, 'fg')}
+                  value={config.bgColor}
+                  onChange={e => handleColorChange(e, 'bg')}
                 />
               </InputLabel>
-              {config.clock === 'custom' && (
-                <InputLabel id='background-color-picker'>
-                  Background Color: #
-                  <Input
-                    type='text'
-                    value={config.bgColor}
-                    onChange={e => handleColorChange(e, 'bg')}
-                  />
-                </InputLabel>
-              )}
-              <InputLabel>
-                Time Format:{' '}
-                <Input
-                  type='text'
-                  value={config.timeFormat}
-                  onChange={handleFormatChange}
-                />{' '}
-                <a
-                  href='https://day.js.org/docs/en/display/format'
-                  target='_blank'
-                  rel='noreferrer'
-                  className={styles.link}
-                >
-                  For more info click here
-                </a>
-              </InputLabel>
-
-              <Button
-                onClick={handleGenerate}
-                variant='contained'
-                color='primary'
+            )}
+            <InputLabel>
+              Time Format:{' '}
+              <Input
+                type='text'
+                value={config.timeFormat}
+                onChange={handleFormatChange}
+              />{' '}
+              <a
+                href='https://day.js.org/docs/en/display/format'
+                target='_blank'
+                rel='noreferrer'
+                className={styles.link}
               >
-                Generate URL
-              </Button>
-            </FormGroup>
-          </main>
-        </Paper>
-      </div>
-    </>
+                For more info click here
+              </a>
+            </InputLabel>
+
+            <Button
+              onClick={handleGenerate}
+              variant='contained'
+              color='primary'
+            >
+              Generate URL
+            </Button>
+          </FormGroup>
+        </main>
+      </Paper>
+    </div>
   );
 }
