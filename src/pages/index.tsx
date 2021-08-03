@@ -5,7 +5,7 @@ import ClockSelect from '@components/ClockSelect';
 import ColorInput from '@components/ColorInput';
 import styles from '@styles/modules/generator.module.scss';
 import type { GeneratorState } from '@typings/Generator';
-import { Paper, FormControl, FormGroup } from '@material-ui/core';
+import { Paper, Button, FormGroup } from '@material-ui/core';
 
 export default class Generator extends Component<null, GeneratorState> {
   constructor(props: null) {
@@ -58,10 +58,6 @@ export default class Generator extends Component<null, GeneratorState> {
             <title>Clock Generator</title>
           </Head>
           <FormGroup>
-            {/* <button className={styles.genButton} onClick={this.handleGenerate}>
-              Generate URL
-            </button> */}
-
             <ClockSelect clocks={['custom', 'pride', 'transparent']} />
 
             <ColorInput
@@ -78,6 +74,13 @@ export default class Generator extends Component<null, GeneratorState> {
               onChange={e => this.setState({ timeFormat: e.target.value })}
               timeFormat={this.state.timeFormat}
             />
+            <Button
+              onClick={this.handleGenerate} /* className={styles.genButton} */
+              variant='contained'
+              color='primary'
+            >
+              Generate URL
+            </Button>
           </FormGroup>
         </main>
       </Paper>
