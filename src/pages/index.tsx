@@ -11,9 +11,6 @@ import {
   Input,
   Select,
   MenuItem,
-  FormControl,
-  TextField,
-  ButtonGroup,
 } from '@material-ui/core';
 
 declare global {
@@ -42,6 +39,8 @@ export default function Generator(): JSX.Element {
     bgColor: 'FFF',
     fgColor: '000',
   });
+
+  const [configName, setConfigName] = useState<string>('');
 
   async function handleGenerate(
     e: React.MouseEvent<HTMLButtonElement>
@@ -98,6 +97,17 @@ export default function Generator(): JSX.Element {
     setConfig(oldConfig);
   }
 
+  async function saveConfig(
+    e:
+      | React.FormEvent<HTMLFormElement>
+      | React.MouseEvent<HTMLButtonElement | MouseEvent>
+  ): Promise<void> {
+    e.preventDefault();
+
+    console.table(configName, Object.values(config));
+    setConfigName('');
+  }
+
   return (
     <div id='root'>
       <Paper className={styles.clockGenerator} variant='elevation'>
@@ -106,12 +116,19 @@ export default function Generator(): JSX.Element {
             <title>Clock Generator</title>
           </Head>
           <FormGroup>
-            <form className={styles.saveConfig}>
-              <Input placeholder='Config Name' color='secondary' type='text' />
+            <form className={styles.saveConfig} onSubmit={saveConfig}>
+              <Input
+                placeholder='Config Name'
+                color='secondary'
+                type='text'
+                value={configName}
+                onChange={e => setConfigName(e.target.value)}
+              />
               <Button
                 color='secondary'
                 variant='contained'
                 className={styles.saveConfig}
+                onClick={saveConfig}
               >
                 Save Config
               </Button>
