@@ -24,9 +24,13 @@ export default function Generator(): JSX.Element {
   const router = useRouter();
 
   useEffect(() => {
+    const docRoot = document.getElementById('__next');
     if ('timer' in window) {
       window.clearInterval(window.timer);
     }
+
+    if (docRoot !== null) docRoot.className = '';
+    document.body.className = '';
   }, []);
 
   const [config, setConfig] = useState<GeneratorConfig>({
