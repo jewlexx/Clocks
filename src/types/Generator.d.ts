@@ -1,5 +1,7 @@
+export type ClockType = 'pride' | 'transparent' | 'custom';
+
 export interface GeneratorConfig {
-  clock?: 'pride' | 'transparent';
+  clock: ClockType;
   bgColor: string;
   fgColor: string;
   timeFormat: string;

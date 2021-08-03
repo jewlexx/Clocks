@@ -3,7 +3,7 @@ import Head from 'next/head';
 import ClockSelect from '@components/ClockSelect';
 import ColorInput from '@components/ColorInput';
 import styles from '@styles/modules/generator.module.scss';
-import type { GeneratorState } from '@typings/Generator';
+import type { ClockType, GeneratorState } from '@typings/Generator';
 import type { CustomChangeEvent } from '@typings/ColorInput';
 import { Paper, Button, FormGroup } from '@material-ui/core';
 
@@ -11,12 +11,18 @@ export default class Generator extends Component<null, GeneratorState> {
   constructor(props: null) {
     super(props);
     this.state = {
-      config: { timeFormat: 'h:mm:ss A', bgColor: 'FFF', fgColor: '000' },
+      config: {
+        clock: 'custom',
+        timeFormat: 'h:mm:ss A',
+        bgColor: 'FFF',
+        fgColor: '000',
+      },
     };
 
     this.handleGenerate = this.handleGenerate.bind(this);
     this.handleColorChange = this.handleColorChange.bind(this);
     this.handleFormatChange = this.handleFormatChange.bind(this);
+    this.handleChangeClock = this.handleChangeClock.bind(this);
   }
 
   async handleGenerate(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
@@ -24,16 +30,13 @@ export default class Generator extends Component<null, GeneratorState> {
     const clockUrl = new URL(window.location.href);
     clockUrl.pathname = '/clock/';
 
-    // Var definitions
-    const clockSelect = document.getElementById(
-      'clock-selector'
-    ) as HTMLSelectElement;
+    const currentClock = this.state.config.clock;
 
     clockUrl.searchParams.append(
       'bgColor',
-      clockSelect.value === 'custom'
+      currentClock === 'custom'
         ? this.state.config.bgColor || 'fff'
-        : `**${clockSelect.value}**`
+        : `**${currentClock}**`
     );
 
     clockUrl.searchParams.append('color', this.state.config.fgColor || '000');
@@ -69,6 +72,21 @@ export default class Generator extends Component<null, GeneratorState> {
     this.setState({ config });
   }
 
+  async handleChangeClock(
+    e: React.ChangeEvent<{
+      name?: string | undefined;
+      value: unknown;
+    }>
+  ): Promise<void> {
+    const config = { ...this.state.config };
+
+    console.log(e.target.value);
+
+    config.clock = e.target.value as ClockType;
+
+    this.setState({ config });
+  }
+
   render(): JSX.Element {
     return (
       <Paper className={styles.clockGenerator} variant='elevation'>
@@ -77,7 +95,11 @@ export default class Generator extends Component<null, GeneratorState> {
             <title>Clock Generator</title>
           </Head>
           <FormGroup>
-            <ClockSelect clocks={['custom', 'pride', 'transparent']} />
+            <ClockSelect
+              clocks={['custom', 'pride', 'transparent']}
+              value={this.state.config.clock}
+              onChange={this.handleChangeClock}
+            />
 
             <ColorInput
               valueFG={this.state.config.fgColor}
