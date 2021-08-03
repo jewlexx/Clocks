@@ -19,7 +19,7 @@ export default class Generator extends Component<null, GeneratorState> {
     this.handleFormatChange = this.handleFormatChange.bind(this);
   }
 
-  handleGenerate(e: React.MouseEvent<HTMLButtonElement>): void {
+  async handleGenerate(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
     e.preventDefault();
     const clockUrl = new URL(window.location.href);
     clockUrl.pathname = '/clock/';
@@ -50,9 +50,9 @@ export default class Generator extends Component<null, GeneratorState> {
     window.open(clockUrl.href, '_self');
   }
 
-  handleColorChange(
+  async handleColorChange(
     e: CustomChangeEvent<HTMLTextAreaElement | HTMLInputElement>
-  ): void {
+  ): Promise<void> {
     if (!(e.target.value.length > 8)) {
       const config = { ...this.state.config };
       config[e.ground === 'bg' ? 'bgColor' : 'fgColor'] = e.target.value;
@@ -60,7 +60,9 @@ export default class Generator extends Component<null, GeneratorState> {
     }
   }
 
-  handleFormatChange(e: React.ChangeEvent<HTMLInputElement>): void {
+  async handleFormatChange(
+    e: React.ChangeEvent<HTMLInputElement>
+  ): Promise<void> {
     const config = { ...this.state.config };
     config.timeFormat = e.target.value;
 
