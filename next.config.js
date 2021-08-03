@@ -4,6 +4,7 @@ const runtimeCaching = require('next-pwa/cache');
 module.exports = withPWA({
   pwa: {
     dest: 'public',
+    disable: provess.env.NODE_ENV !== 'production',
     runtimeCaching,
   },
 });
