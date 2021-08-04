@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from '@styles/modules/generator.module.scss';
 import type { ClockType, GeneratorConfig, ClockConfig } from '@typings/Generator';
@@ -135,33 +136,6 @@ export default function Generator(): JSX.Element {
             <title>Clock Generator</title>
           </Head>
           <FormGroup>
-            <div>
-              <h3>Saved Configs:</h3>
-              <ButtonGroup>
-                {oldConfigs.map((val: ClockConfig, i) => (
-                  <Button key={i} onClick={() => setConfig(val.config)}>
-                    {val.name}
-                  </Button>
-                ))}
-              </ButtonGroup>
-              <form className={styles.saveConfig} onSubmit={saveConfig}>
-                <Input
-                  placeholder="Config Name"
-                  color="secondary"
-                  type="text"
-                  value={configName}
-                  onChange={(e) => setConfigName(e.target.value)}
-                />
-                <Button
-                  color="secondary"
-                  variant="contained"
-                  className={styles.saveConfig}
-                  onClick={saveConfig}
-                >
-                  Save Config
-                </Button>
-              </form>
-            </div>
             <br />
             <Select
               value={config.clock}
@@ -213,6 +187,34 @@ export default function Generator(): JSX.Element {
             <Button onClick={handleGenerate} variant="contained" color="primary">
               Generate URL
             </Button>
+            <hr />
+            <div>
+              <h3 style={{ padding: 0, margin: 5 }}>Saved Configs:</h3>
+              <ButtonGroup>
+                {oldConfigs.map((val: ClockConfig, i) => (
+                  <Button key={i} onClick={() => setConfig(val.config)}>
+                    {val.name}
+                  </Button>
+                ))}
+              </ButtonGroup>
+              <form className={styles.saveConfig} onSubmit={saveConfig}>
+                <Input
+                  placeholder="Config Name"
+                  color="secondary"
+                  type="text"
+                  value={configName}
+                  onChange={(e) => setConfigName(e.target.value)}
+                />
+                <Button
+                  color="secondary"
+                  variant="contained"
+                  className={styles.saveConfig}
+                  onClick={saveConfig}
+                >
+                  Save Config
+                </Button>
+              </form>
+            </div>
           </FormGroup>
         </main>
       </Paper>

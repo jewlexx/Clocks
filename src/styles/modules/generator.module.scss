@@ -1,16 +1,12 @@
 @import '../vars/all';
 
 .link {
-  color: #80df98;
+  color: #f50057;
   text-decoration: none;
   &:hover {
-    color: #a6ffbc;
+    color: #c51162;
+    text-decoration: underline;
   }
-}
-
-.saveConfig {
-  top: 5px;
-  left: 5px;
 }
 
 .clockGenerator {
