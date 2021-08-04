@@ -41,6 +41,8 @@ export default function Generator(): JSX.Element {
   const clocks = ['custom', 'pride', 'transparent'];
   const router = useRouter();
 
+  const [oldConfigs, setOldConfigs] = useState<ClockConfig[]>([]);
+
   useEffect(() => {
     const docRoot = document.getElementById('__next');
     if ('timer' in window) {
@@ -49,6 +51,8 @@ export default function Generator(): JSX.Element {
 
     if (docRoot !== null) docRoot.className = '';
     document.body.className = '';
+
+    setOldConfigs(getStorageObj('jamesinaxx:Clocks:configs') || []);
   }, []);
 
   const [config, setConfig] = useState<GeneratorConfig>({
@@ -142,6 +146,9 @@ export default function Generator(): JSX.Element {
             <title>Clock Generator</title>
           </Head>
           <FormGroup>
+            {oldConfigs.map((val: ClockConfig) => (
+              <p>{val.name}</p>
+            ))}
             <form className={styles.saveConfig} onSubmit={saveConfig}>
               <Input
                 placeholder='Config Name'
