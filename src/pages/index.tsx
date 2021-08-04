@@ -146,9 +146,11 @@ export default function Generator(): JSX.Element {
             <title>Clock Generator</title>
           </Head>
           <FormGroup>
-            {oldConfigs.map((val: ClockConfig) => (
-              <p>{val.name}</p>
-            ))}
+            <ul>
+              {oldConfigs.map((val: ClockConfig) => (
+                <li key={val.name}>{val.name}</li>
+              ))}
+            </ul>
             <form className={styles.saveConfig} onSubmit={saveConfig}>
               <Input
                 placeholder='Config Name'
