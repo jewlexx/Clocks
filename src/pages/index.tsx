@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styles from '@styles/modules/generator.module.scss';
-import type { ClockType, GeneratorConfig, ClockConfig } from '@typings/Generator';
+import type { GeneratorConfig, ClockConfig } from '@typings/Generator';
 import {
   Paper,
   Button,
@@ -11,7 +11,6 @@ import {
   Input,
   Select,
   MenuItem,
-  ButtonGroup,
   Divider,
 } from '@material-ui/core';
 
@@ -40,6 +39,8 @@ export default function Generator(): JSX.Element {
   const router = useRouter();
 
   const [oldConfigs, setOldConfigs] = useState<ClockConfig[]>([]);
+
+  const [justSaved, setJustSaved] = useState<boolean>(false);
 
   useEffect(() => {
     const docRoot = document.getElementById('__next');
@@ -106,7 +107,7 @@ export default function Generator(): JSX.Element {
   ): Promise<void> {
     const oldConfig = { ...config };
 
-    oldConfig.clock = e.target.value as ClockType;
+    oldConfig.clock = e.target.value as string;
 
     setConfig(oldConfig);
   }
@@ -116,13 +117,11 @@ export default function Generator(): JSX.Element {
   ): Promise<void> {
     e.preventDefault();
 
-    const currentConfig: ClockConfig = { name: configName, config };
+    setJustSaved(true);
+    window.setTimeout(() => setJustSaved(false), 5000);
 
-    const oldConfigs: ClockConfig[] = getStorageObj('jamesinaxx:Clocks:configs') || [];
-
-    oldConfigs.push(currentConfig);
+    setOldConfigs(oldConfigs.concat([{ name: configName, config }]));
     setStorageObj('jamesinaxx:Clocks:configs', oldConfigs);
-    setOldConfigs(getStorageObj('jamesinaxx:Clocks:configs') || []);
     setConfigName('');
   }
 
@@ -204,12 +203,12 @@ export default function Generator(): JSX.Element {
                   onChange={(e) => setConfigName(e.target.value)}
                 />
                 <Button
-                  color="secondary"
+                  color={justSaved ? 'primary' : 'secondary'}
                   variant="contained"
                   className={styles.saveConfig}
                   onClick={saveConfig}
                 >
-                  Save Config
+                  {justSaved ? 'Saved Config!' : 'Save Config'}
                 </Button>
               </form>
             </div>
