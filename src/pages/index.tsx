@@ -13,6 +13,7 @@ import {
   MenuItem,
   Divider,
 } from '@material-ui/core';
+import { Save, Done } from '@material-ui/icons';
 
 declare global {
   // eslint-disable-next-line no-unused-vars
@@ -208,7 +209,7 @@ export default function Generator(): JSX.Element {
                   className={styles.saveConfig}
                   onClick={saveConfig}
                 >
-                  {justSaved ? 'Saved Config!' : 'Save Config'}
+                  {justSaved ? <Done /> : <Save />}
                 </Button>
               </form>
             </div>
