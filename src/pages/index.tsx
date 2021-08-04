@@ -15,6 +15,7 @@ import {
   Input,
   Select,
   MenuItem,
+  ButtonGroup,
 } from '@material-ui/core';
 
 declare global {
@@ -146,11 +147,11 @@ export default function Generator(): JSX.Element {
             <title>Clock Generator</title>
           </Head>
           <FormGroup>
-            <ul>
+            <ButtonGroup>
               {oldConfigs.map((val: ClockConfig) => (
-                <li key={val.name}>{val.name}</li>
+                <Button key={val.name} onClick={() => setConfig(val.config)}>{val.name}</li>
               ))}
-            </ul>
+            </ButtonGroup>
             <form className={styles.saveConfig} onSubmit={saveConfig}>
               <Input
                 placeholder='Config Name'
