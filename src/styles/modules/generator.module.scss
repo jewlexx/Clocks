@@ -18,6 +18,15 @@
   }
 }
 
+.buttonsWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.generateButton {
+  float: right;
+}
+
 .clockGenerator {
   position: absolute;
   margin: 5vw;

@@ -189,12 +189,8 @@ export default function Generator(): JSX.Element {
                 For more info click here
               </a>
             </InputLabel>
-
-            <Button onClick={handleGenerate} variant="contained" color="primary" fullWidth={false}>
-              <CheckCircleOutline />
-            </Button>
             <hr />
-            <div>
+            <div className={styles.buttonsWrapper}>
               <form className={styles.saveConfig} onSubmit={saveConfig}>
                 <Input
                   placeholder="Config Name"
@@ -210,6 +206,15 @@ export default function Generator(): JSX.Element {
                   onClick={saveConfig}
                 >
                   {justSaved ? <Done /> : <Save />}
+                </Button>
+                <Button
+                  onClick={handleGenerate}
+                  variant="contained"
+                  color="primary"
+                  fullWidth={false}
+                  className={styles.generateButton}
+                >
+                  <CheckCircleOutline />
                 </Button>
               </form>
             </div>
