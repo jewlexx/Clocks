@@ -13,7 +13,7 @@ import {
   MenuItem,
   Divider,
 } from '@material-ui/core';
-import { Save, Done } from '@material-ui/icons';
+import { Save, Done, CheckCircleOutline } from '@material-ui/icons';
 
 declare global {
   // eslint-disable-next-line no-unused-vars
@@ -190,8 +190,8 @@ export default function Generator(): JSX.Element {
               </a>
             </InputLabel>
 
-            <Button onClick={handleGenerate} variant="contained" color="primary">
-              Generate URL
+            <Button onClick={handleGenerate} variant="contained" color="primary" fullWidth={false}>
+              <CheckCircleOutline />
             </Button>
             <hr />
             <div>
