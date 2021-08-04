@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styles from '@styles/modules/generator.module.scss';
-import type { ClockType, GeneratorConfig } from '@typings/Generator';
+import type {
+  ClockType,
+  GeneratorConfig,
+  ClockConfig,
+} from '@typings/Generator';
 import {
   Paper,
   Button,
@@ -16,6 +20,20 @@ import {
 declare global {
   interface Window {
     timer: number;
+  }
+}
+
+function setStorageObj(key: string, obj: any) {
+  return window.localStorage.setItem(key, JSON.stringify(obj));
+}
+
+function getStorageObj(key: string) {
+  const item = window.localStorage.getItem(key);
+
+  if (item) {
+    return JSON.parse(item);
+  } else {
+    return null;
   }
 }
 
@@ -104,7 +122,15 @@ export default function Generator(): JSX.Element {
   ): Promise<void> {
     e.preventDefault();
 
-    console.table(configName, Object.values(config));
+    const currentConfig: ClockConfig = { name: configName, config };
+
+    const oldConfigs: ClockConfig[] =
+      getStorageObj('jamesinaxx:Clocks:configs') || [];
+
+    console.log(oldConfigs);
+
+    oldConfigs.push(currentConfig);
+    setStorageObj('jamesinaxx:Clocks:configs', oldConfigs);
     setConfigName('');
   }
 

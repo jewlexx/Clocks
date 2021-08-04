@@ -10,3 +10,8 @@ export interface GeneratorConfig {
 export interface GeneratorState {
   config: GeneratorConfig;
 }
+
+export interface ClockConfig {
+  name: string;
+  config: GeneratorConfig;
+}
