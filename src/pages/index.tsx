@@ -136,6 +136,7 @@ export default function Generator(): JSX.Element {
 
     oldConfigs.push(currentConfig);
     setStorageObj('jamesinaxx:Clocks:configs', oldConfigs);
+    setOldConfigs(getStorageObj('jamesinaxx:Clocks:configs') || []);
     setConfigName('');
   }
 
