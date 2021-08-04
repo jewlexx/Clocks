@@ -149,7 +149,9 @@ export default function Generator(): JSX.Element {
           <FormGroup>
             <ButtonGroup>
               {oldConfigs.map((val: ClockConfig) => (
-                <Button key={val.name} onClick={() => setConfig(val.config)}>{val.name}</li>
+                <Button key={val.name} onClick={() => setConfig(val.config)}>
+                  {val.name}
+                </Button>
               ))}
             </ButtonGroup>
             <form className={styles.saveConfig} onSubmit={saveConfig}>
