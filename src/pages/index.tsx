@@ -147,30 +147,33 @@ export default function Generator(): JSX.Element {
             <title>Clock Generator</title>
           </Head>
           <FormGroup>
-            <ButtonGroup>
-              {oldConfigs.map((val: ClockConfig, i) => (
-                <Button key={i} onClick={() => setConfig(val.config)}>
-                  {val.name}
+            <div>
+              <h3>Old Configs:</h3>
+              <ButtonGroup>
+                {oldConfigs.map((val: ClockConfig, i) => (
+                  <Button key={i} onClick={() => setConfig(val.config)}>
+                    {val.name}
+                  </Button>
+                ))}
+              </ButtonGroup>
+              <form className={styles.saveConfig} onSubmit={saveConfig}>
+                <Input
+                  placeholder='Config Name'
+                  color='secondary'
+                  type='text'
+                  value={configName}
+                  onChange={e => setConfigName(e.target.value)}
+                />
+                <Button
+                  color='secondary'
+                  variant='contained'
+                  className={styles.saveConfig}
+                  onClick={saveConfig}
+                >
+                  Save Config
                 </Button>
-              ))}
-            </ButtonGroup>
-            <form className={styles.saveConfig} onSubmit={saveConfig}>
-              <Input
-                placeholder='Config Name'
-                color='secondary'
-                type='text'
-                value={configName}
-                onChange={e => setConfigName(e.target.value)}
-              />
-              <Button
-                color='secondary'
-                variant='contained'
-                className={styles.saveConfig}
-                onClick={saveConfig}
-              >
-                Save Config
-              </Button>
-            </form>
+              </form>
+            </div>
             <br />
             <Select
               value={config.clock}
