@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
 import styles from '@styles/modules/generator.module.scss';
 import type { ClockType, GeneratorConfig, ClockConfig } from '@typings/Generator';
@@ -16,6 +15,7 @@ import {
 } from '@material-ui/core';
 
 declare global {
+  // eslint-disable-next-line no-unused-vars
   interface Window {
     timer: number;
   }
@@ -30,9 +30,8 @@ function getStorageObj(key: string) {
 
   if (item) {
     return JSON.parse(item);
-  } else {
-    return null;
   }
+  return null;
 }
 
 export default function Generator(): JSX.Element {
@@ -67,11 +66,11 @@ export default function Generator(): JSX.Element {
     const clockUrl = new URL(window.location.href);
     clockUrl.pathname = '/clock/';
 
-    for (const key in Object.keys(config)) {
+    Object.keys(config).forEach((key) => {
       // This is needed to make typescript SHUT UP :)
       const configKey = key as 'clock' | 'timeFormat' | 'bgColor' | 'fgColor';
       clockUrl.searchParams.append(key, config[configKey]);
-    }
+    });
 
     // Saves the url to clipboard
     navigator.clipboard.writeText(clockUrl.href);
@@ -105,8 +104,6 @@ export default function Generator(): JSX.Element {
     }>,
   ): Promise<void> {
     const oldConfig = { ...config };
-
-    console.log(e.target.value);
 
     oldConfig.clock = e.target.value as ClockType;
 
@@ -147,7 +144,7 @@ export default function Generator(): JSX.Element {
                 const itemName = item.substr(0, 1).toUpperCase() + item.substr(1);
                 return (
                   <MenuItem key={i} value={item}>
-                    {itemName + ' Clock'}
+                    {`${itemName} Clock`}
                   </MenuItem>
                 );
               })}
