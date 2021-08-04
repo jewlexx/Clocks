@@ -9,6 +9,15 @@
   }
 }
 
+.customClock {
+  color: #f50057 !important;
+  text-decoration: none;
+  &:hover {
+    color: #c51162;
+    text-decoration: underline;
+  }
+}
+
 .clockGenerator {
   position: absolute;
   margin: 5vw;

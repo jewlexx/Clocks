@@ -12,6 +12,7 @@ import {
   Select,
   MenuItem,
   ButtonGroup,
+  Divider,
 } from '@material-ui/core';
 
 declare global {
@@ -143,11 +144,19 @@ export default function Generator(): JSX.Element {
               {clocks.map((item, i) => {
                 const itemName = item.substr(0, 1).toUpperCase() + item.substr(1);
                 return (
+                  // eslint-disable-next-line react/no-array-index-key
                   <MenuItem key={i} value={item}>
                     {`${itemName} Clock`}
                   </MenuItem>
                 );
               })}
+              <Divider />
+              {oldConfigs.map((val: ClockConfig, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <MenuItem key={i} value={val.name} className={styles.customClock}>
+                  {val.name}
+                </MenuItem>
+              ))}
             </Select>
 
             <InputLabel>
@@ -186,14 +195,6 @@ export default function Generator(): JSX.Element {
             </Button>
             <hr />
             <div>
-              <h3 style={{ padding: 0, margin: 5 }}>Saved Configs:</h3>
-              <ButtonGroup>
-                {oldConfigs.map((val: ClockConfig, i) => (
-                  <Button key={i} onClick={() => setConfig(val.config)}>
-                    {val.name}
-                  </Button>
-                ))}
-              </ButtonGroup>
               <form className={styles.saveConfig} onSubmit={saveConfig}>
                 <Input
                   placeholder="Config Name"
