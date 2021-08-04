@@ -66,7 +66,7 @@ export default function Generator(): JSX.Element {
     const clockUrl = new URL(window.location.href);
     clockUrl.pathname = '/clock/';
 
-    for (const key in config) {
+    for (const key in Object.keys(config)) {
       // This is needed to make typescript SHUT UP :)
       const configKey = key as 'clock' | 'timeFormat' | 'bgColor' | 'fgColor';
       clockUrl.searchParams.append(key, config[configKey]);
