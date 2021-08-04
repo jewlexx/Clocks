@@ -148,8 +148,8 @@ export default function Generator(): JSX.Element {
           </Head>
           <FormGroup>
             <ButtonGroup>
-              {oldConfigs.map((val: ClockConfig) => (
-                <Button key={val.name} onClick={() => setConfig(val.config)}>
+              {oldConfigs.map((val: ClockConfig, i) => (
+                <Button key={i} onClick={() => setConfig(val.config)}>
                   {val.name}
                 </Button>
               ))}
