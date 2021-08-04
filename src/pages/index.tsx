@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styles from '@styles/modules/generator.module.scss';
-import type {
-  ClockType,
-  GeneratorConfig,
-  ClockConfig,
-} from '@typings/Generator';
+import type { ClockType, GeneratorConfig, ClockConfig } from '@typings/Generator';
 import {
   Paper,
   Button,
@@ -65,9 +61,7 @@ export default function Generator(): JSX.Element {
 
   const [configName, setConfigName] = useState<string>('');
 
-  async function handleGenerate(
-    e: React.MouseEvent<HTMLButtonElement>
-  ): Promise<void> {
+  async function handleGenerate(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
     e.preventDefault();
     const clockUrl = new URL(window.location.href);
     clockUrl.pathname = '/clock/';
@@ -87,7 +81,7 @@ export default function Generator(): JSX.Element {
 
   async function handleColorChange(
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    ground: 'bg' | 'fg'
+    ground: 'bg' | 'fg',
   ): Promise<void> {
     if (!(e.target.value.length > 8)) {
       const oldConfig = { ...config };
@@ -96,9 +90,7 @@ export default function Generator(): JSX.Element {
     }
   }
 
-  async function handleFormatChange(
-    e: React.ChangeEvent<HTMLInputElement>
-  ): Promise<void> {
+  async function handleFormatChange(e: React.ChangeEvent<HTMLInputElement>): Promise<void> {
     const oldConfig = { ...config };
     oldConfig.timeFormat = e.target.value;
 
@@ -109,7 +101,7 @@ export default function Generator(): JSX.Element {
     e: React.ChangeEvent<{
       name?: string | undefined;
       value: unknown;
-    }>
+    }>,
   ): Promise<void> {
     const oldConfig = { ...config };
 
@@ -121,16 +113,13 @@ export default function Generator(): JSX.Element {
   }
 
   async function saveConfig(
-    e:
-      | React.FormEvent<HTMLFormElement>
-      | React.MouseEvent<HTMLButtonElement | MouseEvent>
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement | MouseEvent>,
   ): Promise<void> {
     e.preventDefault();
 
     const currentConfig: ClockConfig = { name: configName, config };
 
-    const oldConfigs: ClockConfig[] =
-      getStorageObj('jamesinaxx:Clocks:configs') || [];
+    const oldConfigs: ClockConfig[] = getStorageObj('jamesinaxx:Clocks:configs') || [];
 
     oldConfigs.push(currentConfig);
     setStorageObj('jamesinaxx:Clocks:configs', oldConfigs);
@@ -139,8 +128,8 @@ export default function Generator(): JSX.Element {
   }
 
   return (
-    <div id='root'>
-      <Paper className={styles.clockGenerator} variant='elevation'>
+    <div id="root">
+      <Paper className={styles.clockGenerator} variant="elevation">
         <main>
           <Head>
             <title>Clock Generator</title>
@@ -157,15 +146,15 @@ export default function Generator(): JSX.Element {
               </ButtonGroup>
               <form className={styles.saveConfig} onSubmit={saveConfig}>
                 <Input
-                  placeholder='Config Name'
-                  color='secondary'
-                  type='text'
+                  placeholder="Config Name"
+                  color="secondary"
+                  type="text"
                   value={configName}
-                  onChange={e => setConfigName(e.target.value)}
+                  onChange={(e) => setConfigName(e.target.value)}
                 />
                 <Button
-                  color='secondary'
-                  variant='contained'
+                  color="secondary"
+                  variant="contained"
                   className={styles.saveConfig}
                   onClick={saveConfig}
                 >
@@ -177,12 +166,11 @@ export default function Generator(): JSX.Element {
             <Select
               value={config.clock}
               onChange={handleChangeClock}
-              variant='filled'
-              title='Select your clock'
+              variant="filled"
+              title="Select your clock"
             >
               {clocks.map((item, i) => {
-                const itemName =
-                  item.substr(0, 1).toUpperCase() + item.substr(1);
+                const itemName = item.substr(0, 1).toUpperCase() + item.substr(1);
                 return (
                   <MenuItem key={i} value={item}>
                     {itemName + ' Clock'}
@@ -194,43 +182,35 @@ export default function Generator(): JSX.Element {
             <InputLabel>
               Time Color: #
               <Input
-                type='text'
+                type="text"
                 value={config.fgColor}
-                onChange={e => handleColorChange(e, 'fg')}
+                onChange={(e) => handleColorChange(e, 'fg')}
               />
             </InputLabel>
             {config.clock === 'custom' && (
-              <InputLabel id='background-color-picker'>
+              <InputLabel id="background-color-picker">
                 Background Color: #
                 <Input
-                  type='text'
+                  type="text"
                   value={config.bgColor}
-                  onChange={e => handleColorChange(e, 'bg')}
+                  onChange={(e) => handleColorChange(e, 'bg')}
                 />
               </InputLabel>
             )}
             <InputLabel>
               Time Format:{' '}
-              <Input
-                type='text'
-                value={config.timeFormat}
-                onChange={handleFormatChange}
-              />{' '}
+              <Input type="text" value={config.timeFormat} onChange={handleFormatChange} />{' '}
               <a
-                href='https://day.js.org/docs/en/display/format'
-                target='_blank'
-                rel='noreferrer'
+                href="https://day.js.org/docs/en/display/format"
+                target="_blank"
+                rel="noreferrer"
                 className={styles.link}
               >
                 For more info click here
               </a>
             </InputLabel>
 
-            <Button
-              onClick={handleGenerate}
-              variant='contained'
-              color='primary'
-            >
+            <Button onClick={handleGenerate} variant="contained" color="primary">
               Generate URL
             </Button>
           </FormGroup>
