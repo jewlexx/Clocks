@@ -24,7 +24,7 @@
     "react/jsx-filename-extension": ["off"],
     "react/prop-types": ["warn"],
     "no-return-assign": ["off"],
-    "linebreak-style": ["error", "windows"],
+    "linebreak-style": ["off"],
     "prettier/prettier": [
       "error",
       {

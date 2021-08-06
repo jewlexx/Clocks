@@ -20,6 +20,7 @@ export default class Doc extends Document {
         <Head>
           <meta
             name="description"
+            // eslint-disable-next-line max-len
             content="A simple, highly customizable Clock, designed for performance, embedding, and ease of use in mind"
           />
           <meta name="keywords" content="clock, embed, api, easy, simple, iframe" />
