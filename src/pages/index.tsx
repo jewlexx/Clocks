@@ -181,6 +181,7 @@ export default function Generator(): JSX.Element {
                   variant="contained"
                   className={styles.saveConfig}
                   onClick={saveConfig}
+                  title={justSaved ? 'Save Config' : 'Saved Config'}
                 >
                   {justSaved ? <Done /> : <Save />}
                 </Button>
@@ -190,6 +191,7 @@ export default function Generator(): JSX.Element {
                   color="primary"
                   fullWidth={false}
                   className={styles.generateButton}
+                  title="Generate URL"
                 >
                   <CheckCircleOutline />
                 </Button>
