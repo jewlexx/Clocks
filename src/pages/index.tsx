@@ -14,34 +14,16 @@ import {
   Divider,
 } from '@material-ui/core';
 import { Save, Done, CheckCircleOutline } from '@material-ui/icons';
-
-declare global {
-  // eslint-disable-next-line no-unused-vars
-  interface Window {
-    timer: number;
-  }
-}
-
-function setStorageObj(key: string, obj: any) {
-  return window.localStorage.setItem(key, JSON.stringify(obj));
-}
-
-function getStorageObj(key: string) {
-  const item = window.localStorage.getItem(key);
-
-  if (item) {
-    return JSON.parse(item);
-  }
-  return null;
-}
+import { setStorageObj, getStorageObj } from '../lib/storage';
+import defaultConfig from '../lib/config';
 
 export default function Generator(): JSX.Element {
   const clocks = ['custom', 'pride', 'transparent'];
   const router = useRouter();
-
   const [oldConfigs, setOldConfigs] = useState<ClockConfig[]>([]);
-
   const [justSaved, setJustSaved] = useState<boolean>(false);
+  const [config, setConfig] = useState<GeneratorConfig>(defaultConfig);
+  const [configName, setConfigName] = useState<string>('');
 
   useEffect(() => {
     const docRoot = document.getElementById('__next');
@@ -54,15 +36,6 @@ export default function Generator(): JSX.Element {
 
     setOldConfigs(getStorageObj('jamesinaxx:Clocks:configs') || []);
   }, []);
-
-  const [config, setConfig] = useState<GeneratorConfig>({
-    clock: 'custom',
-    timeFormat: 'h:mm:ss A',
-    bgColor: 'FFF',
-    fgColor: '000',
-  });
-
-  const [configName, setConfigName] = useState<string>('');
 
   async function handleGenerate(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
     e.preventDefault();
@@ -150,7 +123,7 @@ export default function Generator(): JSX.Element {
                   </MenuItem>
                 );
               })}
-              <Divider />
+              {oldConfigs.length !== 0 && <Divider />}
               {oldConfigs.map((val: ClockConfig, i) => (
                 // eslint-disable-next-line react/no-array-index-key
                 <MenuItem key={i} value={val.name} className={styles.customClock}>
