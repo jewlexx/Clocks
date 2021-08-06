@@ -20,12 +20,10 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.15.0",
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
     "@typescript-eslint/parser": "^4.29.0",
-    "babel-eslint": "^10.1.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "^11.0.1",
@@ -37,7 +35,6 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "playwright": "^1.13.1",
     "prettier": "^2.3.2",
-    "pretty-quick": "^3.1.1",
     "sass": "^1.36.0",
     "typescript": "^4.3.5",
     "webpack": "^5.48.0"
