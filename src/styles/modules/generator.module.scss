@@ -1,11 +1,30 @@
 @import '../vars/all';
 
 .link {
-  color: #80df98;
+  color: #f50057;
   text-decoration: none;
   &:hover {
-    color: #a6ffbc;
+    color: #c51162;
+    text-decoration: underline;
   }
+}
+
+.customClock {
+  color: #f50057 !important;
+  text-decoration: none;
+  &:hover {
+    color: #c51162;
+    text-decoration: underline;
+  }
+}
+
+.buttonsWrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.generateButton {
+  float: right;
 }
 
 .clockGenerator {

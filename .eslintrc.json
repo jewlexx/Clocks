@@ -3,12 +3,11 @@
     "browser": true,
     "es2021": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "extends": ["plugin:react/recommended", "plugin:prettier/recommended", "airbnb", "next"],
   "parser": "@typescript-eslint/parser",
+  "globals": {
+    "JSX": true
+  },
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
@@ -16,6 +15,24 @@
     "ecmaVersion": 12,
     "sourceType": "module"
   },
-  "plugins": ["react", "@typescript-eslint"],
-  "rules": {}
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "rules": {
+    "no-use-before-define": ["off"],
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "max-len": ["error", { "code": 100 }],
+    "prefer-promise-reject-errors": ["off"],
+    "react/jsx-filename-extension": ["off"],
+    "react/prop-types": ["warn"],
+    "no-return-assign": ["off"],
+    "linebreak-style": ["error", "windows"],
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "react/jsx-one-expression-per-line": ["off"],
+    "object-curly-newline": ["off"],
+    "react/jsx-props-no-spreading": ["off"]
+  }
 }

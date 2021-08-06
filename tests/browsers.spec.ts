@@ -5,7 +5,7 @@ const iPhone = devices['iPhone 11'];
 
 const browsers = [chromium, firefox, webkit];
 
-browsers.forEach(async browser => {
+browsers.forEach(async (browser) => {
   const bw = await browser.launch();
   const deskctx = await bw.newContext();
 
@@ -20,10 +20,7 @@ browsers.forEach(async browser => {
   await page.goto(`file://${resolve(__dirname, 'transparentClock.html')}`);
 
   await page.screenshot({
-    path: resolve(
-      __dirname,
-      `images/desk${browser.name()}/transparentImage.png`
-    ),
+    path: resolve(__dirname, `images/desk${browser.name()}/transparentImage.png`),
   });
 
   const iphonectx = await bw.newContext(iPhone);
@@ -39,10 +36,7 @@ browsers.forEach(async browser => {
   await page.goto(`file://${resolve(__dirname, 'transparentClock.html')}`);
 
   await page.screenshot({
-    path: resolve(
-      __dirname,
-      `images/phone${browser.name()}/transparentImage.png`
-    ),
+    path: resolve(__dirname, `images/phone${browser.name()}/transparentImage.png`),
   });
 
   bw.close();

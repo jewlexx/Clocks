@@ -5,6 +5,7 @@ import styles from '@styles/modules/clock.module.scss';
 import type { ClockState } from '@typings/Clock';
 
 declare global {
+  // eslint-disable-next-line no-unused-vars
   interface Window {
     timer: number;
   }
@@ -29,14 +30,14 @@ export default function Clock(): JSX.Element {
     }
 
     if (urlParams.get('clock') !== 'custom') {
-      docRoot.classList.add(styles[urlParams.get('clock') + '-clock']);
+      docRoot.classList.add(styles[`${urlParams.get('clock')}-clock`]);
     } else {
-      docRoot.style.backgroundColor = '#' + urlParams.get('bgColor');
+      docRoot.style.backgroundColor = `#${urlParams.get('bgColor')}`;
     }
 
     let colorParam = urlParams.get('clock') !== 'black' ? '#000' : '#FFF';
     if (urlParams.has('color')) {
-      colorParam = '#' + urlParams.get('color');
+      colorParam = `#${urlParams.get('color')}`;
     }
     document.body.classList.add(styles.timeDiv);
 

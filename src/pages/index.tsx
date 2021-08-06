@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styles from '@styles/modules/generator.module.scss';
-import type { ClockType, GeneratorConfig } from '@typings/Generator';
+import type { GeneratorConfig, ClockConfig } from '@typings/Generator';
 import {
   Paper,
   Button,
@@ -11,17 +11,37 @@ import {
   Input,
   Select,
   MenuItem,
+  Divider,
 } from '@material-ui/core';
+import { Save, Done, CheckCircleOutline } from '@material-ui/icons';
 
 declare global {
+  // eslint-disable-next-line no-unused-vars
   interface Window {
     timer: number;
   }
 }
 
+function setStorageObj(key: string, obj: any) {
+  return window.localStorage.setItem(key, JSON.stringify(obj));
+}
+
+function getStorageObj(key: string) {
+  const item = window.localStorage.getItem(key);
+
+  if (item) {
+    return JSON.parse(item);
+  }
+  return null;
+}
+
 export default function Generator(): JSX.Element {
   const clocks = ['custom', 'pride', 'transparent'];
   const router = useRouter();
+
+  const [oldConfigs, setOldConfigs] = useState<ClockConfig[]>([]);
+
+  const [justSaved, setJustSaved] = useState<boolean>(false);
 
   useEffect(() => {
     const docRoot = document.getElementById('__next');
@@ -31,6 +51,8 @@ export default function Generator(): JSX.Element {
 
     if (docRoot !== null) docRoot.className = '';
     document.body.className = '';
+
+    setOldConfigs(getStorageObj('jamesinaxx:Clocks:configs') || []);
   }, []);
 
   const [config, setConfig] = useState<GeneratorConfig>({
@@ -40,18 +62,18 @@ export default function Generator(): JSX.Element {
     fgColor: '000',
   });
 
-  async function handleGenerate(
-    e: React.MouseEvent<HTMLButtonElement>
-  ): Promise<void> {
+  const [configName, setConfigName] = useState<string>('');
+
+  async function handleGenerate(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
     e.preventDefault();
     const clockUrl = new URL(window.location.href);
     clockUrl.pathname = '/clock/';
 
-    for (const key in config) {
+    Object.keys(config).forEach((key) => {
       // This is needed to make typescript SHUT UP :)
       const configKey = key as 'clock' | 'timeFormat' | 'bgColor' | 'fgColor';
       clockUrl.searchParams.append(key, config[configKey]);
-    }
+    });
 
     // Saves the url to clipboard
     navigator.clipboard.writeText(clockUrl.href);
@@ -62,7 +84,7 @@ export default function Generator(): JSX.Element {
 
   async function handleColorChange(
     e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-    ground: 'bg' | 'fg'
+    ground: 'bg' | 'fg',
   ): Promise<void> {
     if (!(e.target.value.length > 8)) {
       const oldConfig = { ...config };
@@ -71,9 +93,7 @@ export default function Generator(): JSX.Element {
     }
   }
 
-  async function handleFormatChange(
-    e: React.ChangeEvent<HTMLInputElement>
-  ): Promise<void> {
+  async function handleFormatChange(e: React.ChangeEvent<HTMLInputElement>): Promise<void> {
     const oldConfig = { ...config };
     oldConfig.timeFormat = e.target.value;
 
@@ -84,80 +104,123 @@ export default function Generator(): JSX.Element {
     e: React.ChangeEvent<{
       name?: string | undefined;
       value: unknown;
-    }>
+    }>,
   ): Promise<void> {
     const oldConfig = { ...config };
 
-    console.log(e.target.value);
-
-    oldConfig.clock = e.target.value as ClockType;
+    oldConfig.clock = e.target.value as string;
 
     setConfig(oldConfig);
   }
 
-  return (
-    <Paper className={styles.clockGenerator} variant='elevation'>
-      <main>
-        <Head>
-          <title>Clock Generator</title>
-        </Head>
-        <FormGroup>
-          <Select
-            value={config.clock}
-            onChange={handleChangeClock}
-            variant='filled'
-            title='Select your clock'
-          >
-            {clocks.map((item, i) => {
-              const itemName = item.substr(0, 1).toUpperCase() + item.substr(1);
-              return (
-                <MenuItem key={i} value={item}>
-                  {itemName + ' Clock'}
-                </MenuItem>
-              );
-            })}
-          </Select>
+  async function saveConfig(
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement | MouseEvent>,
+  ): Promise<void> {
+    e.preventDefault();
 
-          <InputLabel>
-            Time Color: #
-            <Input
-              type='text'
-              value={config.fgColor}
-              onChange={e => handleColorChange(e, 'fg')}
-            />
-          </InputLabel>
-          {config.clock === 'custom' && (
-            <InputLabel id='background-color-picker'>
-              Background Color: #
+    setJustSaved(true);
+    window.setTimeout(() => setJustSaved(false), 5000);
+
+    setOldConfigs(oldConfigs.concat([{ name: configName, config }]));
+    setStorageObj('jamesinaxx:Clocks:configs', oldConfigs);
+    setConfigName('');
+  }
+
+  return (
+    <div id="root">
+      <Paper className={styles.clockGenerator} variant="elevation">
+        <main>
+          <Head>
+            <title>Clock Generator</title>
+          </Head>
+          <FormGroup>
+            <br />
+            <Select
+              value={config.clock}
+              onChange={handleChangeClock}
+              variant="filled"
+              title="Select your clock"
+            >
+              {clocks.map((item, i) => {
+                const itemName = item.substr(0, 1).toUpperCase() + item.substr(1);
+                return (
+                  // eslint-disable-next-line react/no-array-index-key
+                  <MenuItem key={i} value={item}>
+                    {`${itemName} Clock`}
+                  </MenuItem>
+                );
+              })}
+              <Divider />
+              {oldConfigs.map((val: ClockConfig, i) => (
+                // eslint-disable-next-line react/no-array-index-key
+                <MenuItem key={i} value={val.name} className={styles.customClock}>
+                  {val.name}
+                </MenuItem>
+              ))}
+            </Select>
+
+            <InputLabel>
+              Time Color: #
               <Input
-                type='text'
-                value={config.bgColor}
-                onChange={e => handleColorChange(e, 'bg')}
+                type="text"
+                value={config.fgColor}
+                onChange={(e) => handleColorChange(e, 'fg')}
               />
             </InputLabel>
-          )}
-          <InputLabel>
-            Time Format:{' '}
-            <Input
-              type='text'
-              value={config.timeFormat}
-              onChange={handleFormatChange}
-            />{' '}
-            <a
-              href='https://day.js.org/docs/en/display/format'
-              target='_blank'
-              rel='noreferrer'
-              className={styles.link}
-            >
-              For more info click here
-            </a>
-          </InputLabel>
-
-          <Button onClick={handleGenerate} variant='contained' color='primary'>
-            Generate URL
-          </Button>
-        </FormGroup>
-      </main>
-    </Paper>
+            {config.clock === 'custom' && (
+              <InputLabel id="background-color-picker">
+                Background Color: #
+                <Input
+                  type="text"
+                  value={config.bgColor}
+                  onChange={(e) => handleColorChange(e, 'bg')}
+                />
+              </InputLabel>
+            )}
+            <InputLabel>
+              Time Format:{' '}
+              <Input type="text" value={config.timeFormat} onChange={handleFormatChange} />{' '}
+              <a
+                href="https://day.js.org/docs/en/display/format"
+                target="_blank"
+                rel="noreferrer"
+                className={styles.link}
+              >
+                For more info click here
+              </a>
+            </InputLabel>
+            <hr />
+            <div className={styles.buttonsWrapper}>
+              <form className={styles.saveConfig} onSubmit={saveConfig}>
+                <Input
+                  placeholder="Config Name"
+                  color="secondary"
+                  type="text"
+                  value={configName}
+                  onChange={(e) => setConfigName(e.target.value)}
+                />
+                <Button
+                  color={justSaved ? 'primary' : 'secondary'}
+                  variant="contained"
+                  className={styles.saveConfig}
+                  onClick={saveConfig}
+                >
+                  {justSaved ? <Done /> : <Save />}
+                </Button>
+                <Button
+                  onClick={handleGenerate}
+                  variant="contained"
+                  color="primary"
+                  fullWidth={false}
+                  className={styles.generateButton}
+                >
+                  <CheckCircleOutline />
+                </Button>
+              </form>
+            </div>
+          </FormGroup>
+        </main>
+      </Paper>
+    </div>
   );
 }
