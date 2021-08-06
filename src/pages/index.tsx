@@ -20,7 +20,7 @@ import defaultConfig from '../lib/config';
 export default function Generator(): JSX.Element {
   const clocks = ['custom', 'pride', 'transparent'];
   const router = useRouter();
-  const [oldConfigs, setOldConfigs] = useState<ClockConfig[]>([]);
+  const [savedConfigs, setSavedConfigs] = useState<ClockConfig[]>([]);
   const [justSaved, setJustSaved] = useState<boolean>(false);
   const [config, setConfig] = useState<GeneratorConfig>(defaultConfig);
   const [configName, setConfigName] = useState<string>('');
@@ -34,7 +34,7 @@ export default function Generator(): JSX.Element {
     if (docRoot !== null) docRoot.className = '';
     document.body.className = '';
 
-    setOldConfigs(getStorageObj('jamesinaxx:Clocks:configs') || []);
+    setSavedConfigs(getStorageObj('jamesinaxx:Clocks:configs') || []);
   }, []);
 
   async function handleGenerate(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
@@ -94,8 +94,8 @@ export default function Generator(): JSX.Element {
     setJustSaved(true);
     window.setTimeout(() => setJustSaved(false), 5000);
 
-    setOldConfigs(oldConfigs.concat([{ name: configName, config }]));
-    setStorageObj('jamesinaxx:Clocks:configs', oldConfigs);
+    setSavedConfigs(savedConfigs.concat([{ name: configName, config }]));
+    setStorageObj('jamesinaxx:Clocks:configs', savedConfigs);
     setConfigName('');
   }
 
@@ -123,13 +123,17 @@ export default function Generator(): JSX.Element {
                   </MenuItem>
                 );
               })}
-              {oldConfigs.length !== 0 && <Divider />}
-              {oldConfigs.map((val: ClockConfig, i) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <MenuItem key={i} value={val.name} className={styles.customClock}>
-                  {val.name}
-                </MenuItem>
-              ))}
+              {savedConfigs.length !== 0 && (
+                <>
+                  <Divider />
+                  {savedConfigs.map((val: ClockConfig, i) => (
+                    // eslint-disable-next-line react/no-array-index-key
+                    <MenuItem key={i} value={val.name} className={styles.customClock}>
+                      {val.name}
+                    </MenuItem>
+                  ))}
+                </>
+              )}
             </Select>
 
             <InputLabel>
