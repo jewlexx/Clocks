@@ -1,3 +1,4 @@
+// TODO Add service worker
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 

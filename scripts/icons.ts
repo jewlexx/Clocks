@@ -4,42 +4,39 @@ import fs from 'fs-extra';
 
 const source = resolve(__dirname, '..', 'src', 'images', 'icon.png');
 const configuration: Partial<favicons.FaviconOptions> = {
-  path: '/',
-  appName: null,
-  appShortName: null,
-  appDescription: null,
-  developerName: null,
-  developerURL: null,
-  dir: 'auto',
+  path: '/icons/',
+  appName: 'Clocks by jamesinaxx',
+  appShortName: 'Clocks',
+  appDescription: 'A various collection of html clocks designed to be embeddable anywhere',
+  developerName: 'jamesinaxxx',
+  developerURL: 'https://github.com/jamesinaxx',
   lang: 'en-US',
-  background: '#fff',
+  background: '#004740',
   theme_color: '#fff',
   appleStatusBarStyle: 'black-translucent',
-  display: 'standalone',
+  display: 'fullscreen',
   orientation: 'any',
   scope: '/',
-  start_url: '/?homescreen=1',
-  version: '1.0',
-  logging: false,
-  pixel_art: false,
+  start_url: '/',
+  version: '1.0.0',
   loadManifestWithCredentials: false,
   icons: {
     android: true,
     appleIcon: true,
-    appleStartup: true,
-    coast: true,
+    appleStartup: false,
+    coast: false,
     favicons: true,
-    firefox: true,
-    windows: true,
-    yandex: true,
+    firefox: false,
+    windows: false,
+    yandex: false,
   },
 };
-const callback = (error: any, response: favicons.FaviconResponse) => {
+function callback(error: any, response: favicons.FaviconResponse): void {
   if (error) {
     console.log(error.message);
     return;
   }
-  const path = resolve(__dirname, '..', 'public', 'images');
+  const path = resolve(__dirname, '..', 'public', 'icons');
   if (fs.existsSync(path)) {
     fs.rmSync(path, { recursive: true, force: true });
   }
@@ -47,8 +44,7 @@ const callback = (error: any, response: favicons.FaviconResponse) => {
   response.images.forEach((image) => {
     fs.writeFileSync(resolve(path, image.name), image.contents);
   });
-  console.log(response.files);
-  console.log(response.html);
-};
+  fs.writeFileSync(resolve(path, '..', 'manifest.webmanifest'), response.files[0].contents);
+}
 
 favicons(source, configuration, callback);

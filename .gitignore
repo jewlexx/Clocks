@@ -1,5 +1,6 @@
 public/*.js
 public/*.map
+public/icons
 tests/images
 node_modules/
 dist/
