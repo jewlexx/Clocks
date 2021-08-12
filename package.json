@@ -5,11 +5,11 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "yarn icons && next dev",
+    "build": "yarn icons && next build",
     "start": "next start",
     "lint": "next lint",
-    "icons": "echo \"Working on it :)\""
+    "icons": "ts-node scripts/icons.ts"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@types/favicons": "^6.2.2",
+    "@types/fs-extra": "^9.0.12",
     "@types/react": "^17.0.15",
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.29.0",
@@ -36,6 +37,7 @@
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
     "favicons": "^6.2.2",
+    "fs-extra": "^10.0.0",
     "playwright": "^1.13.1",
     "prettier": "^2.3.2",
     "sass": "^1.36.0",

@@ -1,8 +1,9 @@
 import favicons from 'favicons';
 import { resolve } from 'path';
+import fs from 'fs-extra';
 
-const source = resolve(__dirname, '..', 'public', 'icon.png');
-const configuration = {
+const source = resolve(__dirname, '..', 'src', 'images', 'icon.png');
+const configuration: Partial<favicons.FaviconOptions> = {
   path: '/',
   appName: null,
   appShortName: null,
@@ -33,12 +34,19 @@ const configuration = {
     yandex: true,
   },
 };
-const callback = (error: any, response: any) => {
+const callback = (error: any, response: favicons.FaviconResponse) => {
   if (error) {
     console.log(error.message);
     return;
   }
-  console.log(response.images);
+  const path = resolve(__dirname, '..', 'public', 'images');
+  if (fs.existsSync(path)) {
+    fs.rmSync(path, { recursive: true, force: true });
+  }
+  fs.mkdirSync(path);
+  response.images.forEach((image) => {
+    fs.writeFileSync(resolve(path, image.name), image.contents);
+  });
   console.log(response.files);
   console.log(response.html);
 };
