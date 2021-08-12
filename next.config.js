@@ -1,4 +1,5 @@
 // TODO Add service worker
+require('./scripts/icons.js');
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 

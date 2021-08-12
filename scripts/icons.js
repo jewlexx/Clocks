@@ -1,9 +1,14 @@
-import favicons from 'favicons';
-import { resolve } from 'path';
-import fs from 'fs-extra';
+/* eslint-disable import/no-extraneous-dependencies */
+const favicons = require('favicons');
+const { resolve } = require('path');
+const fs = require('fs-extra');
 
 const source = resolve(__dirname, '..', 'src', 'images', 'icon.png');
-const configuration: Partial<favicons.FaviconOptions> = {
+
+/**
+ * @type {Partial<favicons.FaviconOptions>}
+ */
+const configuration = {
   path: '/icons/',
   appName: 'Clocks by jamesinaxx',
   appShortName: 'Clocks',
@@ -31,7 +36,14 @@ const configuration: Partial<favicons.FaviconOptions> = {
     yandex: false,
   },
 };
-function callback(error: any, response: favicons.FaviconResponse): void {
+
+/**
+ *
+ * @param {any} error
+ * @param {favicons.FaviconResponse} response
+ * @returns {void}
+ */
+function callback(error, response) {
   if (error) {
     console.log(error.message);
     return;

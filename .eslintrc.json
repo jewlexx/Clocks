@@ -25,15 +25,16 @@
     "react/prop-types": ["warn"],
     "no-return-assign": ["off"],
     "linebreak-style": ["off"],
-    "prettier/prettier": [
-      "error",
-      {
-        "endOfLine": "auto"
-      }
-    ],
     "react/jsx-one-expression-per-line": ["off"],
     "object-curly-newline": ["off"],
     "react/jsx-props-no-spreading": ["off"],
-    "import/extensions": ["off"]
+    "import/extensions": ["off"],
+    "no-console": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "endOfLine": "lf"
+      }
+    ]
   }
 }
