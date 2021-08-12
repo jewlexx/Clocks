@@ -28,9 +28,9 @@ const configuration = {
   icons: {
     android: true,
     appleIcon: true,
+    favicons: true,
     appleStartup: false,
     coast: false,
-    favicons: true,
     firefox: false,
     windows: false,
     yandex: false,
