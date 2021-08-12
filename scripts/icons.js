@@ -57,6 +57,8 @@ function callback(error, response) {
     fs.writeFileSync(resolve(path, image.name), image.contents);
   });
   fs.writeFileSync(resolve(path, '..', 'manifest.webmanifest'), response.files[0].contents);
+  console.log('Finished generating icons and manifest');
 }
 
+console.log('Generating icons and manifest');
 favicons(source, configuration, callback);
