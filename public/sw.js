@@ -4,7 +4,7 @@
 const PRECACHE = 'precache-v1';
 const RUNTIME = 'runtime';
 
-const PRECACHE_URLS = ['/', '/clock'];
+const PRECACHE_URLS = ['/'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
