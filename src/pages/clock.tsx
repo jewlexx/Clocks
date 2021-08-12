@@ -12,6 +12,8 @@ declare global {
 }
 
 export default function Clock(): JSX.Element {
+  const { format } = dayjs();
+
   const [config, setConfig] = useState<ClockState>({
     time: '00:00:00',
     color: '#000',
@@ -45,13 +47,13 @@ export default function Clock(): JSX.Element {
 
     newConfig.color = colorParam;
 
-    newConfig.time = dayjs().format(timeFormat);
+    newConfig.time = format(timeFormat);
 
     setConfig(newConfig);
 
     window.timer = window.setInterval(() => {
       const newTimeConfig: ClockState = { ...config };
-      newTimeConfig.time = dayjs().format(timeFormat);
+      newTimeConfig.time = format(timeFormat);
       setConfig(newTimeConfig);
     }, 1000);
   }, []);
