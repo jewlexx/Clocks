@@ -1,12 +1,22 @@
 // TODO Add service worker
-require('./scripts/icons.js');
 const withPWA = require('next-pwa');
 const runtimeCaching = require('next-pwa/cache');
 
-module.exports = withPWA({
+// Idk if this should work or if there is a better way but it does work so yea
+function customBuildSteps() {
+  require('./scripts/icons.js');
+}
+
+const pwaconfig = withPWA({
   pwa: {
     dest: 'public',
     disable: process.env.NODE_ENV !== 'production',
     runtimeCaching,
   },
 });
+
+const config = {};
+
+customBuildSteps();
+
+module.exports = config;
