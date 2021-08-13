@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const favicons = require('favicons');
 const { resolve } = require('path');
 const fs = require('fs-extra');
+const favicons = require('../src/lib/favicons/index');
 
 const source = resolve(__dirname, '..', 'src', 'images', 'icon.png');
 
