@@ -135,9 +135,8 @@ export default function Generator(): JSX.Element {
               {savedConfigs.length !== 0 && (
                 <>
                   <Divider />
-                  {savedConfigs.map((val: ClockConfig, i) => (
-                    // eslint-disable-next-line react/no-array-index-key
-                    <MenuItem key={i} value={val.name} className={styles.customClock}>
+                  {savedConfigs.map((val: ClockConfig) => (
+                    <MenuItem key={val.name} value={val.name} className={styles.customClock}>
                       {val.name}
                     </MenuItem>
                   ))}
@@ -184,7 +183,11 @@ export default function Generator(): JSX.Element {
                   type="text"
                   error={configNameError}
                   value={configName}
-                  onChange={(e) => setConfigName(e.target.value)}
+                  onChange={(e) => {
+                    setConfigName(e.target.value);
+                    setJustSaved(false);
+                    setConfigNameError(false);
+                  }}
                 />
                 <Button
                   color={justSaved ? 'primary' : 'secondary'}
