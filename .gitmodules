@@ -1,0 +1,3 @@
+[submodule "src/lib/favicons"]
+	path = src/lib/favicons
+	url = https://github.com/jamesinaxx/favicons
