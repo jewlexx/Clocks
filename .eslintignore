@@ -1,2 +1,3 @@
 next.config.js
 src/lib/favicons
+sw.js

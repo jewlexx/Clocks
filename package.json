@@ -11,7 +11,7 @@
     "build": "yarn icons && next build",
     "start": "next start",
     "lint": "next lint",
-    "icons": "node scripts/icons.js"
+    "prebuild": "node scripts/prebuild.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
