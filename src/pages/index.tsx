@@ -18,6 +18,7 @@ import { setStorageObj, getStorageObj } from '../lib/storage';
 import defaultConfig from '../lib/config';
 
 export default function Generator(): JSX.Element {
+  const [configNameError, setConfigNameError] = useState(false);
   const clocks = ['custom', 'pride', 'transparent'];
   const router = useRouter();
   const [savedConfigs, setSavedConfigs] = useState<ClockConfig[]>([]);
@@ -92,10 +93,18 @@ export default function Generator(): JSX.Element {
     e.preventDefault();
 
     setJustSaved(true);
-    window.setTimeout(() => setJustSaved(false), 5000);
+    window.setTimeout(() => {
+      setJustSaved(false);
+      setConfigNameError(true);
+    }, 5000);
 
-    setSavedConfigs(savedConfigs.concat([{ name: configName, config }]));
-    setStorageObj('jamesinaxx:Clocks:configs', savedConfigs);
+    if (savedConfigs.find((val) => val.name === configName) === undefined) {
+      setConfigNameError(true);
+    } else {
+      setSavedConfigs(savedConfigs.concat([{ name: configName, config }]));
+      setStorageObj('jamesinaxx:Clocks:configs', savedConfigs);
+    }
+
     setConfigName('');
   }
 
@@ -173,6 +182,7 @@ export default function Generator(): JSX.Element {
                   placeholder="Config Name"
                   color="secondary"
                   type="text"
+                  error={configNameError}
                   value={configName}
                   onChange={(e) => setConfigName(e.target.value)}
                 />
