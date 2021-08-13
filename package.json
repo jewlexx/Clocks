@@ -5,6 +5,8 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "fmt": "prettier --write --ignore-path .gitignore",
+    "fmt-check": "prettier --check --ignore-path .gitignore",
     "dev": "yarn icons && next dev",
     "build": "yarn icons && next build",
     "start": "next start",
@@ -35,7 +37,6 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "favicons": "^6.2.2",
     "fs-extra": "^10.0.0",
     "playwright": "^1.13.1",
     "prettier": "^2.3.2",
