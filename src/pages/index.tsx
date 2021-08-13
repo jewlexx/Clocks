@@ -123,12 +123,11 @@ export default function Generator(): JSX.Element {
               variant="filled"
               title="Select your clock"
             >
-              {clocks.map((item, i) => {
-                const itemName = item.substr(0, 1).toUpperCase() + item.substr(1);
+              {clocks.map((item) => {
+                const itemName = `${item.substr(0, 1).toUpperCase() + item.substr(1)} Clock`;
                 return (
-                  // eslint-disable-next-line react/no-array-index-key
-                  <MenuItem key={i} value={item}>
-                    {`${itemName} Clock`}
+                  <MenuItem key={item} value={item}>
+                    {itemName}
                   </MenuItem>
                 );
               })}
