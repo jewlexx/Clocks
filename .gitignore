@@ -1,6 +1,7 @@
 public/icons
 tests/images
 node_modules/
+public/sw.js
 dist/
 .env
 .next

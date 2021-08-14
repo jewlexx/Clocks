@@ -1,9 +1,21 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const favicons = require('favicons');
 const { resolve } = require('path');
 const fs = require('fs-extra');
+const favicons = require('../src/lib/favicons/index');
 
-const source = resolve(__dirname, '..', 'src', 'images', 'icon.png');
+const src = resolve(__dirname, '..', 'src');
+const public = resolve(__dirname, '..', 'public');
+const images = resolve(src, 'images');
+const icons = resolve(public, 'icons');
+const lib = resolve(src, 'lib');
+
+const sourceIMG = resolve(images, 'icon.png');
+const swFile = fs.readFileSync(resolve(lib, 'sw.js'));
+const swContents = swFile.toString();
+// "minified"
+const minified = swContents.split('\n').join(' ');
+
+fs.writeFile(resolve(public, 'sw.js'), minified);
 
 /**
  * @type {Partial<favicons.FaviconOptions>}
@@ -43,22 +55,21 @@ const configuration = {
  * @param {favicons.FaviconResponse} response
  * @returns {void}
  */
-function callback(error, response) {
+async function callback(error, response) {
   if (error) {
     console.log(error.message);
     return;
   }
-  const path = resolve(__dirname, '..', 'public', 'icons');
-  if (fs.existsSync(path)) {
-    fs.rmSync(path, { recursive: true, force: true });
+  if (fs.existsSync(icons)) {
+    await fs.rm(icons, { recursive: true, force: true });
   }
-  fs.mkdirSync(path);
-  response.images.forEach((image) => {
-    fs.writeFileSync(resolve(path, image.name), image.contents);
+  await fs.mkdir(icons);
+  response.images.forEach(async (image) => {
+    await fs.writeFile(resolve(icons, image.name), image.contents);
   });
-  fs.writeFileSync(resolve(path, '..', 'manifest.webmanifest'), response.files[0].contents);
+  await fs.writeFile(resolve(icons, '..', 'manifest.webmanifest'), response.files[0].contents);
   console.log('Finished generating icons and manifest');
 }
 
 console.log('Generating icons and manifest');
-favicons(source, configuration, callback);
+favicons(sourceIMG, configuration, callback);

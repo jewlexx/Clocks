@@ -5,11 +5,13 @@
   "main": "index.js",
   "private": true,
   "scripts": {
+    "fmt": "prettier --write --ignore-path .gitignore",
+    "fmt-check": "prettier --check --ignore-path .gitignore",
     "dev": "yarn icons && next dev",
     "build": "yarn icons && next build",
     "start": "next start",
     "lint": "next lint",
-    "icons": "node scripts/icons.js"
+    "prebuild": "node scripts/prebuild.js"
   },
   "dependencies": {
     "@material-ui/core": "^4.12.3",
@@ -26,6 +28,8 @@
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.29.1",
     "@typescript-eslint/parser": "^4.29.1",
+    "clone": "^2.1.2",
+    "colors": "^1.4.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-next": "^11.1.0",
@@ -35,14 +39,24 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.21.5",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "favicons": "^6.2.2",
     "fs-extra": "^10.0.0",
+    "image-size": "^1.0.0",
+    "jimp": "^0.16.1",
+    "jsontoxml": "^1.0.1",
+    "lodash.defaultsdeep": "^4.6.1",
     "playwright": "^1.13.1",
     "prettier": "^2.3.2",
+    "require-directory": "^2.1.1",
     "sass": "^1.37.5",
+    "sharp": "^0.28.2",
+    "through2": "^4.0.2",
+    "tinycolor2": "^1.4.2",
+    "to-ico": "^1.0.1",
     "ts-node": "^10.2.0",
     "typescript": "^4.3.5",
-    "webpack": "^5.50.0"
+    "vinyl": "^2.2.1",
+    "webpack": "^5.50.0",
+    "xml2js": "^0.4.23"
   },
   "repository": {
     "type": "git",

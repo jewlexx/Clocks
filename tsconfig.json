@@ -24,6 +24,6 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/icons.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/pwa.js"],
   "exclude": ["node_modules"]
 }
