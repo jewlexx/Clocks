@@ -6,3 +6,12 @@ dist/
 .env
 .next
 .env.local
+
+# Yarn 2 stuff
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
+.pnp.*
