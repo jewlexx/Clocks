@@ -9,6 +9,7 @@
     "fmt-check": "prettier --check --ignore-path .gitignore",
     "dev": "next dev",
     "build": "next build",
+    "build:dev": "ANALYZE=true yarn build",
     "start": "next start",
     "lint": "next lint",
     "prebuild": "node scripts/prebuild.js"
@@ -16,6 +17,7 @@
   "dependencies": {
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
+    "@next/bundle-analyzer": "^11.1.0",
     "dayjs": "^1.10.6",
     "next": "^11.1.0",
     "react": "^17.0.2",
