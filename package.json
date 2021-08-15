@@ -7,8 +7,8 @@
   "scripts": {
     "fmt": "prettier --write --ignore-path .gitignore",
     "fmt-check": "prettier --check --ignore-path .gitignore",
-    "dev": "yarn icons && next dev",
-    "build": "yarn icons && next build",
+    "dev": "next dev",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "prebuild": "node scripts/prebuild.js"
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@types/favicons": "^6.2.2",
     "@types/fs-extra": "^9.0.12",
+    "@types/node": "^16.6.1",
     "@types/react": "^17.0.17",
     "@types/react-dom": "^17.0.9",
     "@typescript-eslint/eslint-plugin": "^4.29.1",

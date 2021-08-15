@@ -921,7 +921,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*":
+"@types/node@npm:*, @types/node@npm:^16.6.1":
   version: 16.6.1
   resolution: "@types/node@npm:16.6.1"
   checksum: c13aa0da0c2bf9070e521d1b537ba38f64b213dd1b8aeec66c279fc21f8c0ccaf380364f6dc2ec8f84440c4cd1460b67dfe47de2cafcb6eaf4b648817cb27dc4
@@ -2127,6 +2127,7 @@ __metadata:
     "@material-ui/icons": ^4.11.2
     "@types/favicons": ^6.2.2
     "@types/fs-extra": ^9.0.12
+    "@types/node": ^16.6.1
     "@types/react": ^17.0.17
     "@types/react-dom": ^17.0.9
     "@typescript-eslint/eslint-plugin": ^4.29.1
