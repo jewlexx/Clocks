@@ -39,13 +39,9 @@ const configuration = {
   },
 };
 
-/**
- *
- * @param {any} error
- * @param {favicons.FaviconResponse} response
- * @returns {void}
- */
-async function callback(error, response) {
+console.log('Generating icons and manifest');
+
+favicons(sourceIMG, configuration, async (error, response) => {
   if (error) {
     console.log(error.message);
     return;
@@ -62,7 +58,4 @@ async function callback(error, response) {
     response.files[0].contents,
   );
   console.log('Finished generating icons and manifest');
-}
-
-console.log('Generating icons and manifest');
-favicons(sourceIMG, configuration, callback);
+});
