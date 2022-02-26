@@ -5,21 +5,19 @@
   "description": "A various collection of html clocks designed to be embeddable anywhere",
   "homepage": "https://clocks.jamesinaxx.me",
   "bugs": {
-    "url": "https://github.com/jamesinaxx/Clocks/issues"
+    "url": "https://github.com/jewlexx/Clocks/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jamesinaxx/Clocks.git"
+    "url": "https://github.com/jewlexx/Clocks.git"
   },
-  "author": "jamesinaxx",
-  "main": "index.js",
+  "author": "jewlexx",
   "scripts": {
-    "prebuild": "node scripts/prebuild.js",
     "build": "next build",
     "build:dev": "ANALYZE=true yarn build",
     "dev": "next dev",
     "fmt": "prettier --write --ignore-path .gitignore",
-    "fmt-check": "prettier --check --ignore-path .gitignore",
+    "fmt:check": "prettier --check --ignore-path .gitignore",
     "lint": "next lint",
     "start": "next start"
   },
