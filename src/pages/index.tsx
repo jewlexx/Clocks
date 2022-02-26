@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { FunctionComponent, useEffect, useState, MouseEvent, ChangeEvent, FormEvent } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styles from '@styles/modules/generator.module.scss';
@@ -17,7 +17,7 @@ import { Save, Done, CheckCircleOutline } from '@material-ui/icons';
 import { setStorageObj, getStorageObj } from '../lib/storage';
 import defaultConfig from '../lib/config';
 
-export default function Generator(): JSX.Element {
+const Generator: FunctionComponent = () => {
   const [configNameError, setConfigNameError] = useState(false);
   const clocks = ['custom', 'pride', 'transparent'];
   const router = useRouter();
@@ -38,7 +38,7 @@ export default function Generator(): JSX.Element {
     setSavedConfigs(getStorageObj('jamesinaxx:Clocks:configs') || []);
   }, []);
 
-  async function handleGenerate(e: React.MouseEvent<HTMLButtonElement>): Promise<void> {
+  function handleGenerate(e: MouseEvent<HTMLButtonElement>): void {
     e.preventDefault();
     const clockUrl = new URL(window.location.href);
     clockUrl.pathname = '/clock/';
@@ -56,10 +56,10 @@ export default function Generator(): JSX.Element {
     router.push(clockUrl.href);
   }
 
-  async function handleColorChange(
-    e: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
+  function handleColorChange(
+    e: ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
     ground: 'bg' | 'fg',
-  ): Promise<void> {
+  ): void {
     if (!(e.target.value.length > 8)) {
       const oldConfig = { ...config };
       oldConfig[ground === 'bg' ? 'bgColor' : 'fgColor'] = e.target.value;
@@ -67,19 +67,19 @@ export default function Generator(): JSX.Element {
     }
   }
 
-  async function handleFormatChange(e: React.ChangeEvent<HTMLInputElement>): Promise<void> {
+  function handleFormatChange(e: ChangeEvent<HTMLInputElement>): void {
     const oldConfig = { ...config };
     oldConfig.timeFormat = e.target.value;
 
     setConfig(oldConfig);
   }
 
-  async function handleChangeClock(
-    e: React.ChangeEvent<{
+  function handleChangeClock(
+    e: ChangeEvent<{
       name?: string | undefined;
       value: unknown;
     }>,
-  ): Promise<void> {
+  ): void {
     const oldConfig = { ...config };
 
     oldConfig.clock = e.target.value as string;
@@ -87,9 +87,9 @@ export default function Generator(): JSX.Element {
     setConfig(oldConfig);
   }
 
-  async function saveConfig(
-    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement | MouseEvent>,
-  ): Promise<void> {
+  function saveConfig(
+    e: FormEvent<HTMLFormElement> | MouseEvent<HTMLButtonElement | MouseEvent>,
+  ): void {
     e.preventDefault();
 
     setJustSaved(true);
@@ -148,7 +148,7 @@ export default function Generator(): JSX.Element {
               <Input
                 type="text"
                 value={config.fgColor}
-                onChange={(e) => handleColorChange(e, 'fg')}
+                onChange={(e): void => handleColorChange(e, 'fg')}
               />
             </InputLabel>
             {config.clock === 'custom' && (
@@ -157,7 +157,7 @@ export default function Generator(): JSX.Element {
                 <Input
                   type="text"
                   value={config.bgColor}
-                  onChange={(e) => handleColorChange(e, 'bg')}
+                  onChange={(e): void => handleColorChange(e, 'bg')}
                 />
               </InputLabel>
             )}
@@ -182,7 +182,7 @@ export default function Generator(): JSX.Element {
                   type="text"
                   error={configNameError}
                   value={configName}
-                  onChange={(e) => {
+                  onChange={(e): void => {
                     setConfigName(e.target.value);
                     setJustSaved(false);
                     setConfigNameError(false);
@@ -214,4 +214,6 @@ export default function Generator(): JSX.Element {
       </Paper>
     </div>
   );
-}
+};
+
+export default Generator;

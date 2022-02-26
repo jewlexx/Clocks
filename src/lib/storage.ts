@@ -5,11 +5,11 @@ declare global {
   }
 }
 
-function setStorageObj(key: string, obj: any) {
-  return window.localStorage.setItem(key, JSON.stringify(obj));
+function setStorageObj(key: string, obj: any): void {
+  window.localStorage.setItem(key, JSON.stringify(obj));
 }
 
-function getStorageObj(key: string) {
+function getStorageObj(key: string): any | null {
   const item = window.localStorage.getItem(key);
 
   if (item) {

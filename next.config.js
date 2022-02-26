@@ -2,10 +2,10 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-function customBuildSteps() {
-  require('./scripts/prebuild.js');
-}
+// function customBuildSteps() {
+//   require('./scripts/prebuild.js');
+// }
 
-customBuildSteps();
+// customBuildSteps();
 
 module.exports = withBundleAnalyzer({});

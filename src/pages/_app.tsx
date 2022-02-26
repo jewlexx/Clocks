@@ -1,9 +1,8 @@
-// @ts-nocheck
-import React, { useEffect } from 'react';
+import { FunctionComponent, useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import '@styles/global.scss';
 
-export default function App({ Component, pageProps }: AppProps): JSX.Element {
+const App: FunctionComponent<AppProps> = ({ Component, pageProps }) => {
   useEffect(() => {
     if ('serviceWorker' in navigator) {
       window.addEventListener('load', () => {
@@ -13,4 +12,6 @@ export default function App({ Component, pageProps }: AppProps): JSX.Element {
   });
 
   return <Component {...pageProps} />;
-}
+};
+
+export default App;

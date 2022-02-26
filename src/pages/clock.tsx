@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect, FunctionComponent } from 'react';
 import Head from 'next/head';
 import dayjs from 'dayjs';
 import styles from '@styles/modules/clock.module.scss';
@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-export default function Clock(): JSX.Element {
+const Clock: FunctionComponent = () => {
   const { format } = dayjs();
 
   const [config, setConfig] = useState<ClockState>({
@@ -56,7 +56,7 @@ export default function Clock(): JSX.Element {
       newTimeConfig.time = format(timeFormat);
       setConfig(newTimeConfig);
     }, 1000);
-  }, []);
+  }, [config, format]);
 
   return (
     <main className={styles.clock}>
@@ -68,4 +68,6 @@ export default function Clock(): JSX.Element {
       </p>
     </main>
   );
-}
+};
+
+export default Clock;
