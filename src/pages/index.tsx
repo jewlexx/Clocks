@@ -1,4 +1,11 @@
-import { FunctionComponent, useEffect, useState, MouseEvent, ChangeEvent, FormEvent } from 'react';
+import {
+  FunctionComponent,
+  useEffect,
+  useState,
+  MouseEvent,
+  ChangeEvent,
+  FormEvent,
+} from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import styles from '@styles/modules/generator.module.scss';
@@ -28,9 +35,6 @@ const Generator: FunctionComponent = () => {
 
   useEffect(() => {
     const docRoot = document.getElementById('__next');
-    if ('timer' in window) {
-      window.clearInterval(window.timer);
-    }
 
     if (docRoot !== null) docRoot.className = '';
     document.body.className = '';
@@ -124,7 +128,9 @@ const Generator: FunctionComponent = () => {
               title="Select your clock"
             >
               {clocks.map((item) => {
-                const itemName = `${item.substr(0, 1).toUpperCase() + item.substr(1)} Clock`;
+                const itemName = `${
+                  item.substr(0, 1).toUpperCase() + item.substr(1)
+                } Clock`;
                 return (
                   <MenuItem key={item} value={item}>
                     {itemName}
@@ -135,7 +141,11 @@ const Generator: FunctionComponent = () => {
                 <>
                   <Divider />
                   {savedConfigs.map((val: ClockConfig) => (
-                    <MenuItem key={val.name} value={val.name} className={styles.customClock}>
+                    <MenuItem
+                      key={val.name}
+                      value={val.name}
+                      className={styles.customClock}
+                    >
                       {val.name}
                     </MenuItem>
                   ))}
@@ -163,7 +173,11 @@ const Generator: FunctionComponent = () => {
             )}
             <InputLabel>
               Time Format:{' '}
-              <Input type="text" value={config.timeFormat} onChange={handleFormatChange} />{' '}
+              <Input
+                type="text"
+                value={config.timeFormat}
+                onChange={handleFormatChange}
+              />{' '}
               <a
                 href="https://day.js.org/docs/en/display/format"
                 target="_blank"

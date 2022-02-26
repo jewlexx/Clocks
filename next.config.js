@@ -4,12 +4,12 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 });
 
 const config = {
-  'pwa': {
-      'dest': 'public',
-      // disable: process.env.NODE_ENV === 'development',
-      // register: false
-  }
-
-}
+  pwa: {
+    dest: 'public',
+  },
+  compiler: {
+    styledComponents: true,
+  },
+};
 
 module.exports = withBundleAnalyzer(withPWA(config));
