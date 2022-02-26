@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="A simple, highly customizable Clock, designed for performance, embedding, and ease of use in mind"
+    />
+    <meta name="keywords" content="clock, embed, api, easy, simple, iframe" />
+    <link rel="icon" href="/favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      #root {
+        font-family: 'Courier New', Courier, monospace;
+        background: none;
+        background-color: transparent;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        font-size: calc(10vw + 10vh);
+        text-align: center;
+        background: none;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    </style>
+    <title>Simple, Modular Clocks</title>
+  </head>
+  <body>
+    <div id="root"><p id="time"></p></div>
+    <script src="https://unpkg.com/dayjs@1.8.21/dayjs.min.js"></script>
+    <script>
+      let format = 'h:mm:ss A';
+      const el = document.createElement('p');
+      document.querySelector('#root').appendChild(el);
+      el.innerText = dayjs().format(format);
+
+      const params = new URLSearchParams(window.location.search);
+      if (params.has('24hour')) {
+        format = 'HH:mm:ss';
+      }
+
+      setInterval(() => {
+        el.innerText = dayjs().format(format);
+      }, 100);
+    </script>
+  </body>
+</html>
