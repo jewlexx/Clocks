@@ -1,6 +1,7 @@
 import { useState, useEffect, FunctionComponent } from 'react';
 import Head from 'next/head';
 import dayjs from 'dayjs';
+import styled from 'styled-components';
 import styles from '@styles/modules/clock.module.scss';
 import type { ClockState } from '@typings/Clock';
 
@@ -11,9 +12,13 @@ declare global {
   }
 }
 
-const Clock: FunctionComponent = () => {
-  const { format } = dayjs();
+const Main = styled.main`
+  font-family: $clock-font-family;
+  background: none;
+  background-color: transparent;
+`;
 
+const Clock: FunctionComponent = () => {
   const [config, setConfig] = useState<ClockState>({
     time: '00:00:00',
     color: '#000',
@@ -23,7 +28,7 @@ const Clock: FunctionComponent = () => {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
 
-    const timeFormat = urlParams.get('format') || 'h:mm:ss A';
+    const timeFormat = urlParams.get('format') ?? 'h:mm:ss A';
 
     const docRoot = document.getElementById('__next') as HTMLDivElement;
 
@@ -43,30 +48,29 @@ const Clock: FunctionComponent = () => {
     }
     document.body.classList.add(styles.timeDiv);
 
-    const newConfig: ClockState = { ...config };
-
-    newConfig.color = colorParam;
-
-    newConfig.time = format(timeFormat);
-
-    setConfig(newConfig);
+    setConfig((old) => {
+      const newConfig: ClockState = { ...old };
+      newConfig.color = colorParam;
+      newConfig.time = dayjs().format(timeFormat);
+      return newConfig;
+    });
 
     window.timer = window.setInterval(() => {
-      const newTimeConfig: ClockState = { ...config };
-      newTimeConfig.time = format(timeFormat);
-      setConfig(newTimeConfig);
+      setConfig((old) => {
+        const newConfig: ClockState = { ...old };
+        newConfig.time = dayjs().format(timeFormat);
+        return newConfig;
+      });
     }, 1000);
-  }, [config, format]);
+  }, []);
 
   return (
-    <main className={styles.clock}>
+    <Main>
       <Head>
         <title>Clock - Embed this URL</title>
       </Head>
-      <p className={styles.time} style={{ color: config.color }}>
-        {config.time}
-      </p>
-    </main>
+      <p style={{ color: config.color }}>{config.time}</p>
+    </Main>
   );
 };
 
