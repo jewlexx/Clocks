@@ -7,6 +7,7 @@ const Main = styled.main`
   font-family: 'Courier New', Courier, monospace;
   background: none;
   background-color: transparent;
+  position: fixed;
   width: 100vw;
   height: 100vh;
   font-size: calc(10vw + 10vh);
