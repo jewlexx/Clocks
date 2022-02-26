@@ -1,21 +1,10 @@
-/* eslint-disable import/no-extraneous-dependencies */
 const { resolve } = require('path');
 const fs = require('fs/promises');
-const favicons = require('../src/lib/favicons/index');
+const exists = require('fs').existsSync;
+const favicons = require('favicons');
 
-const src = resolve(__dirname, '..', 'src');
-const public = resolve(__dirname, '..', 'public');
-const images = resolve(src, 'images');
-const icons = resolve(public, 'icons');
-const lib = resolve(src, 'lib');
-
-const sourceIMG = resolve(images, 'icon.png');
-const swFile = fs.readFileSync(resolve(lib, 'sw.js'));
-const swContents = swFile.toString();
-// "minified"
-const minified = swContents.split('\n').join(' ');
-
-fs.writeFile(resolve(public, 'sw.js'), minified);
+const icons = resolve(__dirname, '..', 'public', 'icons');
+const sourceIMG = resolve(__dirname, '..', 'src', 'images', 'icon.png');
 
 /**
  * @type {Partial<favicons.FaviconOptions>}
@@ -24,7 +13,8 @@ const configuration = {
   path: '/icons/',
   appName: 'Clocks by jamesinaxx',
   appShortName: 'Clocks',
-  appDescription: 'A various collection of html clocks designed to be embeddable anywhere',
+  appDescription:
+    'A various collection of html clocks designed to be embeddable anywhere',
   developerName: 'jamesinaxxx',
   developerURL: 'https://github.com/jamesinaxx',
   lang: 'en-US',
@@ -60,14 +50,17 @@ async function callback(error, response) {
     console.log(error.message);
     return;
   }
-  if (fs.existsSync(icons)) {
+  if (exists(icons)) {
     await fs.rm(icons, { recursive: true, force: true });
   }
   await fs.mkdir(icons);
   response.images.forEach(async (image) => {
     await fs.writeFile(resolve(icons, image.name), image.contents);
   });
-  await fs.writeFile(resolve(icons, '..', 'manifest.webmanifest'), response.files[0].contents);
+  await fs.writeFile(
+    resolve(icons, '..', 'manifest.webmanifest'),
+    response.files[0].contents,
+  );
   console.log('Finished generating icons and manifest');
 }
 

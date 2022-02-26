@@ -14,16 +14,11 @@
     "noImplicitAny": true,
     "outDir": "dist",
     "baseUrl": "./src",
-    "paths": {
-      "@typings/*": ["types/*"],
-      "@styles/*": ["styles/*"],
-      "@components/*": ["components/*"]
-    },
     "noEmit": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "scripts/pwa.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

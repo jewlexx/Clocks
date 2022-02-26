@@ -3,6 +3,8 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
+require('./scripts/prebuild');
+
 const config = {
   pwa: {
     dest: 'public',
